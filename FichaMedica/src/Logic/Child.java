@@ -5,21 +5,20 @@ public class Child {
     
     private String nombre;
     private int edad;
-    private ArrayList<Appointment> listaAppointment;
-    private ArrayList<Vaccine> listaVaccine;
-    private ArrayList<Growth> listaGrowth;
+    private ArrayList<Appointment> listaConsultas;
+    private ArrayList<Vaccine> listaVacunas;
+    private ArrayList<Growth> listaCrecimiento;
     
     public Child(){
     }
 
-    public Child(String nombre, int edad, ArrayList<Appointment> listaAppointment, ArrayList<Vaccine> listaVaccine, ArrayList<Growth> listaGrowth) {
+    public Child(String nombre, int edad, ArrayList<Appointment> listaConsultas, ArrayList<Vaccine> listaVacunas, ArrayList<Growth> listaCrecimiento) {
         this.nombre = nombre;
         this.edad = edad;
-        this.listaAppointment = listaAppointment;
-        this.listaVaccine = listaVaccine;
-        this.listaGrowth = listaGrowth;
+        this.listaConsultas = listaConsultas;
+        this.listaVacunas = listaVacunas;
+        this.listaCrecimiento = listaCrecimiento;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -37,30 +36,36 @@ public class Child {
         this.edad = edad;
     }
 
-    public ArrayList<Appointment> getListaAppointment() {
-        return listaAppointment;
+    public ArrayList<Appointment> getListaConsultas() {
+        return listaConsultas;
     }
 
-    public void setListaAppointment(ArrayList<Appointment> listaAppointment) {
-        this.listaAppointment = listaAppointment;
+    public void setListaConsultas(ArrayList<Appointment> listaConsultas) {
+        this.listaConsultas = listaConsultas;
     }
 
-    public ArrayList<Vaccine> getListaVaccine() {
-        return listaVaccine;
+    public ArrayList<Vaccine> getListaVacunas() {
+        return listaVacunas;
     }
 
-    public void setListaVaccine(ArrayList<Vaccine> listaVaccine) {
-        this.listaVaccine = listaVaccine;
+    public void setListaVacunas(ArrayList<Vaccine> listaVacunas) {
+        this.listaVacunas = listaVacunas;
     }
 
-    public ArrayList<Growth> getListaGrowth() {
-        return listaGrowth;
+    public ArrayList<Growth> getListaCrecimiento() {
+        return listaCrecimiento;
     }
 
-    public void setListaGrowth(ArrayList<Growth> listaGrowth) {
-        this.listaGrowth = listaGrowth;
+    public void setListaCrecimiento(ArrayList<Growth> listaCrecimiento) {
+        this.listaCrecimiento = listaCrecimiento;
     }
+
     
     
+    @Override
+    public String toString(){
+        return ("" + this.getNombre());
+        
+    }
 
 }
