@@ -1,56 +1,60 @@
 package Logic;
 
-import java.util.*;
+//Clase de Crecimientos de un hijo
 public class Growth {
-    
-    //capas pasar a int
-    private int edad;
-    private float altura;
-    private float peso;
-    private float perimeroCraneal;
+    //capaz pasar a int
+    //Attributes
+    private int age;
+    private float height;
+    private float weight;
+    private float cranealPerimeter;
 
+    //Getters and Setters
+    //Age
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int edad) {
+        age = edad;
+    }
+    //Height
+    public float getHeight() {
+        return height;
+    }
+    public void setHeight(float altura) {
+        height = altura;
+    }
+    //Weight
+    public float getweight() {
+        return weight;
+    }
+    public void setWeight(float peso) {
+        weight = peso;
+    }
+    //CranealPerimeter
+    public float getCranealPerimeter() {
+        return cranealPerimeter;
+    }
+    public void setCranealPerimeter(float perimeroCraneal) {
+        cranealPerimeter = perimeroCraneal;
+    }
+    
+    //Constructors
+    //Empty
     public Growth(){
+        age = 0;
+        height = 0;
+        weight = 0;
+        cranealPerimeter = 0;
         
     }
+    //Parametered
     public Growth(int edad, float altura, float peso, float perimeroCraneal) {
-        this.edad = edad;
-        this.altura = altura;
-        this.peso = peso;
-        this.perimeroCraneal = perimeroCraneal;
+        age = edad;
+        height = altura;
+        weight = peso;
+        cranealPerimeter = perimeroCraneal;
     }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public float getAltura() {
-        return altura;
-    }
-
-    public void setAltura(float altura) {
-        this.altura = altura;
-    }
-
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
-    }
-
-    public float getPerimeroCraneal() {
-        return perimeroCraneal;
-    }
-
-    public void setPerimeroCraneal(float perimeroCraneal) {
-        this.perimeroCraneal = perimeroCraneal;
-    }
-    
     
     
 }

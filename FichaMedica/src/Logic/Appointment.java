@@ -1,55 +1,58 @@
 package Logic;
 
-import java.util.*;
+//Clase de las consultas de los niños
 public class Appointment {
     
-    private boolean recordatorios;
-    private String nota;
-    private int proxConsulta;
-    private boolean realizada;
+    //Attributes
+    private boolean reminders;
+    private String note;
+    private int nextAppointment;
+    private boolean attended;
 
+    //Getters and Setters
+    //Reminders
+    public boolean getReminders() {
+        return reminders;
+    }
+    public void setReminders(boolean recordatorios) {
+        reminders = recordatorios;
+    }
+    //Note
+    public String getNote() {
+        return note;
+    }
+    public void setNote(String nota) {
+        note = nota;
+    }
+    //NextAppointment
+    public int getNextAppointment() {
+        return nextAppointment;
+    }
+    public void setNextAppointment(int proxConsulta) {
+        nextAppointment = proxConsulta;
+    }
+    //Attended
+    public boolean getAttended() {
+        return attended;
+    }
+    public void setAttended(boolean realizada) {
+        attended = realizada;
+    }
+    
+    //Constructors
+    //Empty
     public Appointment(){
-        
+        reminders = false;
+        note = "Sin Nota";
+        nextAppointment = 0;
+        attended = false;
     }
+    //Parametered
     public Appointment(boolean recordatorios, String nota, int proxConsulta, boolean realizada) {
-        this.recordatorios = recordatorios;
-        this.nota = nota;
-        this.proxConsulta = proxConsulta;
-        this.realizada = realizada;
+        reminders = recordatorios;
+        note = nota;
+        nextAppointment = proxConsulta;
+        attended = realizada;
     }
-
-    public boolean isRecordatorios() {
-        return recordatorios;
-    }
-
-    public void setRecordatorios(boolean recordatorios) {
-        this.recordatorios = recordatorios;
-    }
-
-    public String getNota() {
-        return nota;
-    }
-
-    public void setNota(String nota) {
-        this.nota = nota;
-    }
-
-    public int getProxConsulta() {
-        return proxConsulta;
-    }
-
-    public void setProxConsulta(int proxConsulta) {
-        this.proxConsulta = proxConsulta;
-    }
-
-    public boolean isRealizada() {
-        return realizada;
-    }
-
-    public void setRealizada(boolean realizada) {
-        this.realizada = realizada;
-    }
-    
-    
     
 }

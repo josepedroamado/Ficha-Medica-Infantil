@@ -1,75 +1,78 @@
 package Logic;
 
-import java.util.*;
+//Clase Vacuna, contienen todos los datos pertinentes a la misma
 public class Vaccine {
+    //Attributes
+    private String name;
+    private boolean mandatory;
+    private boolean received;
+    private int receivedDate;
+    private int expirationDate;
+    private int reminder;
     
-    private String nombre;
-    private boolean obligatoria;
-    private boolean dada;
-    private int fechaDada;
-    private int fechaVencimiento;
-    private int recordatorio;
-
-    public Vaccine(){
-        
-    }
-    public Vaccine(String nombre, boolean obligatoria, boolean dada, int fechaDada, int fechaVencimiento, int recordatorio) {
-        this.nombre = nombre;
-        this.obligatoria = obligatoria;
-        this.dada = dada;
-        this.fechaDada = fechaDada;
-        this.fechaVencimiento = fechaVencimiento;
-        this.recordatorio = recordatorio;
-    }
-
+    //Getters and Setters
+    //Name
     public String getNombre() {
-        return nombre;
+        return name;
     }
-
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        name = nombre;
     }
-
-    public boolean isObligatoria() {
-        return obligatoria;
+    //Mandatory (Obligatoria)
+    public boolean getMandatory() {
+        return mandatory;
     }
-
     public void setObligatoria(boolean obligatoria) {
-        this.obligatoria = obligatoria;
+        mandatory = obligatoria;
     }
-
-    public boolean isDada() {
-        return dada;
+    //Received
+    public boolean getReceived() {
+        return received;
     }
-
-    public void setDada(boolean dada) {
-        this.dada = dada;
+    public void setReceived(boolean dada) {
+        received = dada;
     }
-
-    public int getFechaDada() {
-        return fechaDada;
+    //ReceivedDate
+    public int getReceivedDate() {
+        return receivedDate;
     }
-
-    public void setFechaDada(int fechaDada) {
-        this.fechaDada = fechaDada;
+    public void setReceivedDate(int fechaDada) {
+        receivedDate = fechaDada;
     }
-
-    public int getFechaVencimiento() {
-        return fechaVencimiento;
+    //ExpirationDate
+    public int getExpirationDate() {
+        return expirationDate;
     }
-
-    public void setFechaVencimiento(int fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
+    public void setExpirationDate(int fechaVencimiento) {
+        expirationDate = fechaVencimiento;
     }
-
-    public int getRecordatorio() {
-        return recordatorio;
+    //Reminder
+    public int getReminder() {
+        return reminder;
     }
-
-    public void setRecordatorio(int recordatorio) {
-        this.recordatorio = recordatorio;
+    public void setReminder(int recordatorio) {
+        this.reminder = recordatorio;
     }
     
+    //Constructors
+    //Empty
+    public Vaccine(){
+        name = "Sin Nombre";
+        mandatory = false;
+        received = false;
+        receivedDate = 0;
+        expirationDate = 0;
+        reminder = 0;
+    }
+    //Parametered
+    public Vaccine(String nombre, boolean obligatoria, boolean dada, int fechaDada, int fechaVencimiento, int recordatorio) {
+        name = nombre;
+        mandatory = obligatoria;
+        received = dada;
+        receivedDate = fechaDada;
+        expirationDate = fechaVencimiento;
+        reminder = recordatorio;
+    }
     
     
 }
