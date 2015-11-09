@@ -1,5 +1,6 @@
 package Logic;
 import java.time.LocalDate;
+import static java.time.temporal.ChronoField.YEAR_OF_ERA;
 import java.util.ArrayList;
 
 //Clase de hijo, contiene todos los datos realacionados al mismo
@@ -52,9 +53,9 @@ public class Child {
     public Child(String aName, LocalDate birthDate) {
         //Obtengo Año Actual
         int year =  LocalDate.now().getYear();
+        int birthYear = birthDate.get(YEAR_OF_ERA);
         name = aName;
-        age = 0;
-//        age = year - birthDate.getYear();
+        age = year - birthYear;
         listAppointments = new ArrayList <Appointment>();
         listVaccines = new ArrayList <Vaccine>();
         listGrowth = new ArrayList <Growth>();

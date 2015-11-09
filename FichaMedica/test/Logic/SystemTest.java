@@ -33,7 +33,7 @@ public class SystemTest {
 
     @Test
     public void testIngresarHijo() {
-        String name = "";
+        String name = "Gaston";
         LocalDate birthDate = null;
         System instance = new System();
         instance.ingresarHijo(name, birthDate);
