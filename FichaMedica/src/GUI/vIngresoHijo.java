@@ -177,6 +177,12 @@ public class vIngresoHijo extends javax.swing.JFrame {
                     sistema.registerChild(ch);
                     Growth gr = new Growth(ch, altura, peso, perimetro);
                     sistema.registrarCrecimiento(gr);
+                    
+                    ingresoAltura.setText("");
+                    ingresoNombre.setText("");
+                    ingresoEdad.setText("");
+                    ingresoPeso.setText("");
+                    ingresoPerimetro.setText("");
                 }else{
                     JOptionPane.showMessageDialog(null, "La edad debe ser un número entre el 0 y 18.", "Atención!", JOptionPane.ERROR_MESSAGE);
                 }
