@@ -18,62 +18,62 @@ public class vPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        BarraMenuPrincipal = new javax.swing.JMenuBar();
+        MenuHijos = new javax.swing.JMenu();
+        MenuAgregarHijo = new javax.swing.JMenuItem();
+        MenuCargarArchivo = new javax.swing.JMenu();
+        MenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha Medica");
 
-        jMenu1.setText("Hijos");
+        MenuHijos.setText("Hijos");
 
-        jMenuItem1.setText("Hijo1");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        MenuAgregarHijo.setText("Agregar Hijo...");
+        MenuAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                MenuAgregarHijoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        MenuHijos.add(MenuAgregarHijo);
 
-        jMenuBar1.add(jMenu1);
+        BarraMenuPrincipal.add(MenuHijos);
 
-        jMenu2.setText("Cargar Archivo");
-        jMenuBar1.add(jMenu2);
+        MenuCargarArchivo.setText("Cargar Archivo");
+        BarraMenuPrincipal.add(MenuCargarArchivo);
 
-        jMenu3.setText("Salir");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        MenuSalir.setText("Salir");
+        MenuSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                MenuSalirActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        BarraMenuPrincipal.add(MenuSalir);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(BarraMenuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 400, 322);
+        setBounds(0, 0, 791, 680);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+    private void MenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSalirActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jMenu3ActionPerformed
+    }//GEN-LAST:event_MenuSalirActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void MenuAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgregarHijoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_MenuAgregarHijoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,10 +111,10 @@ public class vPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuBar BarraMenuPrincipal;
+    private javax.swing.JMenuItem MenuAgregarHijo;
+    private javax.swing.JMenu MenuCargarArchivo;
+    private javax.swing.JMenu MenuHijos;
+    private javax.swing.JMenu MenuSalir;
     // End of variables declaration//GEN-END:variables
 }

@@ -58,14 +58,14 @@ public class Child {
         listGrowth = null;
     }
     //Parametered
-    public Child(String nombre, LocalDate fechaNacimiento, ArrayList<Appointment> listaConsultas, ArrayList<Vaccine> listaVacunas, ArrayList<Growth> listaCrecimiento) {
+    public Child(String aName, LocalDate birthDate) {
         //Obtengo Año Actual
         int year =  LocalDate.now().getYear();
-        name = nombre;
-        age = year - fechaNacimiento.getYear();
-        listAppointments = listaConsultas;
-        listVaccines = listaVacunas;
-        listGrowth = listaCrecimiento;
+        name = aName;
+        age = year - birthDate.getYear();
+        listAppointments = new ArrayList <Appointment>();
+        listVaccines = new ArrayList <Vaccine>();
+        listGrowth = new ArrayList <Growth>();
     }
     @Override
     public String toString(){

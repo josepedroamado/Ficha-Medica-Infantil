@@ -2,7 +2,6 @@ package Logic;
 
 //Clase de Crecimientos de un hijo
 public class Growth {
-    //capaz pasar a int
     //Attributes
     private int age;
     private float height;
