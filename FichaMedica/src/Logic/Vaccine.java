@@ -1,4 +1,5 @@
 package Logic;
+import java.time.LocalDate;
 
 //Clase Vacuna, contienen todos los datos pertinentes a la misma
 public class Vaccine {
@@ -6,9 +7,8 @@ public class Vaccine {
     private String name;
     private boolean mandatory;
     private boolean received;
-    private int receivedDate;
-    private int expirationDate;
-    private int reminder;
+    private LocalDate receivedDate;
+    private LocalDate expirationDate;
     
     //Getters and Setters
     //Name
@@ -33,45 +33,36 @@ public class Vaccine {
         received = dada;
     }
     //ReceivedDate
-    public int getReceivedDate() {
+    public LocalDate getReceivedDate() {
         return receivedDate;
     }
-    public void setReceivedDate(int fechaDada) {
+    public void setReceivedDate(LocalDate fechaDada) {
         receivedDate = fechaDada;
     }
     //ExpirationDate
-    public int getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
-    public void setExpirationDate(int fechaVencimiento) {
+    public void setExpirationDate(LocalDate fechaVencimiento) {
         expirationDate = fechaVencimiento;
     }
-    //Reminder
-    public int getReminder() {
-        return reminder;
-    }
-    public void setReminder(int recordatorio) {
-        this.reminder = recordatorio;
-    }
-    
+
     //Constructors
     //Empty
     public Vaccine(){
         name = "Sin Nombre";
         mandatory = false;
         received = false;
-        receivedDate = 0;
-        expirationDate = 0;
-        reminder = 0;
+        receivedDate = null;
+        expirationDate = null;
     }
     //Parametered
-    public Vaccine(String nombre, boolean obligatoria, boolean dada, int fechaDada, int fechaVencimiento, int recordatorio) {
+    public Vaccine(String nombre, boolean obligatoria, boolean dada, LocalDate fechaDada, LocalDate fechaVencimiento) {
         name = nombre;
         mandatory = obligatoria;
         received = dada;
         receivedDate = fechaDada;
         expirationDate = fechaVencimiento;
-        reminder = recordatorio;
     }
     
     

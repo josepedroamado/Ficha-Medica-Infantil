@@ -1,4 +1,4 @@
-package fichamedica;
+package GUI;
 
 public class vIngresoHijo extends javax.swing.JFrame {
 

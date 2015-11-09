@@ -1,4 +1,5 @@
 package Logic;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 //Clase de hijo, contiene todos los datos realacionados al mismo
@@ -51,15 +52,17 @@ public class Child {
     //Empty
     public Child(){
         name = "Sin nombre";
-        age = 0;
+        age = -1;
         listAppointments = null;
         listVaccines = null;
         listGrowth = null;
     }
     //Parametered
-    public Child(String nombre, int edad, ArrayList<Appointment> listaConsultas, ArrayList<Vaccine> listaVacunas, ArrayList<Growth> listaCrecimiento) {
+    public Child(String nombre, LocalDate fechaNacimiento, ArrayList<Appointment> listaConsultas, ArrayList<Vaccine> listaVacunas, ArrayList<Growth> listaCrecimiento) {
+        //Obtengo Año Actual
+        int year =  LocalDate.now().getYear();
         name = nombre;
-        age = edad;
+        age = year - fechaNacimiento.getYear();
         listAppointments = listaConsultas;
         listVaccines = listaVacunas;
         listGrowth = listaCrecimiento;

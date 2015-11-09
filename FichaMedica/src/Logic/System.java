@@ -1,5 +1,6 @@
 package Logic;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 //Clase Sistema, contiene todas las listas
 public class System {
@@ -45,8 +46,8 @@ public class System {
         this.getListAllChildren().add(h);
     }
     //Ingresar Hijo al sistema
-    public void ingresarHijo(String unNombre, int unaEdad, ArrayList<Appointment> unaListaConsultas, ArrayList<Vaccine> unaListaVacunas, ArrayList<Growth> unaListaCrecimiento ){
-        Child h = new Child(unNombre, unaEdad, unaListaConsultas, unaListaVacunas, unaListaCrecimiento);
+    public void ingresarHijo(String unNombre, LocalDate fechaNacimiento, ArrayList<Appointment> unaListaConsultas, ArrayList<Vaccine> unaListaVacunas, ArrayList<Growth> unaListaCrecimiento ){
+        Child h = new Child(unNombre, fechaNacimiento, unaListaConsultas, unaListaVacunas, unaListaCrecimiento);
         registrarHijo(h);
     }
 }

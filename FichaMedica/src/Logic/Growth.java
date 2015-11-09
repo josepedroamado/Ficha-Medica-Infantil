@@ -7,8 +7,8 @@ public class Growth {
     private int age;
     private float height;
     private float weight;
-    private float cranealPerimeter;
-
+    private float cranialPerimeter;
+     
     //Getters and Setters
     //Age
     public int getAge() {
@@ -32,11 +32,11 @@ public class Growth {
         weight = peso;
     }
     //CranealPerimeter
-    public float getCranealPerimeter() {
-        return cranealPerimeter;
+    public float getCranialPerimeter() {
+        return cranialPerimeter;
     }
-    public void setCranealPerimeter(float perimeroCraneal) {
-        cranealPerimeter = perimeroCraneal;
+    public void setCranialPerimeter(float perimetroCraneal) {
+        cranialPerimeter = perimetroCraneal;
     }
     
     //Constructors
@@ -45,15 +45,15 @@ public class Growth {
         age = 0;
         height = 0;
         weight = 0;
-        cranealPerimeter = 0;
+        cranialPerimeter = 0;
         
     }
     //Parametered
-    public Growth(int edad, float altura, float peso, float perimeroCraneal) {
-        age = edad;
+    public Growth(Child hijo, float altura, float peso, float perimetroCraneal) {
+        age = hijo.getAge();
         height = altura;
         weight = peso;
-        cranealPerimeter = perimeroCraneal;
+        cranialPerimeter = perimetroCraneal;
     }
     
     
