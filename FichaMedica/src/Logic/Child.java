@@ -30,23 +30,14 @@ public class Child {
     public ArrayList<Appointment> getListAppointments() {
         return listAppointments;
     }
-    public void setListAppointments(ArrayList<Appointment> listaConsultas) {
-        listAppointments = listaConsultas;
-    }
     //ListVaccines
     public ArrayList<Vaccine> getListVaccines() {
         return listVaccines;
     }
-    public void setListVaccines(ArrayList<Vaccine> listaVacunas) {
-        listVaccines = listaVacunas;
-    }
     //ListGrowth
     public ArrayList<Growth> getListGrowth() {
         return listGrowth;
-    }
-    public void setListGrowth(ArrayList<Growth> listaCrecimiento) {
-        listGrowth = listaCrecimiento;
-    }
+    } 
     
     //Constructors
     //Empty
@@ -62,7 +53,8 @@ public class Child {
         //Obtengo Año Actual
         int year =  LocalDate.now().getYear();
         name = aName;
-        age = year - birthDate.getYear();
+        age = 0;
+//        age = year - birthDate.getYear();
         listAppointments = new ArrayList <Appointment>();
         listVaccines = new ArrayList <Vaccine>();
         listGrowth = new ArrayList <Growth>();

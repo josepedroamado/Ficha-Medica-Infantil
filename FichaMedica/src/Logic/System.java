@@ -8,7 +8,6 @@ public class System {
     private ArrayList<Appointment> listAllAppointments;
     private ArrayList<Child> listAllChildren;
     private ArrayList<Vaccine> listAllVaccines;
-    private ArrayList<Growth> listAllGrowth;
 
     //Getters and Setters
     //ListAllAppointments
@@ -23,15 +22,21 @@ public class System {
     public ArrayList<Vaccine> getListAllVaccines() {
         return listAllVaccines;
     }
-    //ListAllGrowth
-    public ArrayList<Growth> getListAllGrowth() {
-        return listAllGrowth;
+
+    //Constructors
+    //Empty
+    public System(){
+        listAllAppointments = new ArrayList <Appointment>();
+        listAllChildren = new ArrayList <Child>();
+        listAllVaccines = new ArrayList <Vaccine>();
     }
     
     //Methods
     //Registrar Hijo al sistema
     public void registerChild(Child h){
-        this.getListAllChildren().add(h);
+        if(h != null){
+            this.getListAllChildren().add(h);
+        }
     }
     //Ingresar Hijo al sistema
     public void ingresarHijo(String name, LocalDate birthDate){
