@@ -38,4 +38,14 @@ public class System {
         Child h = new Child(name, birthDate);
         this.registerChild(h);
     }
+    public void registrarCrecimiento(Growth g){
+        this.getListAllGrowth().add(g);
+    }
+    public static boolean validarNumeros(int variable, int minimo, int maximo){
+        boolean valido = false;
+        if (variable >= minimo && variable <= maximo) {
+            valido = true;
+        }
+        return valido;
+    }
 }

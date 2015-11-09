@@ -1,12 +1,19 @@
 package GUI;
 
+import Logic.System;
+import Logic.Child;
+import Logic.Growth;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
 public class vIngresoHijo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form vIngresoHijo
-     */
-    public vIngresoHijo() {
+   
+    
+    System sistema;
+    
+    public vIngresoHijo(System sist) {
         initComponents();
+        
     }
 
     /**
@@ -152,6 +159,31 @@ public class vIngresoHijo extends javax.swing.JFrame {
 
     private void ingresoPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoPesoActionPerformed
         // TODO add your handling code here:
+        // veo que hallan llenado los campos compento
+        if (ingresoNombre.getText().isEmpty()|| ingresoEdad.getText().isEmpty()||ingresoPeso.getText().isEmpty()|| ingresoAltura.getText().isEmpty()|| ingresoPerimetro.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos.", "Atención!", JOptionPane.ERROR_MESSAGE);
+        }else{
+            //chequeo que hallan ingresado correctamente lso datos
+            try {
+                int edad = Integer.parseInt(ingresoEdad.getText());
+                int peso = Integer.parseInt(ingresoPeso.getText());
+                int altura = Integer.parseInt(ingresoAltura.getText());
+                int perimetro = Integer.parseInt(ingresoPerimetro.getText());
+                if (sistema.validarNumeros(edad, 0, 18)) {
+                    String nombre = ingresoNombre.getText();
+                    Child ch = new Child();
+                    ch.setName(nombre);
+                    ch.setAge(edad);
+                    sistema.registerChild(ch);
+                    Growth gr = new Growth(ch, altura, peso, perimetro);
+                    sistema.registrarCrecimiento(gr);
+                }else{
+                    JOptionPane.showMessageDialog(null, "La edad debe ser un número entre el 0 y 18.", "Atención!", JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "La datos erroneso.", "Atención!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_ingresoPesoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
