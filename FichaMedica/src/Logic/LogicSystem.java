@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 //Clase Sistema, contiene todas las listas
-public class System {
+public class LogicSystem {
     //Attributes
     private ArrayList<Appointment> listAllAppointments;
     private ArrayList<Child> listAllChildren;
@@ -25,7 +25,7 @@ public class System {
 
     //Constructors
     //Empty
-    public System(){
+    public LogicSystem(){
         listAllAppointments = new ArrayList <Appointment>();
         listAllChildren = new ArrayList <Child>();
         listAllVaccines = new ArrayList <Vaccine>();
@@ -42,5 +42,12 @@ public class System {
     public void ingresarHijo(String name, LocalDate birthDate){
         Child h = new Child(name, birthDate);
         this.registerChild(h);
+    }
+    public static boolean validarNumeros(int variable, int minimo, int maximo){
+        boolean valido = false;
+        if (variable >= minimo && variable <= maximo) {
+            valido = true;
+        }
+        return valido;
     }
 }

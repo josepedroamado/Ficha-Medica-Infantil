@@ -1,14 +1,11 @@
 package GUI;
-import Logic.System;
+import Logic.LogicSystem;
 public class vPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form vPrincipal
-     */
-    System sistema;
-    public vPrincipal(System s) {
+    LogicSystem sistema;
+    public vPrincipal(LogicSystem s) {
         sistema = s;
-        initComponents();
+        initComponents();  
     }
 
     /**
@@ -31,7 +28,7 @@ public class vPrincipal extends javax.swing.JFrame {
 
         MenuHijos.setText("Hijos");
 
-        MenuAgregarHijo.setText("Agregar Hijo...");
+        MenuAgregarHijo.setText("Ingresar Hijo...");
         MenuAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuAgregarHijoActionPerformed(evt);
@@ -75,6 +72,8 @@ public class vPrincipal extends javax.swing.JFrame {
 
     private void MenuAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgregarHijoActionPerformed
         // TODO add your handling code here:
+        vIngresoHijo vIg = new vIngresoHijo(sistema);
+        vIg.setVisible(true);
     }//GEN-LAST:event_MenuAgregarHijoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

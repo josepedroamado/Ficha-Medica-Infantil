@@ -7,16 +7,16 @@ import java.io.ObjectInputStream;
 public class FichaMedica {
 
     public static void main(String[] args) {
-        System sistema = null;
+        LogicSystem sistema = null;
         try{
             FileInputStream fileIn = new FileInputStream("data.dat");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            sistema = (System) in.readObject();
+            sistema = (LogicSystem) in.readObject();
             in.close();
             fileIn.close();
         }
         catch(Exception i){
-            sistema = new System();           
+            sistema = new LogicSystem();           
             return;
         }
         finally{

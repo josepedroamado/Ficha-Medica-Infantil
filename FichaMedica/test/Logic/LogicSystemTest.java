@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SystemTest {
+public class LogicSystemTest {
    
     @Test
     public void testRegisterChild() {
         //Inicializacion
         Child h = new Child("Gaston", LocalDate.parse("2000-10-10"));
-        System instance = new System();
+        LogicSystem instance = new LogicSystem();
         //Manipulacion
         instance.registerChild(h);      
         //Verificacion
@@ -23,7 +23,7 @@ public class SystemTest {
     public void testRegisterNullChild() {
         //Inicializacion
         Child h = null;
-        System instance = new System();
+        LogicSystem instance = new LogicSystem();
         //Manipulacion
         instance.registerChild(h);      
         //Verificacion
@@ -35,7 +35,7 @@ public class SystemTest {
     public void testIngresarHijo() {
         String name = "Gaston";
         LocalDate birthDate = null;
-        System instance = new System();
+        LogicSystem instance = new LogicSystem();
         instance.ingresarHijo(name, birthDate);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

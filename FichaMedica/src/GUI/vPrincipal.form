@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuAgregarHijo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar Hijo..."/>
+                <Property name="text" type="java.lang.String" value="Ingresar Hijo..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuAgregarHijoActionPerformed"/>
