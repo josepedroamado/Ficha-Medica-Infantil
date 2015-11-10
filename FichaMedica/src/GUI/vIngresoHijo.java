@@ -28,6 +28,8 @@ public class vIngresoHijo extends javax.swing.JFrame {
         ingresoEdad = new javax.swing.JTextField();
         jButtonIngresar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jLabelVacioN = new javax.swing.JLabel();
+        jLabelVacioEdad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ingreso de Hijo/a");
@@ -65,13 +67,15 @@ public class vIngresoHijo extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(nomb))
                         .addGap(110, 110, 110)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ingresoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ingresoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ingresoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                            .addComponent(ingresoEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                            .addComponent(jLabelVacioN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelVacioEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jButtonCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(jButtonIngresar)
                 .addGap(27, 27, 27))
         );
@@ -85,10 +89,14 @@ public class vIngresoHijo extends javax.swing.JFrame {
                     .addComponent(nomb)
                     .addComponent(ingresoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabelVacioN, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ingresoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelVacioEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonIngresar)
                     .addComponent(jButtonCancelar))
@@ -105,9 +113,16 @@ public class vIngresoHijo extends javax.swing.JFrame {
 
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
         // TODO add your handling code here:
-        if (ingresoNombre.getText().isEmpty() || ingresoEdad.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Debe completar todos los campos.", "Atención!", JOptionPane.ERROR_MESSAGE);
-        }else{
+        if (ingresoNombre.getText().isEmpty() && ingresoEdad.getText().isEmpty()) {
+            jLabelVacioN.setText("Ingrese un Nombre");
+            jLabelVacioEdad.setText("Ingrese una Edad");
+        }else if(ingresoNombre.getText().isEmpty()){
+            jLabelVacioN.setText("Ingrese un Nombre");
+            jLabelVacioEdad.setText("");           
+        }else if(ingresoEdad.getText().isEmpty()){
+            jLabelVacioEdad.setText("Ingrese una Edad");
+            jLabelVacioN.setText("");
+        }else{   
             try{
                 int edad = Integer.parseInt(ingresoEdad.getText());
                 String nombre = ingresoNombre.getText();
@@ -115,10 +130,12 @@ public class vIngresoHijo extends javax.swing.JFrame {
                 ch.setName(nombre);
                 ch.setAge(edad);
                 sistema.registerChild(ch);
-                ingresoNombre.setText("");
-                ingresoEdad.setText("");
+                
+                ingresoNombre.setText(" ");
+                ingresoEdad.setText(" ");
+                
             }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "La edad debe ser un número.", "Atención!", JOptionPane.ERROR_MESSAGE);
+                jLabelVacioEdad.setText("Ingrese una Edad vailda.");
             }
         }
     }//GEN-LAST:event_jButtonIngresarActionPerformed
@@ -130,6 +147,8 @@ public class vIngresoHijo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonIngresar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelVacioEdad;
+    private javax.swing.JLabel jLabelVacioN;
     private javax.swing.JLabel nomb;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

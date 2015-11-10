@@ -1,4 +1,3 @@
-
 package GUI;
 
 import javax.swing.JOptionPane;
@@ -9,8 +8,9 @@ import Logic.Growth;
 public class vCrecimientoRegistro extends javax.swing.JFrame {
 
     LogicSystem sist;
+
     public vCrecimientoRegistro(LogicSystem s) {
-        sist=s;
+        sist = s;
         initComponents();
         jListHijosEnSistema.setListData(sist.getListAllChildren().toArray());
     }
@@ -27,14 +27,15 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jLabelNom = new javax.swing.JLabel();
         jLabelColocNomb = new javax.swing.JLabel();
-        jLabelEdad = new javax.swing.JLabel();
         jLabelPeso = new javax.swing.JLabel();
         jLabelAltura = new javax.swing.JLabel();
-        jTextFieldEdad = new javax.swing.JTextField();
         jTextFieldPeso = new javax.swing.JTextField();
         jTextFieldAltura = new javax.swing.JTextField();
         jLabelPerimetro = new javax.swing.JLabel();
         jTextFieldPerimetro = new javax.swing.JTextField();
+        jLabelErrorPeso = new javax.swing.JLabel();
+        jLabelErrorAltrua = new javax.swing.JLabel();
+        jLabelErrorPerimetro = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -58,15 +59,15 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
             }
         });
 
-        jLabelNom.setText("Nombre:");
-
-        jLabelEdad.setText("Edad:");
+        jLabelNom.setText("Hijo:");
 
         jLabelPeso.setText("Peso:");
 
         jLabelAltura.setText("Altura");
 
         jLabelPerimetro.setText("Perimetro Craneal:");
+
+        jLabelErrorAltrua.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,28 +81,22 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelEdad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelPeso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelAltura)
                                     .addComponent(jLabelNom)
                                     .addComponent(jLabelPerimetro))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldPerimetro)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(77, 77, 77)
-                                        .addComponent(jLabelColocNomb, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 2, Short.MAX_VALUE))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldAltura)
+                                    .addComponent(jTextFieldPerimetro)
+                                    .addComponent(jLabelColocNomb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelErrorPeso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelErrorAltrua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelErrorPerimetro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addComponent(jLabel1))
                 .addGap(61, 61, 61))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -123,23 +118,25 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelNom)
                             .addComponent(jLabelColocNomb, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelEdad)
-                            .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPeso)
                             .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabelErrorPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelAltura)
-                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPerimetro)
-                    .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAltura))
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabelErrorAltrua, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPerimetro))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelErrorPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonIng)
                     .addComponent(jButtonCancelar))
@@ -157,29 +154,50 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
     private void jButtonIngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngActionPerformed
         // TODO add your handling code here:
         if (sist.getListAllChildren().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Debe tener al menos un hijo ingresado", "Atención!", JOptionPane.ERROR_MESSAGE);
-        }else{
-            Child hij = (Child)jListHijosEnSistema.getSelectedValue();
+            jLabelColocNomb.setText("Debe Elgir un Hijo");
+        } else {
+            Child hij = (Child) jListHijosEnSistema.getSelectedValue();
             jLabelColocNomb.setName(hij.getName());
-            
-            try{
+
+            if (jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()) {
+                jLabelErrorAltrua.setText("Ingrese una altura.");
+                jLabelErrorPeso.setText("Ingrese un peso.");
+                jLabelErrorPerimetro.setText("Ingrese un perimetro craneal.");
+            } else if (jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty()) {
+                jLabelErrorAltrua.setText("Ingrese una altura.");
+                jLabelErrorPeso.setText("Ingrese un peso.");
+                jLabelErrorPerimetro.setText("");
+            } else if (jTextFieldAltura.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()) {
+                jLabelErrorAltrua.setText("Ingrese una altura.");
+                jLabelErrorPerimetro.setText("Ingrese un perimetro craneal.");
+                jLabelErrorPeso.setText("");
+            } else if (jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()) {
+                jLabelErrorPeso.setText("Ingrese un peso.");
+                jLabelErrorPerimetro.setText("Ingrese un perimetro craneal.");
+                jLabelErrorAltrua.setText("");
+            } else {
+                try {
                 //Puede que el edad sea al pedo, por como ta compuesto el growth pero no se, lo dejo a tu criterio
-                int Edad = Integer.parseInt(jTextFieldEdad.getText());
-                float Altura = Integer.parseInt(jTextFieldAltura.getText());
-                float Peso = Integer.parseInt(jTextFieldPeso.getText());
-                float Perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
-                Growth gr = new Growth(hij, Altura, Peso, Perimetro);
-                //gr.setAge(Edad);
-                hij.getListGrowth().add(gr);
-                
-            }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "Tipo De Datos Equivocado", "Atención!", JOptionPane.ERROR_MESSAGE);
+                    float Altura = Integer.parseInt(jTextFieldAltura.getText());
+                    float Peso = Integer.parseInt(jTextFieldPeso.getText());
+                    float Perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
+                    Growth gr = new Growth(hij, Altura, Peso, Perimetro);
+                    hij.getListGrowth().add(gr);
+                    
+                    jLabelErrorAltrua.setText("");
+                    jLabelErrorPeso.setText("");
+                    jLabelErrorPerimetro.setText("");
+
+                } catch (NumberFormatException e) {
+                    jLabelErrorAltrua.setText("Ingrese un numero valido.");
+                    jLabelErrorPeso.setText("Ingrese un numero valido.");
+                    jLabelErrorPerimetro.setText("Ingrese un numero valido.");
+                }
             }
-            
+
         }
     }//GEN-LAST:event_jButtonIngActionPerformed
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
@@ -187,7 +205,9 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAltura;
     private javax.swing.JLabel jLabelColocNomb;
-    private javax.swing.JLabel jLabelEdad;
+    private javax.swing.JLabel jLabelErrorAltrua;
+    private javax.swing.JLabel jLabelErrorPerimetro;
+    private javax.swing.JLabel jLabelErrorPeso;
     private javax.swing.JLabel jLabelNom;
     private javax.swing.JLabel jLabelPerimetro;
     private javax.swing.JLabel jLabelPeso;
@@ -195,7 +215,6 @@ public class vCrecimientoRegistro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldAltura;
-    private javax.swing.JTextField jTextFieldEdad;
     private javax.swing.JTextField jTextFieldPerimetro;
     private javax.swing.JTextField jTextFieldPeso;
     // End of variables declaration//GEN-END:variables

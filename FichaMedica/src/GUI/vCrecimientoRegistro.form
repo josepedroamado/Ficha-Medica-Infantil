@@ -37,15 +37,9 @@
                       <Component id="jScrollPane1" min="-2" pref="76" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelEdad" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextFieldEdad" min="-2" pref="97" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabelPeso" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jTextFieldPeso" min="-2" pref="97" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -53,19 +47,15 @@
                                   <Component id="jLabelNom" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelPerimetro" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextFieldAltura" pref="97" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldPerimetro" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                      <Component id="jLabelColocNomb" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
-                                  </Group>
+                              <EmptySpace pref="89" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldPeso" pref="97" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldAltura" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldPerimetro" max="32767" attributes="0"/>
+                                  <Component id="jLabelColocNomb" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="jLabelErrorPeso" max="32767" attributes="0"/>
+                                  <Component id="jLabelErrorAltrua" max="32767" attributes="0"/>
+                                  <Component id="jLabelErrorPerimetro" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -90,35 +80,36 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelNom" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelColocNomb" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEdad" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldEdad" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelPeso" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldPeso" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jLabelErrorPeso" min="-2" pref="12" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelAltura" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldAltura" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAltura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="jLabelErrorAltrua" min="-2" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldPerimetro" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jLabelPerimetro" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelPerimetro" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldPerimetro" min="-2" pref="28" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabelErrorPerimetro" min="-2" pref="13" max="-2" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonIng" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,15 +159,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNom">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre:"/>
+        <Property name="text" type="java.lang.String" value="Hijo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelColocNomb">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabelEdad">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edad:"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelPeso">
       <Properties>
@@ -188,8 +174,6 @@
         <Property name="text" type="java.lang.String" value="Altura"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldEdad">
-    </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldPeso">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldAltura">
@@ -200,6 +184,15 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldPerimetro">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelErrorPeso">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelErrorAltrua">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelErrorPerimetro">
     </Component>
   </SubComponents>
 </Form>
