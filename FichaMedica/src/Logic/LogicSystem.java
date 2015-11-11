@@ -1,5 +1,6 @@
 package Logic;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 //Clase Sistema, contiene todas las listas
@@ -32,18 +33,28 @@ public class LogicSystem {
     }
     
     //Methods
-    //Registrar Hijo al sistema
-    public void registerChild(Child h){
-        if(h != null){
-            this.getListAllChildren().add(h);
-        }
-    }
     //Ingresar Hijo al sistema
-    public void ingresarHijo(String name, LocalDate birthDate){
-        Child h = new Child(name, birthDate);
-        this.registerChild(h);
+    public void ingresarHijo(String name, String birthDate){
+        if (this.ingresarHijoCheck(name, birthDate)) {
+            Child h = new Child(name, LocalDate.parse(birthDate));
+            this.getListAllChildren().add(h);     
+        }          
     }
-    public static boolean validarNumeros(int variable, int minimo, int maximo){
+    //Checkeo de Si Los Datos del hijo son correctos
+    public boolean ingresarHijoCheck(String name, String birthDate){
+        boolean hijoCorrecto = false;
+        if (!name.isEmpty()) {
+            try{
+                LocalDate birth = LocalDate.parse(birthDate);
+                hijoCorrecto = true;          
+            }
+            catch(DateTimeParseException e){              
+            }
+        }  
+        return hijoCorrecto;
+    }
+    
+    public boolean validarNumeros(int variable, int minimo, int maximo){
         boolean valido = false;
         if (variable >= minimo && variable <= maximo) {
             valido = true;

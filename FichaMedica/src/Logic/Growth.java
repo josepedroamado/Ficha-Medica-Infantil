@@ -1,6 +1,9 @@
 package Logic;
 
 //Clase de Crecimientos de un hijo
+
+import java.time.LocalDate;
+
 public class Growth {
     //Attributes
     private int age;
@@ -49,7 +52,7 @@ public class Growth {
     }
     //Parametered
     public Growth(Child hijo, float altura, float peso, float perimetroCraneal) {
-        age = hijo.getAge();
+        age = LocalDate.now().getYear()-hijo.getBirthDate().getYear();
         height = altura;
         weight = peso;
         cranialPerimeter = perimetroCraneal;

@@ -109,12 +109,9 @@ public class vIngresoHijo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos.", "Atención!", JOptionPane.ERROR_MESSAGE);
         }else{
             try{
-                int edad = Integer.parseInt(ingresoEdad.getText());
-                String nombre = ingresoNombre.getText();
-                Child ch = new Child();
-                ch.setName(nombre);
-                ch.setAge(edad);
-                sistema.registerChild(ch);
+                String edad = ingresoEdad.getText();
+                String nombre = ingresoNombre.getText();              
+                sistema.ingresarHijo(nombre,edad);
                 ingresoNombre.setText("");
                 ingresoEdad.setText("");
             }catch(NumberFormatException e){

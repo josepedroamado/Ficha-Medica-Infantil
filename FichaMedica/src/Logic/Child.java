@@ -1,13 +1,12 @@
 package Logic;
 import java.time.LocalDate;
-import static java.time.temporal.ChronoField.YEAR_OF_ERA;
 import java.util.ArrayList;
 
 //Clase de hijo, contiene todos los datos realacionados al mismo
 public class Child {
     //Attributes
     private String name;
-    private int age;
+    private LocalDate birthDate;
     private ArrayList<Appointment> listAppointments;
     private ArrayList<Vaccine> listVaccines;
     private ArrayList<Growth> listGrowth;
@@ -21,11 +20,11 @@ public class Child {
         name = nombre;
     }
     //Age
-    public int getAge() {
-        return age;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
-    public void setAge(int edad) {
-        age = edad;
+    public void setBirthDate(LocalDate date) {
+        birthDate = date;
     }
     //ListAppointments
     public ArrayList<Appointment> getListAppointments() {
@@ -44,26 +43,32 @@ public class Child {
     //Empty
     public Child(){
         name = "Sin nombre";
-        age = -1;
+        birthDate = LocalDate.parse("0000-00-00");
         listAppointments = null;
         listVaccines = null;
         listGrowth = null;
     }
     //Parametered
-    public Child(String aName, LocalDate birthDate) {
-        //Obtengo Año Actual
-        int year =  LocalDate.now().getYear();
-        int birthYear = birthDate.get(YEAR_OF_ERA);
+    public Child(String aName, LocalDate birth) {
         name = aName;
-        age = year - birthYear;
+        birthDate = birth;
         listAppointments = new ArrayList <Appointment>();
         listVaccines = new ArrayList <Vaccine>();
         listGrowth = new ArrayList <Growth>();
     }
     @Override
     public String toString(){
-        return ("" + this.getName());
-        
+        return ("" + this.getName());       
+    }
+    @Override
+    public boolean equals(Object o){
+        boolean iguales = false;
+        if (this.getName().equals(((Child)o).getName())) {
+            if (this.getBirthDate().equals(((Child)o).getBirthDate())) {
+                iguales = true;
+            }
+        }      
+        return iguales;
     }
 
 }
