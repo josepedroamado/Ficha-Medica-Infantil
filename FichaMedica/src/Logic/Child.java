@@ -1,9 +1,10 @@
 package Logic;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 //Clase de hijo, contiene todos los datos realacionados al mismo
-public class Child {
+public class Child implements Serializable{
     //Attributes
     private String name;
     private LocalDate birthDate;

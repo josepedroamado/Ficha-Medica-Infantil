@@ -1,11 +1,23 @@
 package GUI;
+import Logic.Child;
 import Logic.LogicSystem;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 public class vPrincipal extends javax.swing.JFrame {
 
     LogicSystem sistema;
+    String fechaNacimiento = "";
     public vPrincipal(LogicSystem s) {
         sistema = s;
-        initComponents();  
+        initComponents();    
+        comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
+        textErrorNombreAgregarHijo.setVisible(false);
+        textErrorFechaNacimientoAgregarHijo.setVisible(false);   
     }
 
     /**
@@ -17,70 +29,510 @@ public class vPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BarraMenuPrincipal = new javax.swing.JMenuBar();
-        MenuHijos = new javax.swing.JMenu();
-        MenuAgregarHijo = new javax.swing.JMenuItem();
-        MenuCargarArchivo = new javax.swing.JMenu();
-        MenuSalir = new javax.swing.JMenu();
+        tabbedPane = new javax.swing.JTabbedPane();
+        tabHijos = new javax.swing.JPanel();
+        labelNombre = new javax.swing.JLabel();
+        labelFechaNacimiento = new javax.swing.JLabel();
+        comboBoxHijos = new javax.swing.JComboBox();
+        tituloHijosRegistrados = new javax.swing.JLabel();
+        textFechaNacimiento = new javax.swing.JTextField();
+        labelNombreAgregarHijo = new javax.swing.JLabel();
+        labelFechaNacimientoAgregarHijo = new javax.swing.JLabel();
+        textNombreAgregarHijo = new javax.swing.JTextField();
+        tituloAgregarHijo = new javax.swing.JLabel();
+        datePickerFechaNacimientoAgregarHijo = new org.jdesktop.swingx.JXDatePicker();
+        buttonAceptarAgregarHijo = new javax.swing.JButton();
+        buttonCancelarAgregarHijo = new javax.swing.JButton();
+        textErrorNombreAgregarHijo = new javax.swing.JLabel();
+        textErrorFechaNacimientoAgregarHijo = new javax.swing.JLabel();
+        tabAgenda = new javax.swing.JPanel();
+        tituloProximasConsultas = new javax.swing.JLabel();
+        labelFechaProximasConsultas = new javax.swing.JLabel();
+        paneFechaProximasConsultas = new javax.swing.JScrollPane();
+        listaFechaProximasConsultas = new javax.swing.JList();
+        paneAgregarNota = new javax.swing.JScrollPane();
+        textAgregarNota = new javax.swing.JTextArea();
+        labelNotaProximasConsultas = new javax.swing.JLabel();
+        checkBoxRealizadaProximasConsultas = new javax.swing.JCheckBox();
+        paneNotaConsultasAnteriores = new javax.swing.JScrollPane();
+        textNotaConsultasAnteriores = new javax.swing.JTextArea();
+        labelNotaConsultasAnteriores = new javax.swing.JLabel();
+        checkBoxRealizadaConsultasAnteriores = new javax.swing.JCheckBox();
+        tituloConsultasAnteriores = new javax.swing.JLabel();
+        labelFechaConsultasAnteriores = new javax.swing.JLabel();
+        paneFechaConsultasAnteriores = new javax.swing.JScrollPane();
+        listaFechaConsultasAnteriores = new javax.swing.JList();
+        tituloAgregarConsulta = new javax.swing.JLabel();
+        labelFechaAgregarConsulta = new javax.swing.JLabel();
+        labelNotaAgregarConsulta = new javax.swing.JLabel();
+        datePickerAgregarConsulta = new org.jdesktop.swingx.JXDatePicker();
+        paneNotaProximasConsultas = new javax.swing.JScrollPane();
+        notaProximasConsultas = new javax.swing.JTextArea();
+        checkBoxRevisadoAgregarConsulta = new javax.swing.JCheckBox();
+        buttonCancelarAgregarConsulta = new javax.swing.JButton();
+        buttonAceptarAgregarConsulta = new javax.swing.JButton();
+        tabCrecimiento = new javax.swing.JPanel();
+        tabVacunas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha Medica");
-
-        MenuHijos.setText("Hijos");
-
-        MenuAgregarHijo.setText("Ingresar Hijo...");
-        MenuAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuAgregarHijoActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
-        MenuHijos.add(MenuAgregarHijo);
 
-        BarraMenuPrincipal.add(MenuHijos);
+        tabbedPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        MenuCargarArchivo.setText("Cargar Archivo");
-        BarraMenuPrincipal.add(MenuCargarArchivo);
+        labelNombre.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNombre.setText("Nombre:");
 
-        MenuSalir.setText("Salir");
-        MenuSalir.addActionListener(new java.awt.event.ActionListener() {
+        labelFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaNacimiento.setText("Fecha de Nacimiento:");
+
+        comboBoxHijos.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        comboBoxHijos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxHijos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuSalirActionPerformed(evt);
+                comboBoxHijosActionPerformed(evt);
             }
         });
-        BarraMenuPrincipal.add(MenuSalir);
 
-        setJMenuBar(BarraMenuPrincipal);
+        tituloHijosRegistrados.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloHijosRegistrados.setText("Hijos Registrados");
+
+        textFechaNacimiento.setEditable(false);
+        textFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+
+        labelNombreAgregarHijo.setText("Nombre:");
+
+        labelFechaNacimientoAgregarHijo.setText("Fecha de Nacimiento");
+
+        tituloAgregarHijo.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloAgregarHijo.setText("Agregar Hijo");
+
+        datePickerFechaNacimientoAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datePickerFechaNacimientoAgregarHijoActionPerformed(evt);
+            }
+        });
+
+        buttonAceptarAgregarHijo.setText("Aceptar");
+        buttonAceptarAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAceptarAgregarHijoActionPerformed(evt);
+            }
+        });
+
+        buttonCancelarAgregarHijo.setText("Cancelar");
+        buttonCancelarAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarAgregarHijoActionPerformed(evt);
+            }
+        });
+
+        textErrorNombreAgregarHijo.setText("Ingrese un Nombre");
+
+        textErrorFechaNacimientoAgregarHijo.setText("Ingrese una Fecha de Nacimiento");
+
+        javax.swing.GroupLayout tabHijosLayout = new javax.swing.GroupLayout(tabHijos);
+        tabHijos.setLayout(tabHijosLayout);
+        tabHijosLayout.setHorizontalGroup(
+            tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabHijosLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloAgregarHijo)
+                    .addGroup(tabHijosLayout.createSequentialGroup()
+                        .addComponent(labelNombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelFechaNacimiento)
+                        .addGap(18, 18, 18)
+                        .addComponent(textFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tituloHijosRegistrados)
+                    .addGroup(tabHijosLayout.createSequentialGroup()
+                        .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelFechaNacimientoAgregarHijo)
+                            .addComponent(labelNombreAgregarHijo)
+                            .addComponent(buttonCancelarAgregarHijo))
+                        .addGap(26, 26, 26)
+                        .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textNombreAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                .addComponent(datePickerFechaNacimientoAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(buttonAceptarAgregarHijo))
+                        .addGap(18, 18, 18)
+                        .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textErrorNombreAgregarHijo)
+                            .addComponent(textErrorFechaNacimientoAgregarHijo))))
+                .addContainerGap(318, Short.MAX_VALUE))
+        );
+        tabHijosLayout.setVerticalGroup(
+            tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabHijosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tituloHijosRegistrados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombre)
+                    .addComponent(labelFechaNacimiento)
+                    .addComponent(comboBoxHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(165, 165, 165)
+                .addComponent(tituloAgregarHijo)
+                .addGap(18, 18, 18)
+                .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombreAgregarHijo)
+                    .addComponent(textNombreAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textErrorNombreAgregarHijo))
+                .addGap(18, 18, 18)
+                .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFechaNacimientoAgregarHijo)
+                    .addComponent(datePickerFechaNacimientoAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textErrorFechaNacimientoAgregarHijo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarAgregarHijo)
+                    .addComponent(buttonAceptarAgregarHijo))
+                .addContainerGap(261, Short.MAX_VALUE))
+        );
+
+        tabbedPane.addTab("Hijos", tabHijos);
+
+        tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloProximasConsultas.setText("Proximas Consultas");
+
+        labelFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaProximasConsultas.setText("Fecha:");
+
+        listaFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        listaFechaProximasConsultas.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        paneFechaProximasConsultas.setViewportView(listaFechaProximasConsultas);
+
+        textAgregarNota.setColumns(20);
+        textAgregarNota.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        textAgregarNota.setRows(5);
+        paneAgregarNota.setViewportView(textAgregarNota);
+
+        labelNotaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNotaProximasConsultas.setText("Nota:");
+
+        checkBoxRealizadaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        checkBoxRealizadaProximasConsultas.setText("Realizada");
+
+        textNotaConsultasAnteriores.setEditable(false);
+        textNotaConsultasAnteriores.setColumns(20);
+        textNotaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        textNotaConsultasAnteriores.setRows(5);
+        paneNotaConsultasAnteriores.setViewportView(textNotaConsultasAnteriores);
+
+        labelNotaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNotaConsultasAnteriores.setText("Nota:");
+
+        checkBoxRealizadaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        checkBoxRealizadaConsultasAnteriores.setText("Realizada");
+
+        tituloConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloConsultasAnteriores.setText("Consultas Anteriores");
+
+        labelFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaConsultasAnteriores.setText("Fecha:");
+
+        listaFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        listaFechaConsultasAnteriores.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        paneFechaConsultasAnteriores.setViewportView(listaFechaConsultasAnteriores);
+
+        tituloAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloAgregarConsulta.setText("Agregar Consulta");
+
+        labelFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaAgregarConsulta.setText("Fecha:");
+
+        labelNotaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNotaAgregarConsulta.setText("Nota:");
+
+        datePickerAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+
+        notaProximasConsultas.setEditable(false);
+        notaProximasConsultas.setColumns(20);
+        notaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        notaProximasConsultas.setRows(5);
+        paneNotaProximasConsultas.setViewportView(notaProximasConsultas);
+
+        checkBoxRevisadoAgregarConsulta.setText("He revisado que los datos fueran correctos.");
+
+        buttonCancelarAgregarConsulta.setText("Cancelar");
+
+        buttonAceptarAgregarConsulta.setText("Aceptar");
+
+        javax.swing.GroupLayout tabAgendaLayout = new javax.swing.GroupLayout(tabAgenda);
+        tabAgenda.setLayout(tabAgendaLayout);
+        tabAgendaLayout.setHorizontalGroup(
+            tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabAgendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelFechaProximasConsultas)
+                            .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNotaProximasConsultas)
+                            .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxRealizadaProximasConsultas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloConsultasAnteriores)
+                            .addGroup(tabAgendaLayout.createSequentialGroup()
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelFechaConsultasAnteriores)
+                                    .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelNotaConsultasAnteriores)
+                                    .addComponent(paneNotaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkBoxRealizadaConsultasAnteriores))))
+                        .addGap(53, 53, 53))
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloAgregarConsulta)
+                            .addComponent(tituloProximasConsultas))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(tabAgendaLayout.createSequentialGroup()
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelFechaAgregarConsulta)
+                                    .addComponent(labelNotaAgregarConsulta))
+                                .addGap(18, 18, 18)
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkBoxRevisadoAgregarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(paneAgregarNota)))
+                            .addGroup(tabAgendaLayout.createSequentialGroup()
+                                .addComponent(buttonCancelarAgregarConsulta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonAceptarAgregarConsulta)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        tabAgendaLayout.setVerticalGroup(
+            tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabAgendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addComponent(tituloProximasConsultas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelFechaProximasConsultas)
+                            .addComponent(labelNotaProximasConsultas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabAgendaLayout.createSequentialGroup()
+                                .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(checkBoxRealizadaProximasConsultas))
+                            .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addComponent(tituloConsultasAnteriores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelFechaConsultasAnteriores)
+                            .addComponent(labelNotaConsultasAnteriores))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(tabAgendaLayout.createSequentialGroup()
+                                .addComponent(paneNotaConsultasAnteriores)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(checkBoxRealizadaConsultasAnteriores))
+                            .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(51, 51, 51)
+                .addComponent(tituloAgregarConsulta)
+                .addGap(18, 18, 18)
+                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelFechaAgregarConsulta)
+                    .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNotaAgregarConsulta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(checkBoxRevisadoAgregarConsulta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarAgregarConsulta)
+                    .addComponent(buttonAceptarAgregarConsulta))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        tabbedPane.addTab("Agenda", tabAgenda);
+
+        javax.swing.GroupLayout tabCrecimientoLayout = new javax.swing.GroupLayout(tabCrecimiento);
+        tabCrecimiento.setLayout(tabCrecimientoLayout);
+        tabCrecimientoLayout.setHorizontalGroup(
+            tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 768, Short.MAX_VALUE)
+        );
+        tabCrecimientoLayout.setVerticalGroup(
+            tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 611, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
+
+        javax.swing.GroupLayout tabVacunasLayout = new javax.swing.GroupLayout(tabVacunas);
+        tabVacunas.setLayout(tabVacunasLayout);
+        tabVacunasLayout.setHorizontalGroup(
+            tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 768, Short.MAX_VALUE)
+        );
+        tabVacunasLayout.setVerticalGroup(
+            tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 611, Short.MAX_VALUE)
+        );
+
+        tabbedPane.addTab("Vacunas", tabVacunas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 791, Short.MAX_VALUE)
+            .addComponent(tabbedPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
+            .addComponent(tabbedPane)
         );
 
         setBounds(0, 0, 791, 680);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSalirActionPerformed
+    private void datePickerFechaNacimientoAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
         // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_MenuSalirActionPerformed
+        Date fecha = datePickerFechaNacimientoAgregarHijo.getDate();
+        LocalDate date = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        fechaNacimiento = ""+date;
+    }//GEN-LAST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
 
-    private void MenuAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgregarHijoActionPerformed
+    private void buttonAceptarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarAgregarHijoActionPerformed
+        // TODO add your handling code here: 
+        //Checkeo de campos
+        //Nombre y Fecha de Nacimiento
+        if (textNombreAgregarHijo.getText().isEmpty() && fechaNacimiento.isEmpty()) {
+            textErrorNombreAgregarHijo.setVisible(true);
+            textErrorFechaNacimientoAgregarHijo.setVisible(true);
+        }
+        //Nombre
+        else if(textNombreAgregarHijo.getText().isEmpty()){
+            textErrorNombreAgregarHijo.setVisible(true);
+            textErrorFechaNacimientoAgregarHijo.setVisible(false);
+        }
+        //Fecha de Nacimiento
+        else if(fechaNacimiento.isEmpty()){
+            textErrorNombreAgregarHijo.setVisible(false);
+            textErrorFechaNacimientoAgregarHijo.setVisible(true);
+        }
+        //Agrego Hijo
+        else{        
+            String nombre = textNombreAgregarHijo.getText(); 
+            if (sistema.ingresarHijoCheck(nombre, fechaNacimiento)) {
+                sistema.ingresarHijo(nombre,fechaNacimiento);
+                textNombreAgregarHijo.setText("");
+                fechaNacimiento = ""; 
+                textErrorNombreAgregarHijo.setVisible(false);
+                textErrorFechaNacimientoAgregarHijo.setVisible(false);
+                comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
+            }                  
+        }
+    }//GEN-LAST:event_buttonAceptarAgregarHijoActionPerformed
+
+    private void buttonCancelarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarAgregarHijoActionPerformed
         // TODO add your handling code here:
-        vIngresoHijo vIg = new vIngresoHijo(sistema);
-        vIg.setVisible(true);
-    }//GEN-LAST:event_MenuAgregarHijoActionPerformed
+        textNombreAgregarHijo.setText("");
+        fechaNacimiento = ""; 
+        datePickerFechaNacimientoAgregarHijo.setDate(null);
+    }//GEN-LAST:event_buttonCancelarAgregarHijoActionPerformed
+
+    private void comboBoxHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHijosActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < sistema.getListAllChildren().size(); i++) {
+            Child h = sistema.getListAllChildren().get(i);
+            if (comboBoxHijos.getModel().getSelectedItem().equals(h)) {
+                textFechaNacimiento.setText(""+h.getBirthDate());
+            }
+        }   
+    }//GEN-LAST:event_comboBoxHijosActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        try{
+            FileOutputStream fileOut = new FileOutputStream("data.dat");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(sistema);
+            out.close();
+            fileOut.close();
+        }
+        catch(IOException i){
+            i.printStackTrace();
+        } 
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar BarraMenuPrincipal;
-    private javax.swing.JMenuItem MenuAgregarHijo;
-    private javax.swing.JMenu MenuCargarArchivo;
-    private javax.swing.JMenu MenuHijos;
-    private javax.swing.JMenu MenuSalir;
+    private javax.swing.JButton buttonAceptarAgregarConsulta;
+    private javax.swing.JButton buttonAceptarAgregarHijo;
+    private javax.swing.JButton buttonCancelarAgregarConsulta;
+    private javax.swing.JButton buttonCancelarAgregarHijo;
+    private javax.swing.JCheckBox checkBoxRealizadaConsultasAnteriores;
+    private javax.swing.JCheckBox checkBoxRealizadaProximasConsultas;
+    private javax.swing.JCheckBox checkBoxRevisadoAgregarConsulta;
+    private javax.swing.JComboBox comboBoxHijos;
+    private org.jdesktop.swingx.JXDatePicker datePickerAgregarConsulta;
+    private org.jdesktop.swingx.JXDatePicker datePickerFechaNacimientoAgregarHijo;
+    private javax.swing.JLabel labelFechaAgregarConsulta;
+    private javax.swing.JLabel labelFechaConsultasAnteriores;
+    private javax.swing.JLabel labelFechaNacimiento;
+    private javax.swing.JLabel labelFechaNacimientoAgregarHijo;
+    private javax.swing.JLabel labelFechaProximasConsultas;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel labelNombreAgregarHijo;
+    private javax.swing.JLabel labelNotaAgregarConsulta;
+    private javax.swing.JLabel labelNotaConsultasAnteriores;
+    private javax.swing.JLabel labelNotaProximasConsultas;
+    private javax.swing.JList listaFechaConsultasAnteriores;
+    private javax.swing.JList listaFechaProximasConsultas;
+    private javax.swing.JTextArea notaProximasConsultas;
+    private javax.swing.JScrollPane paneAgregarNota;
+    private javax.swing.JScrollPane paneFechaConsultasAnteriores;
+    private javax.swing.JScrollPane paneFechaProximasConsultas;
+    private javax.swing.JScrollPane paneNotaConsultasAnteriores;
+    private javax.swing.JScrollPane paneNotaProximasConsultas;
+    private javax.swing.JPanel tabAgenda;
+    private javax.swing.JPanel tabCrecimiento;
+    private javax.swing.JPanel tabHijos;
+    private javax.swing.JPanel tabVacunas;
+    private javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JTextArea textAgregarNota;
+    private javax.swing.JLabel textErrorFechaNacimientoAgregarHijo;
+    private javax.swing.JLabel textErrorNombreAgregarHijo;
+    private javax.swing.JTextField textFechaNacimiento;
+    private javax.swing.JTextField textNombreAgregarHijo;
+    private javax.swing.JTextArea textNotaConsultasAnteriores;
+    private javax.swing.JLabel tituloAgregarConsulta;
+    private javax.swing.JLabel tituloAgregarHijo;
+    private javax.swing.JLabel tituloConsultasAnteriores;
+    private javax.swing.JLabel tituloHijosRegistrados;
+    private javax.swing.JLabel tituloProximasConsultas;
     // End of variables declaration//GEN-END:variables
 }

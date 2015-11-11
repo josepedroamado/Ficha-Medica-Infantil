@@ -1,7 +1,8 @@
 package Logic;
+import java.io.Serializable;
 
 //Clase de las consultas de los niños
-public class Appointment {
+public class Appointment implements Serializable{
     //Attributes
     private String note;
     private boolean attended;

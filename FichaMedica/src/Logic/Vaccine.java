@@ -1,8 +1,9 @@
 package Logic;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 //Clase Vacuna, contienen todos los datos pertinentes a la misma
-public class Vaccine {
+public class Vaccine implements Serializable{
     //Attributes
     private String name;
     private boolean mandatory;

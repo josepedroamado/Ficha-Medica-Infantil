@@ -1,10 +1,9 @@
 package Logic;
-
-//Clase de Crecimientos de un hijo
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Growth {
+//Clase de Crecimientos de un hijo
+public class Growth implements Serializable{
     //Attributes
     private int age;
     private float height;

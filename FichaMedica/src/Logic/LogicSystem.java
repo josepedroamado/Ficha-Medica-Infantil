@@ -1,10 +1,11 @@
 package Logic;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 //Clase Sistema, contiene todas las listas
-public class LogicSystem {
+public class LogicSystem implements Serializable{
     //Attributes
     private ArrayList<Appointment> listAllAppointments;
     private ArrayList<Child> listAllChildren;
