@@ -72,4 +72,47 @@ public class Child implements Serializable{
         return iguales;
     }
 
+     //Methods
+    //Agregar Consulta
+    public void addAppointment(String nota, LocalDate fecha){
+        if (this.addAppointmentCheck(nota, fecha)) {
+            Appointment consulta = new Appointment (nota, fecha);
+            listAppointments.add(consulta);
+        }
+    }
+    //Agregar Consulta - Check de datos correctos
+    public boolean addAppointmentCheck(String nota, LocalDate fecha){
+        boolean correct = false;
+        if (!nota.isEmpty()) {
+            if (fecha != null) {
+                if (!fecha.equals(LocalDate.parse("0000-00-00"))) {
+                    correct = true;
+                }             
+            }
+        }
+        return correct;
+    }
+    
+    //Agregar Crecimiento
+    public void addGrowth(LocalDate fecha, float altura, float peso, float perimetroCraneal){
+        if (this.addGrowthCheck(fecha, altura, peso, perimetroCraneal)) {
+            Growth crecimiento = new Growth(fecha, altura, peso, perimetroCraneal);
+            listGrowth.add(crecimiento);
+        }
+    }
+    //Agregar Crecimiento - Check de datos correctos
+    public boolean addGrowthCheck(LocalDate fecha, float altura, float peso, float perimetroCraneal){
+        boolean correct = false; 
+        if (altura < 0 && peso < 0 && perimetroCraneal < 0) {
+            if (fecha != null || !fecha.equals(LocalDate.parse("0000-00-00"))) {
+                correct = true; 
+            }                 
+        }                  
+        return correct;
+    }
+    
+    //Agregar Vacuna
+    
+    //Agregar Vacuna - Check de Vacuna
+    
 }

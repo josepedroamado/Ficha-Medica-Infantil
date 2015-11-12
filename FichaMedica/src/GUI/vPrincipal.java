@@ -11,11 +11,14 @@ import javax.swing.DefaultComboBoxModel;
 public class vPrincipal extends javax.swing.JFrame {
 
     LogicSystem sistema;
-    String fechaNacimiento = "";
+    LocalDate fechaNacimiento = LocalDate.parse("0000-00-00");
     public vPrincipal(LogicSystem s) {
         sistema = s;
-        initComponents();    
+        initComponents();   
+        //Cargo los datos de los hijos en el ComboBox y muestro la fecha correspondiente
         comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
+        this.cargarFechaDeNacimientoDelComboBox();
+        //Setteo los carteles de error para que no sean visibles
         textErrorNombreAgregarHijo.setVisible(false);
         textErrorFechaNacimientoAgregarHijo.setVisible(false);   
     }
@@ -421,15 +424,14 @@ public class vPrincipal extends javax.swing.JFrame {
     private void datePickerFechaNacimientoAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
         // TODO add your handling code here:
         Date fecha = datePickerFechaNacimientoAgregarHijo.getDate();
-        LocalDate date = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        fechaNacimiento = ""+date;
+        fechaNacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }//GEN-LAST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
 
     private void buttonAceptarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarAgregarHijoActionPerformed
         // TODO add your handling code here: 
         //Checkeo de campos
         //Nombre y Fecha de Nacimiento
-        if (textNombreAgregarHijo.getText().isEmpty() && fechaNacimiento.isEmpty()) {
+        if (textNombreAgregarHijo.getText().isEmpty() && !fechaNacimiento.equals(LocalDate.parse("0000-00-00"))) {
             textErrorNombreAgregarHijo.setVisible(true);
             textErrorFechaNacimientoAgregarHijo.setVisible(true);
         }
@@ -439,7 +441,7 @@ public class vPrincipal extends javax.swing.JFrame {
             textErrorFechaNacimientoAgregarHijo.setVisible(false);
         }
         //Fecha de Nacimiento
-        else if(fechaNacimiento.isEmpty()){
+        else if(!fechaNacimiento.equals(LocalDate.parse("0000-00-00"))){
             textErrorNombreAgregarHijo.setVisible(false);
             textErrorFechaNacimientoAgregarHijo.setVisible(true);
         }
@@ -449,7 +451,7 @@ public class vPrincipal extends javax.swing.JFrame {
             if (sistema.ingresarHijoCheck(nombre, fechaNacimiento)) {
                 sistema.ingresarHijo(nombre,fechaNacimiento);
                 textNombreAgregarHijo.setText("");
-                fechaNacimiento = ""; 
+                fechaNacimiento = LocalDate.parse("0000-00-00"); 
                 textErrorNombreAgregarHijo.setVisible(false);
                 textErrorFechaNacimientoAgregarHijo.setVisible(false);
                 comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
@@ -460,20 +462,23 @@ public class vPrincipal extends javax.swing.JFrame {
     private void buttonCancelarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarAgregarHijoActionPerformed
         // TODO add your handling code here:
         textNombreAgregarHijo.setText("");
-        fechaNacimiento = ""; 
+        fechaNacimiento = LocalDate.parse("0000-00-00"); 
         datePickerFechaNacimientoAgregarHijo.setDate(null);
     }//GEN-LAST:event_buttonCancelarAgregarHijoActionPerformed
 
     private void comboBoxHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHijosActionPerformed
         // TODO add your handling code here:
+        this.cargarFechaDeNacimientoDelComboBox();
+    }//GEN-LAST:event_comboBoxHijosActionPerformed
+
+    private void cargarFechaDeNacimientoDelComboBox(){
         for (int i = 0; i < sistema.getListAllChildren().size(); i++) {
             Child h = sistema.getListAllChildren().get(i);
             if (comboBoxHijos.getModel().getSelectedItem().equals(h)) {
                 textFechaNacimiento.setText(""+h.getBirthDate());
             }
-        }   
-    }//GEN-LAST:event_comboBoxHijosActionPerformed
-
+        } 
+    }
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         try{

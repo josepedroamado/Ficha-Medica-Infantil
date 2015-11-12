@@ -45,5 +45,4 @@ public class Appointment implements Serializable{
         attended = false;
         appointmentDate = fecha;
     }
-    
-}
+} 

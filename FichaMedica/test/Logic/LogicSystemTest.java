@@ -12,12 +12,12 @@ public class LogicSystemTest {
         //Inicializacion
         System.out.println("ingresarHijo");
         String name = "Gaston";
-        String birthDate = "1990-10-10";
+        LocalDate birthDate = LocalDate.parse("1990-10-10");
         LogicSystem instance = new LogicSystem();
         //Manipulacion
         instance.ingresarHijo(name, birthDate);
         ArrayList listaVerificacion = new ArrayList <Child>();
-        Child h = new Child (name, LocalDate.parse(birthDate));
+        Child h = new Child (name, birthDate);
         listaVerificacion.add(h);
         // Verificacion
         assertEquals(listaVerificacion.contains(h), instance.getListAllChildren().contains(h));
@@ -28,7 +28,7 @@ public class LogicSystemTest {
         //Inicializacion
         System.out.println("ingresarHijoCheckCorrecto");
         String name = "Gaston";
-        String birthDate = "1990-10-10";
+        LocalDate birthDate = LocalDate.parse("1990-10-10");
         LogicSystem instance = new LogicSystem();
         boolean expResult = true;
         //Manipulacion
@@ -42,7 +42,7 @@ public class LogicSystemTest {
         //Inicializacion
         System.out.println("ingresarHijoCheckSinFecha");
         String name = "";
-        String birthDate = "1990-10-10";
+        LocalDate birthDate = LocalDate.parse("1990-10-10");
         LogicSystem instance = new LogicSystem();
         boolean expResult = false;
         //Manipulacion
@@ -56,7 +56,7 @@ public class LogicSystemTest {
         //Inicializacion
         System.out.println("ingresarHijoCheckSinFecha");
         String name = "Gaston";
-        String birthDate = "";
+        LocalDate birthDate = null;
         LogicSystem instance = new LogicSystem();
         boolean expResult = false;
         //Manipulacion
@@ -70,7 +70,7 @@ public class LogicSystemTest {
         //Inicializacion
         System.out.println("ingresarHijoCheckFechaIncorrecta");
         String name = "Gaston";
-        String birthDate = "abcd";
+        LocalDate birthDate = LocalDate.parse("0000-00-00");
         LogicSystem instance = new LogicSystem();
         boolean expResult = false;
         //Manipulacion
@@ -84,7 +84,7 @@ public class LogicSystemTest {
         //Inicializacion
         System.out.println("ingresarHijoCheckSinNombreSinFecha");
         String name = "";
-        String birthDate = "";
+        LocalDate birthDate = null;
         LogicSystem instance = new LogicSystem();
         boolean expResult = false;
         //Manipulacion

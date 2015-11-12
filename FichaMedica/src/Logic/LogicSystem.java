@@ -1,7 +1,6 @@
 package Logic;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 //Clase Sistema, contiene todas las listas
@@ -35,21 +34,20 @@ public class LogicSystem implements Serializable{
     
     //Methods
     //Ingresar Hijo al sistema
-    public void ingresarHijo(String name, String birthDate){
+    public void ingresarHijo(String name, LocalDate birthDate){
         if (this.ingresarHijoCheck(name, birthDate)) {
-            Child h = new Child(name, LocalDate.parse(birthDate));
+            Child h = new Child(name, birthDate);
             this.getListAllChildren().add(h);     
         }          
     }
     //Checkeo de Si Los Datos del hijo son correctos
-    public boolean ingresarHijoCheck(String name, String birthDate){
+    public boolean ingresarHijoCheck(String name, LocalDate birthDate){
         boolean hijoCorrecto = false;
         if (!name.isEmpty()) {
-            try{
-                LocalDate birth = LocalDate.parse(birthDate);
-                hijoCorrecto = true;          
-            }
-            catch(DateTimeParseException e){              
+            if (birthDate != null) {
+                if (birthDate != LocalDate.parse("0000-00-00")) {
+                    hijoCorrecto = true;
+                }
             }
         }  
         return hijoCorrecto;

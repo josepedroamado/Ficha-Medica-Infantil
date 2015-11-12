@@ -5,18 +5,18 @@ import java.time.LocalDate;
 //Clase de Crecimientos de un hijo
 public class Growth implements Serializable{
     //Attributes
-    private int age;
+    private LocalDate date;
     private float height;
     private float weight;
     private float cranialPerimeter;
      
     //Getters and Setters
     //Age
-    public int getAge() {
-        return age;
+    public LocalDate getDate() {
+        return date;
     }
-    public void setAge(int edad) {
-        age = edad;
+    public void setAge(LocalDate edad) {
+        date = edad;
     }
     //Height
     public float getHeight() {
@@ -43,15 +43,15 @@ public class Growth implements Serializable{
     //Constructors
     //Empty
     public Growth(){
-        age = 0;
+        date = LocalDate.parse("0000-00-00");
         height = 0;
         weight = 0;
         cranialPerimeter = 0;
         
     }
     //Parametered
-    public Growth(Child hijo, float altura, float peso, float perimetroCraneal) {
-        age = LocalDate.now().getYear()-hijo.getBirthDate().getYear();
+    public Growth(LocalDate fecha, float altura, float peso, float perimetroCraneal) {
+        date = fecha;
         height = altura;
         weight = peso;
         cranialPerimeter = perimetroCraneal;
