@@ -1,5 +1,6 @@
 package GUI;
 import Logic.Child;
+import Logic.Growth;
 import Logic.LogicSystem;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -72,6 +73,21 @@ public class vPrincipal extends javax.swing.JFrame {
         buttonCancelarAgregarConsulta = new javax.swing.JButton();
         buttonAceptarAgregarConsulta = new javax.swing.JButton();
         tabCrecimiento = new javax.swing.JPanel();
+        jPanelGraf1 = new javax.swing.JPanel();
+        jPanelGraf2 = new javax.swing.JPanel();
+        jPanelGraf3 = new javax.swing.JPanel();
+        jLabelTit = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldAltura = new javax.swing.JTextField();
+        jTextFieldPeso = new javax.swing.JTextField();
+        jTextFieldPerimetro = new javax.swing.JTextField();
+        jLabelErrAlt = new javax.swing.JLabel();
+        jLabelErrPeso = new javax.swing.JLabel();
+        jLabelErrPermie = new javax.swing.JLabel();
+        jButtonAceptIngresoDeCrecimiento = new javax.swing.JButton();
+        jButtonCanelarRegistroCrecimiento = new javax.swing.JButton();
         tabVacunas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,7 +183,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textErrorNombreAgregarHijo)
                             .addComponent(textErrorFechaNacimientoAgregarHijo))))
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         tabHijosLayout.setVerticalGroup(
             tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +212,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarHijo)
                     .addComponent(buttonAceptarAgregarHijo))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Hijos", tabHijos);
@@ -291,7 +307,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -357,7 +373,7 @@ public class vPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(checkBoxRealizadaConsultasAnteriores))
                             .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(tituloAgregarConsulta)
                 .addGap(18, 18, 18)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -373,20 +389,162 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarConsulta)
                     .addComponent(buttonAceptarAgregarConsulta))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Agenda", tabAgenda);
+
+        jPanelGraf1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanelGraf1Layout = new javax.swing.GroupLayout(jPanelGraf1);
+        jPanelGraf1.setLayout(jPanelGraf1Layout);
+        jPanelGraf1Layout.setHorizontalGroup(
+            jPanelGraf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelGraf1Layout.setVerticalGroup(
+            jPanelGraf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 249, Short.MAX_VALUE)
+        );
+
+        jPanelGraf2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanelGraf2Layout = new javax.swing.GroupLayout(jPanelGraf2);
+        jPanelGraf2.setLayout(jPanelGraf2Layout);
+        jPanelGraf2Layout.setHorizontalGroup(
+            jPanelGraf2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 351, Short.MAX_VALUE)
+        );
+        jPanelGraf2Layout.setVerticalGroup(
+            jPanelGraf2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanelGraf3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanelGraf3Layout = new javax.swing.GroupLayout(jPanelGraf3);
+        jPanelGraf3.setLayout(jPanelGraf3Layout);
+        jPanelGraf3Layout.setHorizontalGroup(
+            jPanelGraf3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+        jPanelGraf3Layout.setVerticalGroup(
+            jPanelGraf3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabelTit.setText("Agregar Crecimiento:");
+
+        jLabel1.setText("Altura:");
+
+        jLabel2.setText("Peso:");
+
+        jLabel3.setText("Perimetro Craneal:");
+
+        jTextFieldPerimetro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPerimetroActionPerformed(evt);
+            }
+        });
+
+        jLabelErrAlt.setText("Ingreasar una altura");
+
+        jLabelErrPeso.setText("Ingresar un peso");
+
+        jLabelErrPermie.setText("Ingresar un perimetro");
+
+        jButtonAceptIngresoDeCrecimiento.setText("Ingresar");
+        jButtonAceptIngresoDeCrecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptIngresoDeCrecimientoActionPerformed(evt);
+            }
+        });
+
+        jButtonCanelarRegistroCrecimiento.setText("Cancelar");
+        jButtonCanelarRegistroCrecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCanelarRegistroCrecimientoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabCrecimientoLayout = new javax.swing.GroupLayout(tabCrecimiento);
         tabCrecimiento.setLayout(tabCrecimientoLayout);
         tabCrecimientoLayout.setHorizontalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGraf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTit)
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(79, 79, 79)
+                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldPeso))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelErrPeso)
+                            .addComponent(jLabelErrPermie)
+                            .addComponent(jLabelErrAlt)))
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addComponent(jButtonCanelarRegistroCrecimiento)
+                        .addGap(151, 151, 151)
+                        .addComponent(jButtonAceptIngresoDeCrecimiento))
+                    .addComponent(jPanelGraf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         tabCrecimientoLayout.setVerticalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 611, Short.MAX_VALUE)
+            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelGraf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelGraf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabelTit)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel1)
+                                .addGap(22, 22, 22))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCrecimientoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelErrAlt))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelErrPeso))
+                        .addGap(14, 14, 14)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelErrPermie))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAceptIngresoDeCrecimiento)
+                            .addComponent(jButtonCanelarRegistroCrecimiento))
+                        .addGap(22, 22, 22))))
         );
 
         tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
@@ -395,11 +553,11 @@ public class vPrincipal extends javax.swing.JFrame {
         tabVacunas.setLayout(tabVacunasLayout);
         tabVacunasLayout.setHorizontalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGap(0, 781, Short.MAX_VALUE)
         );
         tabVacunasLayout.setVerticalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 611, Short.MAX_VALUE)
+            .addGap(0, 614, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Vacunas", tabVacunas);
@@ -415,7 +573,7 @@ public class vPrincipal extends javax.swing.JFrame {
             .addComponent(tabbedPane)
         );
 
-        setBounds(0, 0, 791, 680);
+        setBounds(0, 0, 804, 684);
     }// </editor-fold>//GEN-END:initComponents
 
     private void datePickerFechaNacimientoAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
@@ -489,6 +647,69 @@ public class vPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButtonAceptIngresoDeCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptIngresoDeCrecimientoActionPerformed
+        // TODO add your handling code here:
+        //Todos Campos Vacios
+        
+        //************************************************************
+        Child ch = (Child)comboBoxHijos.getSelectedItem();
+        //************************************************************
+        
+        if (jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()) {
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(true);
+        }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty()){
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(false);
+        }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(false);
+            jLabelErrPermie.setVisible(true);
+        }else if(jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(true);
+        }else{
+             try {
+                //Puede que el edad sea al pedo, por como ta compuesto el growth pero no se, lo dejo a tu criterio
+                    float Altura = Integer.parseInt(jTextFieldAltura.getText());
+                    float Peso = Integer.parseInt(jTextFieldPeso.getText());
+                    float Perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
+                    //*******************************************************
+                    Growth gr = new Growth(ch, Altura, Peso, Perimetro);
+                    ch.getListGrowth().add(gr);
+                    //*******************************************************
+                    jLabelErrAlt.setVisible(false);
+                    jLabelErrPeso.setVisible(false);
+                    jLabelErrPermie.setVisible(false);
+                    
+                } catch (NumberFormatException e) {
+                    jLabelErrAlt.setVisible(true);
+                    jLabelErrPeso.setVisible(true);
+                    jLabelErrPermie.setVisible(true);
+                }
+        }
+        
+    }//GEN-LAST:event_jButtonAceptIngresoDeCrecimientoActionPerformed
+
+    private void jTextFieldPerimetroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPerimetroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPerimetroActionPerformed
+
+    private void jButtonCanelarRegistroCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCanelarRegistroCrecimientoActionPerformed
+        // TODO add your handling code here:
+        jTextFieldAltura.setText("");
+        jTextFieldPeso.setText("");
+        jTextFieldPerimetro.setText("");
+        
+        jLabelErrAlt.setVisible(false);
+        jLabelErrPeso.setVisible(false);
+        jLabelErrPermie.setVisible(false);
+        
+    }//GEN-LAST:event_jButtonCanelarRegistroCrecimientoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAceptarAgregarConsulta;
     private javax.swing.JButton buttonAceptarAgregarHijo;
@@ -500,6 +721,21 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox comboBoxHijos;
     private org.jdesktop.swingx.JXDatePicker datePickerAgregarConsulta;
     private org.jdesktop.swingx.JXDatePicker datePickerFechaNacimientoAgregarHijo;
+    private javax.swing.JButton jButtonAceptIngresoDeCrecimiento;
+    private javax.swing.JButton jButtonCanelarRegistroCrecimiento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelErrAlt;
+    private javax.swing.JLabel jLabelErrPermie;
+    private javax.swing.JLabel jLabelErrPeso;
+    private javax.swing.JLabel jLabelTit;
+    private javax.swing.JPanel jPanelGraf1;
+    private javax.swing.JPanel jPanelGraf2;
+    private javax.swing.JPanel jPanelGraf3;
+    private javax.swing.JTextField jTextFieldAltura;
+    private javax.swing.JTextField jTextFieldPerimetro;
+    private javax.swing.JTextField jTextFieldPeso;
     private javax.swing.JLabel labelFechaAgregarConsulta;
     private javax.swing.JLabel labelFechaConsultasAnteriores;
     private javax.swing.JLabel labelFechaNacimiento;
