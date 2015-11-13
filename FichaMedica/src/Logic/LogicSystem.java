@@ -6,15 +6,10 @@ import java.util.ArrayList;
 //Clase Sistema, contiene todas las listas
 public class LogicSystem implements Serializable{
     //Attributes
-    private ArrayList<Appointment> listAllAppointments;
     private ArrayList<Child> listAllChildren;
     private ArrayList<Vaccine> listAllVaccines;
 
     //Getters and Setters
-    //ListAllAppointments
-    public ArrayList<Appointment> getlistAllAppointments() {
-        return listAllAppointments;
-    }
     //ListAllChildren
     public ArrayList<Child> getListAllChildren() {
         return listAllChildren;
@@ -27,7 +22,6 @@ public class LogicSystem implements Serializable{
     //Constructors
     //Empty
     public LogicSystem(){
-        listAllAppointments = new ArrayList <Appointment>();
         listAllChildren = new ArrayList <Child>();
         listAllVaccines = new ArrayList <Vaccine>();
     }
@@ -45,9 +39,7 @@ public class LogicSystem implements Serializable{
         boolean hijoCorrecto = false;
         if (!name.isEmpty()) {
             if (birthDate != null) {
-                if (birthDate != LocalDate.parse("0000-00-00")) {
-                    hijoCorrecto = true;
-                }
+                hijoCorrecto = true;                                 
             }
         }  
         return hijoCorrecto;

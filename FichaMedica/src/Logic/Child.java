@@ -44,7 +44,7 @@ public class Child implements Serializable{
     //Empty
     public Child(){
         name = "Sin nombre";
-        birthDate = LocalDate.parse("0000-00-00");
+        birthDate = null;
         listAppointments = null;
         listVaccines = null;
         listGrowth = null;
@@ -57,21 +57,7 @@ public class Child implements Serializable{
         listVaccines = new ArrayList <Vaccine>();
         listGrowth = new ArrayList <Growth>();
     }
-    @Override
-    public String toString(){
-        return ("" + this.getName());       
-    }
-    @Override
-    public boolean equals(Object o){
-        boolean iguales = false;
-        if (this.getName().equals(((Child)o).getName())) {
-            if (this.getBirthDate().equals(((Child)o).getBirthDate())) {
-                iguales = true;
-            }
-        }      
-        return iguales;
-    }
-
+    
      //Methods
     //Agregar Consulta
     public void addAppointment(String nota, LocalDate fecha){
@@ -84,10 +70,8 @@ public class Child implements Serializable{
     public boolean addAppointmentCheck(String nota, LocalDate fecha){
         boolean correct = false;
         if (!nota.isEmpty()) {
-            if (fecha != null) {
-                if (!fecha.equals(LocalDate.parse("0000-00-00"))) {
-                    correct = true;
-                }             
+            if (fecha != null) {             
+                correct = true;                        
             }
         }
         return correct;
@@ -104,8 +88,8 @@ public class Child implements Serializable{
     public boolean addGrowthCheck(LocalDate fecha, float altura, float peso, float perimetroCraneal){
         boolean correct = false; 
         if (altura < 0 && peso < 0 && perimetroCraneal < 0) {
-            if (fecha != null || !fecha.equals(LocalDate.parse("0000-00-00"))) {
-                correct = true; 
+            if (fecha != null) {
+                correct = true;              
             }                 
         }                  
         return correct;
@@ -115,4 +99,18 @@ public class Child implements Serializable{
     
     //Agregar Vacuna - Check de Vacuna
     
+    @Override
+    public String toString(){
+        return ("" + this.getName());       
+    }
+    @Override
+    public boolean equals(Object o){
+        boolean iguales = false;
+        if (this.getName().equals(((Child)o).getName())) {
+            if (this.getBirthDate().equals(((Child)o).getBirthDate())) {
+                iguales = true;
+            }
+        }      
+        return iguales;
+    }
 }

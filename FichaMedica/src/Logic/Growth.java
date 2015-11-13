@@ -43,7 +43,7 @@ public class Growth implements Serializable{
     //Constructors
     //Empty
     public Growth(){
-        date = LocalDate.parse("0000-00-00");
+        date = null;
         height = 0;
         weight = 0;
         cranialPerimeter = 0;

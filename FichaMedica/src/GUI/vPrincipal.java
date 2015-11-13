@@ -1,27 +1,42 @@
 package GUI;
+import Logic.Appointment;
 import Logic.Child;
-import Logic.Growth;
 import Logic.LogicSystem;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 public class vPrincipal extends javax.swing.JFrame {
 
     LogicSystem sistema;
-    LocalDate fechaNacimiento = LocalDate.parse("0000-00-00");
+    LocalDate fechaNacimiento = null;
+    LocalDate fechaCrecimiento = null;
+    LocalDate fechaConsulta = null;
+    Child selectedChild = null;
+    ArrayList<Appointment> consultasAnteriores = new ArrayList <Appointment>();
+    ArrayList<Appointment> consultasProximas = new ArrayList <Appointment>();
     public vPrincipal(LogicSystem s) {
         sistema = s;
         initComponents();   
         //Cargo los datos de los hijos en el ComboBox y muestro la fecha correspondiente
         comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
-        this.cargarFechaDeNacimientoDelComboBox();
+        this.cargarHijoDelComboBox();
+        //Cargo Consultas Hijos
+        this.cargarAppointmentDeHijo();
+        
         //Setteo los carteles de error para que no sean visibles
         textErrorNombreAgregarHijo.setVisible(false);
-        textErrorFechaNacimientoAgregarHijo.setVisible(false);   
+        textErrorFechaNacimientoAgregarHijo.setVisible(false); 
+        textErrorFechaAgregarCrecimiento.setVisible(false);
+        jLabelErrAlt.setVisible(false);
+        jLabelErrPeso.setVisible(false);
+        jLabelErrPermie.setVisible(false);     
+        textErrorFechaAgregarConsulta.setVisible(false);
+        textErrorNoChild.setVisible(false);
     }
 
     /**
@@ -75,33 +90,37 @@ public class vPrincipal extends javax.swing.JFrame {
         checkBoxRevisadoAgregarConsulta = new javax.swing.JCheckBox();
         buttonCancelarAgregarConsulta = new javax.swing.JButton();
         buttonAceptarAgregarConsulta = new javax.swing.JButton();
+        textErrorFechaAgregarConsulta = new javax.swing.JLabel();
+        textErrorNoChild = new javax.swing.JLabel();
         tabCrecimiento = new javax.swing.JPanel();
         jPanelGraf1 = new javax.swing.JPanel();
         jPanelGraf2 = new javax.swing.JPanel();
         jPanelGraf3 = new javax.swing.JPanel();
-        jLabelTit = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldAltura = new javax.swing.JTextField();
         jTextFieldPeso = new javax.swing.JTextField();
-        jTextFieldPerimetro = new javax.swing.JTextField();
-        jLabelErrAlt = new javax.swing.JLabel();
-        jLabelErrPeso = new javax.swing.JLabel();
-        jLabelErrPermie = new javax.swing.JLabel();
-        jButtonAceptIngresoDeCrecimiento = new javax.swing.JButton();
+        textErrorFechaAgregarCrecimiento = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jButtonCanelarRegistroCrecimiento = new javax.swing.JButton();
+        jLabelTit = new javax.swing.JLabel();
+        jLabelErrAlt = new javax.swing.JLabel();
+        labelFechaAgregarCrecimiento = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldPerimetro = new javax.swing.JTextField();
+        datePickerAgregarCrecimiento = new org.jdesktop.swingx.JXDatePicker();
+        jButtonAceptIngresoDeCrecimiento = new javax.swing.JButton();
+        jTextFieldAltura = new javax.swing.JTextField();
+        jLabelErrPermie = new javax.swing.JLabel();
+        jLabelErrPeso = new javax.swing.JLabel();
         tabVacunas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha Medica");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-
-        tabbedPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         labelNombre.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         labelNombre.setText("Nombre:");
@@ -126,6 +145,8 @@ public class vPrincipal extends javax.swing.JFrame {
         labelNombreAgregarHijo.setText("Nombre:");
 
         labelFechaNacimientoAgregarHijo.setText("Fecha de Nacimiento");
+
+        textNombreAgregarHijo.setPreferredSize(new java.awt.Dimension(6, 22));
 
         tituloAgregarHijo.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         tituloAgregarHijo.setText("Agregar Hijo");
@@ -186,7 +207,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textErrorNombreAgregarHijo)
                             .addComponent(textErrorFechaNacimientoAgregarHijo))))
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
         tabHijosLayout.setVerticalGroup(
             tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +236,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarHijo)
                     .addComponent(buttonAceptarAgregarHijo))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Hijos", tabHijos);
@@ -232,6 +253,11 @@ public class vPrincipal extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        listaFechaProximasConsultas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaFechaProximasConsultasValueChanged(evt);
+            }
+        });
         paneFechaProximasConsultas.setViewportView(listaFechaProximasConsultas);
 
         textAgregarNota.setColumns(20);
@@ -244,6 +270,11 @@ public class vPrincipal extends javax.swing.JFrame {
 
         checkBoxRealizadaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         checkBoxRealizadaProximasConsultas.setText("Realizada");
+        checkBoxRealizadaProximasConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxRealizadaProximasConsultasActionPerformed(evt);
+            }
+        });
 
         textNotaConsultasAnteriores.setEditable(false);
         textNotaConsultasAnteriores.setColumns(20);
@@ -256,6 +287,11 @@ public class vPrincipal extends javax.swing.JFrame {
 
         checkBoxRealizadaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         checkBoxRealizadaConsultasAnteriores.setText("Realizada");
+        checkBoxRealizadaConsultasAnteriores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxRealizadaConsultasAnterioresActionPerformed(evt);
+            }
+        });
 
         tituloConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         tituloConsultasAnteriores.setText("Consultas Anteriores");
@@ -269,6 +305,11 @@ public class vPrincipal extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        listaFechaConsultasAnteriores.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaFechaConsultasAnterioresValueChanged(evt);
+            }
+        });
         paneFechaConsultasAnteriores.setViewportView(listaFechaConsultasAnteriores);
 
         tituloAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -281,6 +322,11 @@ public class vPrincipal extends javax.swing.JFrame {
         labelNotaAgregarConsulta.setText("Nota:");
 
         datePickerAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        datePickerAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datePickerAgregarConsultaActionPerformed(evt);
+            }
+        });
 
         notaProximasConsultas.setEditable(false);
         notaProximasConsultas.setColumns(20);
@@ -289,10 +335,30 @@ public class vPrincipal extends javax.swing.JFrame {
         paneNotaProximasConsultas.setViewportView(notaProximasConsultas);
 
         checkBoxRevisadoAgregarConsulta.setText("He revisado que los datos fueran correctos.");
+        checkBoxRevisadoAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxRevisadoAgregarConsultaActionPerformed(evt);
+            }
+        });
 
         buttonCancelarAgregarConsulta.setText("Cancelar");
+        buttonCancelarAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarAgregarConsultaActionPerformed(evt);
+            }
+        });
 
         buttonAceptarAgregarConsulta.setText("Aceptar");
+        buttonAceptarAgregarConsulta.setEnabled(false);
+        buttonAceptarAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAceptarAgregarConsultaActionPerformed(evt);
+            }
+        });
+
+        textErrorFechaAgregarConsulta.setText("Ingrese Fecha de Consulta");
+
+        textErrorNoChild.setText("Debe seleccionar un hijo");
 
         javax.swing.GroupLayout tabAgendaLayout = new javax.swing.GroupLayout(tabAgenda);
         tabAgenda.setLayout(tabAgendaLayout);
@@ -310,7 +376,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -335,14 +401,18 @@ public class vPrincipal extends javax.swing.JFrame {
                                     .addComponent(labelFechaAgregarConsulta)
                                     .addComponent(labelNotaAgregarConsulta))
                                 .addGap(18, 18, 18)
-                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkBoxRevisadoAgregarConsulta)
                                     .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(checkBoxRevisadoAgregarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(paneAgregarNota)))
+                                    .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(tabAgendaLayout.createSequentialGroup()
                                 .addComponent(buttonCancelarAgregarConsulta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buttonAceptarAgregarConsulta)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textErrorFechaAgregarConsulta)
+                            .addComponent(textErrorNoChild))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         tabAgendaLayout.setVerticalGroup(
@@ -376,23 +446,29 @@ public class vPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(checkBoxRealizadaConsultasAnteriores))
                             .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(tituloAgregarConsulta)
                 .addGap(18, 18, 18)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelFechaAgregarConsulta)
-                    .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textErrorFechaAgregarConsulta))
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNotaAgregarConsulta))
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNotaAgregarConsulta)))
+                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(textErrorNoChild)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(checkBoxRevisadoAgregarConsulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarConsulta)
                     .addComponent(buttonAceptarAgregarConsulta))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Agenda", tabAgenda);
@@ -433,28 +509,46 @@ public class vPrincipal extends javax.swing.JFrame {
         );
         jPanelGraf3Layout.setVerticalGroup(
             jPanelGraf3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 289, Short.MAX_VALUE)
         );
 
-        jLabelTit.setText("Agregar Crecimiento:");
+        jTextFieldPeso.setMaximumSize(new java.awt.Dimension(6, 20));
 
-        jLabel1.setText("Altura:");
-
-        jLabel2.setText("Peso:");
+        textErrorFechaAgregarCrecimiento.setText("Ingrese una fecha");
 
         jLabel3.setText("Perimetro Craneal:");
 
+        jLabel1.setText("Altura:");
+
+        jButtonCanelarRegistroCrecimiento.setText("Cancelar");
+        jButtonCanelarRegistroCrecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCanelarRegistroCrecimientoActionPerformed(evt);
+            }
+        });
+
+        jLabelTit.setText("Agregar Crecimiento:");
+
+        jLabelErrAlt.setText("Ingrese una altura");
+
+        labelFechaAgregarCrecimiento.setText("Fecha:");
+
+        jLabel2.setText("Peso:");
+
+        jTextFieldPerimetro.setMaximumSize(new java.awt.Dimension(6, 20));
         jTextFieldPerimetro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPerimetroActionPerformed(evt);
             }
         });
 
-        jLabelErrAlt.setText("Ingreasar una altura");
-
-        jLabelErrPeso.setText("Ingresar un peso");
-
-        jLabelErrPermie.setText("Ingresar un perimetro");
+        datePickerAgregarCrecimiento.setMaximumSize(new java.awt.Dimension(2, 20));
+        datePickerAgregarCrecimiento.setMinimumSize(new java.awt.Dimension(2, 20));
+        datePickerAgregarCrecimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datePickerAgregarCrecimientoActionPerformed(evt);
+            }
+        });
 
         jButtonAceptIngresoDeCrecimiento.setText("Ingresar");
         jButtonAceptIngresoDeCrecimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -463,12 +557,11 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButtonCanelarRegistroCrecimiento.setText("Cancelar");
-        jButtonCanelarRegistroCrecimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCanelarRegistroCrecimientoActionPerformed(evt);
-            }
-        });
+        jTextFieldAltura.setMaximumSize(new java.awt.Dimension(6, 20));
+
+        jLabelErrPermie.setText("Ingrese un perimetro craneal");
+
+        jLabelErrPeso.setText("Ingrese un peso");
 
         javax.swing.GroupLayout tabCrecimientoLayout = new javax.swing.GroupLayout(tabCrecimiento);
         tabCrecimiento.setLayout(tabCrecimientoLayout);
@@ -479,34 +572,37 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelGraf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
+                .addGap(14, 14, 14)
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTit)
+                    .addComponent(jPanelGraf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jButtonCanelarRegistroCrecimiento)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAceptIngresoDeCrecimiento))
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(79, 79, 79)
-                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldPeso))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(labelFechaAgregarCrecimiento))
+                        .addGap(82, 82, 82)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(jTextFieldPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelErrPeso)
                             .addComponent(jLabelErrPermie)
-                            .addComponent(jLabelErrAlt)))
-                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addComponent(jButtonCanelarRegistroCrecimiento)
-                        .addGap(151, 151, 151)
-                        .addComponent(jButtonAceptIngresoDeCrecimiento))
-                    .addComponent(jPanelGraf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(textErrorFechaAgregarCrecimiento)
+                                .addComponent(jLabelErrAlt))))
+                    .addComponent(jLabelTit))
+                .addContainerGap())
         );
         tabCrecimientoLayout.setVerticalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,39 +611,37 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelGraf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelGraf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addComponent(jLabelTit)
-                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel1)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCrecimientoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelErrAlt))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(50, 50, 50)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                            .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textErrorFechaAgregarCrecimiento)
+                            .addComponent(labelFechaAgregarCrecimiento))
+                        .addGap(18, 18, 18)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabelErrAlt))
+                        .addGap(18, 18, 18)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
                             .addComponent(jLabelErrPeso))
-                        .addGap(14, 14, 14)
+                        .addGap(18, 18, 18)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
                             .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
                             .addComponent(jLabelErrPermie))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAceptIngresoDeCrecimiento)
                             .addComponent(jButtonCanelarRegistroCrecimiento))
-                        .addGap(22, 22, 22))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
@@ -556,11 +650,11 @@ public class vPrincipal extends javax.swing.JFrame {
         tabVacunas.setLayout(tabVacunasLayout);
         tabVacunasLayout.setHorizontalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 781, Short.MAX_VALUE)
+            .addGap(0, 798, Short.MAX_VALUE)
         );
         tabVacunasLayout.setVerticalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
+            .addGap(0, 617, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Vacunas", tabVacunas);
@@ -576,20 +670,18 @@ public class vPrincipal extends javax.swing.JFrame {
             .addComponent(tabbedPane)
         );
 
-        setBounds(0, 0, 804, 684);
+        setBounds(0, 0, 819, 684);
     }// </editor-fold>//GEN-END:initComponents
 
     private void datePickerFechaNacimientoAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
-        // TODO add your handling code here:
         Date fecha = datePickerFechaNacimientoAgregarHijo.getDate();
         fechaNacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }//GEN-LAST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
 
     private void buttonAceptarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarAgregarHijoActionPerformed
-        // TODO add your handling code here: 
         //Checkeo de campos
         //Nombre y Fecha de Nacimiento
-        if (textNombreAgregarHijo.getText().isEmpty() && !fechaNacimiento.equals(LocalDate.parse("0000-00-00"))) {
+        if (textNombreAgregarHijo.getText().isEmpty() && fechaNacimiento == null) {
             textErrorNombreAgregarHijo.setVisible(true);
             textErrorFechaNacimientoAgregarHijo.setVisible(true);
         }
@@ -599,7 +691,7 @@ public class vPrincipal extends javax.swing.JFrame {
             textErrorFechaNacimientoAgregarHijo.setVisible(false);
         }
         //Fecha de Nacimiento
-        else if(!fechaNacimiento.equals(LocalDate.parse("0000-00-00"))){
+        else if(fechaNacimiento == null){
             textErrorNombreAgregarHijo.setVisible(false);
             textErrorFechaNacimientoAgregarHijo.setVisible(true);
         }
@@ -609,36 +701,52 @@ public class vPrincipal extends javax.swing.JFrame {
             if (sistema.ingresarHijoCheck(nombre, fechaNacimiento)) {
                 sistema.ingresarHijo(nombre,fechaNacimiento);
                 textNombreAgregarHijo.setText("");
-                fechaNacimiento = LocalDate.parse("0000-00-00"); 
+                fechaNacimiento = null; 
                 textErrorNombreAgregarHijo.setVisible(false);
                 textErrorFechaNacimientoAgregarHijo.setVisible(false);
                 comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
+                this.cargarHijoDelComboBox();
             }                  
         }
     }//GEN-LAST:event_buttonAceptarAgregarHijoActionPerformed
 
     private void buttonCancelarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarAgregarHijoActionPerformed
-        // TODO add your handling code here:
         textNombreAgregarHijo.setText("");
-        fechaNacimiento = LocalDate.parse("0000-00-00"); 
+        fechaNacimiento = null; 
         datePickerFechaNacimientoAgregarHijo.setDate(null);
     }//GEN-LAST:event_buttonCancelarAgregarHijoActionPerformed
 
     private void comboBoxHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHijosActionPerformed
-        // TODO add your handling code here:
-        this.cargarFechaDeNacimientoDelComboBox();
+        this.cargarHijoDelComboBox();
+        this.cargarAppointmentDeHijo();
     }//GEN-LAST:event_comboBoxHijosActionPerformed
 
-    private void cargarFechaDeNacimientoDelComboBox(){
+    private void cargarHijoDelComboBox(){
         for (int i = 0; i < sistema.getListAllChildren().size(); i++) {
             Child h = sistema.getListAllChildren().get(i);
             if (comboBoxHijos.getModel().getSelectedItem().equals(h)) {
-                textFechaNacimiento.setText(""+h.getBirthDate());
+                selectedChild = h;
+                textFechaNacimiento.setText(""+selectedChild.getBirthDate());
             }
         } 
     }
+    private void cargarAppointmentDeHijo(){
+        consultasProximas = new ArrayList<Appointment>();
+        consultasAnteriores = new ArrayList<Appointment>();
+        if (selectedChild != null) {
+            for (int i = 0; i < selectedChild.getListAppointments().size(); i++) {
+                if (selectedChild.getListAppointments().get(i).getAppointmentDate().isAfter(LocalDate.now())) {
+                    consultasProximas.add(selectedChild.getListAppointments().get(i));
+                }
+                else{
+                    consultasAnteriores.add(selectedChild.getListAppointments().get(i));
+                }
+            }
+            listaFechaConsultasAnteriores.setListData(consultasAnteriores.toArray());
+            listaFechaProximasConsultas.setListData(consultasProximas.toArray());
+        }
+    }
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
         try{
             FileOutputStream fileOut = new FileOutputStream("data.dat");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -652,68 +760,188 @@ public class vPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
+    private void datePickerAgregarCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerAgregarCrecimientoActionPerformed
+        Date fecha = datePickerAgregarCrecimiento.getDate();
+        fechaCrecimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }//GEN-LAST:event_datePickerAgregarCrecimientoActionPerformed
+
+    private void jButtonCanelarRegistroCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCanelarRegistroCrecimientoActionPerformed
+        jTextFieldAltura.setText("");
+        jTextFieldPeso.setText("");
+        jTextFieldPerimetro.setText("");
+        datePickerAgregarCrecimiento.setDate(null);
+        textErrorFechaAgregarCrecimiento.setVisible(false);
+        jLabelErrAlt.setVisible(false);
+        jLabelErrPeso.setVisible(false);
+        jLabelErrPermie.setVisible(false);
+    }//GEN-LAST:event_jButtonCanelarRegistroCrecimientoActionPerformed
+
     private void jButtonAceptIngresoDeCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptIngresoDeCrecimientoActionPerformed
-        // TODO add your handling code here:
         //Todos Campos Vacios
-        
-        //************************************************************
-        Child ch = (Child)comboBoxHijos.getSelectedItem();
-        //************************************************************
-        
-        if (jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()) {
+        if (jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty() && fechaCrecimiento == null) {
+            textErrorFechaAgregarCrecimiento.setVisible(true);
             jLabelErrAlt.setVisible(true);
             jLabelErrPeso.setVisible(true);
             jLabelErrPermie.setVisible(true);
         }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
             jLabelErrAlt.setVisible(true);
             jLabelErrPeso.setVisible(true);
             jLabelErrPermie.setVisible(false);
         }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
             jLabelErrAlt.setVisible(true);
             jLabelErrPeso.setVisible(false);
             jLabelErrPermie.setVisible(true);
         }else if(jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
             jLabelErrAlt.setVisible(false);
             jLabelErrPeso.setVisible(true);
             jLabelErrPermie.setVisible(true);
         }else{
-             try {
+            try {
                 //Puede que el edad sea al pedo, por como ta compuesto el growth pero no se, lo dejo a tu criterio
-                    float Altura = Integer.parseInt(jTextFieldAltura.getText());
-                    float Peso = Integer.parseInt(jTextFieldPeso.getText());
-                    float Perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
-                    //*******************************************************
-                    Growth gr = new Growth(ch, Altura, Peso, Perimetro);
-                    ch.getListGrowth().add(gr);
-                    //*******************************************************
-                    jLabelErrAlt.setVisible(false);
-                    jLabelErrPeso.setVisible(false);
-                    jLabelErrPermie.setVisible(false);
-                    
-                } catch (NumberFormatException e) {
-                    jLabelErrAlt.setVisible(true);
-                    jLabelErrPeso.setVisible(true);
-                    jLabelErrPermie.setVisible(true);
-                }
+                float altura = Float.parseFloat(jTextFieldAltura.getText());
+                float peso = Float.parseFloat(jTextFieldPeso.getText());
+                float perimetro = Float.parseFloat(jTextFieldPerimetro.getText());
+                //*******************************************************
+                sistema.getListAllChildren().remove(selectedChild);
+                selectedChild.addGrowth(fechaNacimiento, altura, peso, perimetro);
+                sistema.getListAllChildren().add(selectedChild);
+                //*******************************************************
+                textErrorFechaAgregarCrecimiento.setVisible(false);
+                jLabelErrAlt.setVisible(false);
+                jLabelErrPeso.setVisible(false);
+                jLabelErrPermie.setVisible(false);
+            } catch (NumberFormatException e) {
+                jLabelErrAlt.setVisible(true);
+                jLabelErrPeso.setVisible(true);
+                jLabelErrPermie.setVisible(true);
+            }
         }
-        
     }//GEN-LAST:event_jButtonAceptIngresoDeCrecimientoActionPerformed
 
     private void jTextFieldPerimetroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPerimetroActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPerimetroActionPerformed
 
-    private void jButtonCanelarRegistroCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCanelarRegistroCrecimientoActionPerformed
+    private void datePickerAgregarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerAgregarConsultaActionPerformed
+        Date fecha = datePickerAgregarConsulta.getDate();
+        fechaConsulta = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }//GEN-LAST:event_datePickerAgregarConsultaActionPerformed
+
+    private void checkBoxRevisadoAgregarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxRevisadoAgregarConsultaActionPerformed
         // TODO add your handling code here:
-        jTextFieldAltura.setText("");
-        jTextFieldPeso.setText("");
-        jTextFieldPerimetro.setText("");
-        
-        jLabelErrAlt.setVisible(false);
-        jLabelErrPeso.setVisible(false);
-        jLabelErrPermie.setVisible(false);
-        
-    }//GEN-LAST:event_jButtonCanelarRegistroCrecimientoActionPerformed
+        if (checkBoxRevisadoAgregarConsulta.isSelected()) {
+            buttonAceptarAgregarConsulta.setEnabled(true);
+        }
+        else{
+            buttonAceptarAgregarConsulta.setEnabled(false);
+        }    
+    }//GEN-LAST:event_checkBoxRevisadoAgregarConsultaActionPerformed
+
+    private void buttonCancelarAgregarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarAgregarConsultaActionPerformed
+        datePickerAgregarConsulta.setDate(null);
+        textAgregarNota.setText("");
+        buttonAceptarAgregarConsulta.setEnabled(false);
+        checkBoxRevisadoAgregarConsulta.setSelected(false);
+    }//GEN-LAST:event_buttonCancelarAgregarConsultaActionPerformed
+
+    private void buttonAceptarAgregarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarAgregarConsultaActionPerformed
+        if (selectedChild == null && fechaConsulta == null) {
+            textErrorFechaAgregarConsulta.setVisible(true);
+            textErrorNoChild.setVisible(true);
+        }
+        else if(selectedChild == null){
+            textErrorFechaAgregarConsulta.setVisible(false);
+            textErrorNoChild.setVisible(true);
+        }
+        else if(fechaConsulta == null){
+            textErrorFechaAgregarConsulta.setVisible(true);
+            textErrorNoChild.setVisible(false);
+        }
+        else{
+            //Tomo nota ingresada por el usuario
+            String nota = textAgregarNota.getText();
+            //Creo y agrego la consulta al hijo seleccionado
+            selectedChild.addAppointment(nota, fechaConsulta);
+            //Saco los carteles de error
+            textErrorFechaAgregarConsulta.setVisible(false);
+            textErrorNoChild.setVisible(false);
+            //Cargo nuevamente las consultas del hijo seleccionado a las listas
+            this.cargarAppointmentDeHijo();
+            //Elimino datos del formulario de agregar consulta
+            datePickerAgregarConsulta.setDate(null);
+            textAgregarNota.setText("");
+            checkBoxRevisadoAgregarConsulta.setSelected(false);
+            buttonAceptarAgregarConsulta.setEnabled(false);
+        }
+    }//GEN-LAST:event_buttonAceptarAgregarConsultaActionPerformed
+
+    private void listaFechaProximasConsultasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaFechaProximasConsultasValueChanged
+        //This line prevents double events
+        if (!evt.getValueIsAdjusting()) {
+        }     
+        else{  
+            //Obtengo lugar en el ArrayList de Consultas Proximas
+            int indexConsulta = listaFechaProximasConsultas.getSelectedIndex();
+            //Obtengo la nota de ese ArrayList y setteo la nota en el cuadro de texto
+            String nota = consultasProximas.get(indexConsulta).getNote();
+            notaProximasConsultas.setText(nota);
+            //Obtengo el estado de la consulta, si fue o no realizada y lo reflejo en el checkbox
+            boolean realizada = consultasProximas.get(indexConsulta).getAttended();
+            checkBoxRealizadaProximasConsultas.setSelected(realizada);
+        }
+    }//GEN-LAST:event_listaFechaProximasConsultasValueChanged
+
+    private void checkBoxRealizadaProximasConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxRealizadaProximasConsultasActionPerformed
+        //Obtengo index de Consulta de lista visible
+        int indexConsulta = listaFechaProximasConsultas.getSelectedIndex();
+        //Obtengo estado del checkbox
+        boolean realizada = checkBoxRealizadaProximasConsultas.isSelected();
+        //Obtengo el Appointment del index obtenido
+        Appointment ap = consultasProximas.get(indexConsulta);
+        //Recorro la lista original y checkeo que el objeto de la lista visible sea el mismo que el de la lista logica
+        for (int i = 0; i < selectedChild.getListAppointments().size(); i++) {
+            Appointment original = selectedChild.getListAppointments().get(i);
+            if (original.equals(ap)) {
+                //Si son iguales setteo en el original, el estado del checkbox
+                original.setAttended(realizada);
+            }
+        }
+    }//GEN-LAST:event_checkBoxRealizadaProximasConsultasActionPerformed
+
+    private void listaFechaConsultasAnterioresValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaFechaConsultasAnterioresValueChanged
+        //This line prevents double events
+        if (!evt.getValueIsAdjusting()) {
+        }     
+        else{  
+            //Obtengo lugar en el ArrayList de Consultas Anteriores
+            int indexConsulta = listaFechaConsultasAnteriores.getSelectedIndex();
+            //Obtengo la nota de ese ArrayList y setteo la nota en el cuadro de texto
+            String nota = consultasAnteriores.get(indexConsulta).getNote();
+            textNotaConsultasAnteriores.setText(nota);
+            //Obtengo el estado de la consulta, si fue o no realizada y lo reflejo en el checkbox
+            boolean realizada = consultasAnteriores.get(indexConsulta).getAttended();
+            checkBoxRealizadaConsultasAnteriores.setSelected(realizada);
+        }
+    }//GEN-LAST:event_listaFechaConsultasAnterioresValueChanged
+
+    private void checkBoxRealizadaConsultasAnterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxRealizadaConsultasAnterioresActionPerformed
+        //Obtengo index de Consulta de lista visible
+        int indexConsulta = listaFechaConsultasAnteriores.getSelectedIndex();
+        //Obtengo estado del checkbox
+        boolean realizada = checkBoxRealizadaConsultasAnteriores.isSelected();
+        //Obtengo el Appointment del index obtenido
+        Appointment ap = consultasAnteriores.get(indexConsulta);
+        //Recorro la lista original y checkeo que el objeto de la lista visible sea el mismo que el de la lista logica
+        for (int i = 0; i < selectedChild.getListAppointments().size(); i++) {
+            Appointment original = selectedChild.getListAppointments().get(i);
+            if (original.equals(ap)) {
+                //Si son iguales setteo en el original, el estado del checkbox
+                original.setAttended(realizada);
+            }
+        }
+    }//GEN-LAST:event_checkBoxRealizadaConsultasAnterioresActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAceptarAgregarConsulta;
@@ -725,6 +953,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxRevisadoAgregarConsulta;
     private javax.swing.JComboBox comboBoxHijos;
     private org.jdesktop.swingx.JXDatePicker datePickerAgregarConsulta;
+    private org.jdesktop.swingx.JXDatePicker datePickerAgregarCrecimiento;
     private org.jdesktop.swingx.JXDatePicker datePickerFechaNacimientoAgregarHijo;
     private javax.swing.JButton jButtonAceptIngresoDeCrecimiento;
     private javax.swing.JButton jButtonCanelarRegistroCrecimiento;
@@ -742,6 +971,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPerimetro;
     private javax.swing.JTextField jTextFieldPeso;
     private javax.swing.JLabel labelFechaAgregarConsulta;
+    private javax.swing.JLabel labelFechaAgregarCrecimiento;
     private javax.swing.JLabel labelFechaConsultasAnteriores;
     private javax.swing.JLabel labelFechaNacimiento;
     private javax.swing.JLabel labelFechaNacimientoAgregarHijo;
@@ -765,7 +995,10 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel tabVacunas;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTextArea textAgregarNota;
+    private javax.swing.JLabel textErrorFechaAgregarConsulta;
+    private javax.swing.JLabel textErrorFechaAgregarCrecimiento;
     private javax.swing.JLabel textErrorFechaNacimientoAgregarHijo;
+    private javax.swing.JLabel textErrorNoChild;
     private javax.swing.JLabel textErrorNombreAgregarHijo;
     private javax.swing.JTextField textFechaNacimiento;
     private javax.swing.JTextField textNombreAgregarHijo;

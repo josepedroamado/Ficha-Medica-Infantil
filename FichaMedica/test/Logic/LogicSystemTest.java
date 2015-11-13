@@ -66,20 +66,6 @@ public class LogicSystemTest {
     }
     
     @Test
-    public void testIngresarHijoCheckFechaIncorrecta() {
-        //Inicializacion
-        System.out.println("ingresarHijoCheckFechaIncorrecta");
-        String name = "Gaston";
-        LocalDate birthDate = LocalDate.parse("0000-00-00");
-        LogicSystem instance = new LogicSystem();
-        boolean expResult = false;
-        //Manipulacion
-        boolean result = instance.ingresarHijoCheck(name, birthDate);
-        //Verificacion
-        assertEquals(expResult, result);
-    }
-    
-    @Test
     public void testIngresarHijoCheckSinNombreSinFecha() {
         //Inicializacion
         System.out.println("ingresarHijoCheckSinNombreSinFecha");

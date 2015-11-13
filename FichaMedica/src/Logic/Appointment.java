@@ -37,12 +37,29 @@ public class Appointment implements Serializable{
     public Appointment(){
         note = "Sin Nota";
         attended = false;
-        appointmentDate = LocalDate.parse("0000-00-00");
+        appointmentDate = null;
     }
     //Parametered
     public Appointment(String nota, LocalDate fecha) {
         note = nota;
         attended = false;
         appointmentDate = fecha;
+    }
+    
+     @Override
+    public String toString(){
+        return ("" + this.getAppointmentDate());       
+    }
+    @Override
+    public boolean equals(Object o){
+        boolean iguales = false;
+        if (this.getAppointmentDate().equals(((Appointment)o).getAppointmentDate())) {
+            if (this.getNote().equals(((Appointment)o).getNote())) {
+                if (this.getAttended() == ((Appointment)o).getAttended()) {
+                    iguales = true;
+                }         
+            }
+        }      
+        return iguales;
     }
 } 
