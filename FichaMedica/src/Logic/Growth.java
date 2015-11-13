@@ -46,8 +46,7 @@ public class Growth implements Serializable{
         date = null;
         height = 0;
         weight = 0;
-        cranialPerimeter = 0;
-        
+        cranialPerimeter = 0;       
     }
     //Parametered
     public Growth(LocalDate fecha, float altura, float peso, float perimetroCraneal) {
