@@ -783,20 +783,75 @@ public class vPrincipal extends javax.swing.JFrame {
             jLabelErrAlt.setVisible(true);
             jLabelErrPeso.setVisible(true);
             jLabelErrPermie.setVisible(true);
+        }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(false);
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(true);
         }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty()){
-            textErrorFechaAgregarCrecimiento.setVisible(true);
+            textErrorFechaAgregarCrecimiento.setVisible(false);
             jLabelErrAlt.setVisible(true);
             jLabelErrPeso.setVisible(true);
             jLabelErrPermie.setVisible(false);
         }else if(jTextFieldAltura.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
-            textErrorFechaAgregarCrecimiento.setVisible(true);
+            textErrorFechaAgregarCrecimiento.setVisible(false);
             jLabelErrAlt.setVisible(true);
             jLabelErrPeso.setVisible(false);
             jLabelErrPermie.setVisible(true);
         }else if(jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(false);
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(true);
+        }else if(fechaCrecimiento == null && jTextFieldAltura.getText().isEmpty() && jTextFieldPeso.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(false);
+        }else if(fechaCrecimiento == null && jTextFieldAltura.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(false);
+            jLabelErrPermie.setVisible(true);
+        }else if(fechaCrecimiento == null && jTextFieldPeso.getText().isEmpty() && jTextFieldPerimetro.getText().isEmpty()){
             textErrorFechaAgregarCrecimiento.setVisible(true);
             jLabelErrAlt.setVisible(false);
             jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(true);
+        }else if(fechaCrecimiento == null && jTextFieldAltura.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(false);
+            jLabelErrPermie.setVisible(false);
+        }else if(fechaCrecimiento == null && jTextFieldPeso.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrPermie.setVisible(false);
+        }else if(fechaCrecimiento == null && jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPeso.setVisible(false);
+             jLabelErrPermie.setVisible(true);
+        }else if(fechaCrecimiento == null){
+            textErrorFechaAgregarCrecimiento.setVisible(true);
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPeso.setVisible(false);
+            jLabelErrPermie.setVisible(false);
+        }else if(jTextFieldAltura.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(false);
+            jLabelErrAlt.setVisible(true);
+            jLabelErrPeso.setVisible(false);
+            jLabelErrPermie.setVisible(false);
+        } else if(jTextFieldPeso.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(false);
+            jLabelErrPeso.setVisible(true);
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPermie.setVisible(false);
+        } else if(jTextFieldPerimetro.getText().isEmpty()){
+            textErrorFechaAgregarCrecimiento.setVisible(false);
+            jLabelErrAlt.setVisible(false);
+            jLabelErrPeso.setVisible(false);
             jLabelErrPermie.setVisible(true);
         }else{
             try {
@@ -814,6 +869,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 jLabelErrPeso.setVisible(false);
                 jLabelErrPermie.setVisible(false);
             } catch (NumberFormatException e) {
+                
                 jLabelErrAlt.setVisible(true);
                 jLabelErrPeso.setVisible(true);
                 jLabelErrPermie.setVisible(true);

@@ -830,9 +830,6 @@
             </Container>
             <Component class="javax.swing.JTextField" name="jTextFieldPeso">
               <Properties>
-                <Property name="UI" type="javax.swing.plaf.TextUI" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[6, 20]"/>
                 </Property>
@@ -883,9 +880,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldPerimetro">
               <Properties>
-                <Property name="UI" type="javax.swing.plaf.TextUI" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[6, 20]"/>
                 </Property>
@@ -917,9 +911,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAltura">
               <Properties>
-                <Property name="UI" type="javax.swing.plaf.TextUI" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[6, 20]"/>
                 </Property>
