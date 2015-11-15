@@ -6,9 +6,9 @@ import java.time.LocalDate;
 public class Growth implements Serializable{
     //Attributes
     private LocalDate date;
-    private float height;
-    private float weight;
-    private float cranialPerimeter;
+    private int height;
+    private int weight;
+    private int cranialPerimeter;
      
     //Getters and Setters
     //Age
@@ -19,24 +19,24 @@ public class Growth implements Serializable{
         date = edad;
     }
     //Height
-    public float getHeight() {
+    public int getHeight() {
         return height;
     }
-    public void setHeight(float altura) {
+    public void setHeight(int altura) {
         height = altura;
     }
     //Weight
-    public float getweight() {
+    public int getweight() {
         return weight;
     }
-    public void setWeight(float peso) {
+    public void setWeight(int peso) {
         weight = peso;
     }
     //CranealPerimeter
-    public float getCranialPerimeter() {
+    public int getCranialPerimeter() {
         return cranialPerimeter;
     }
-    public void setCranialPerimeter(float perimetroCraneal) {
+    public void setCranialPerimeter(int perimetroCraneal) {
         cranialPerimeter = perimetroCraneal;
     }
     
@@ -49,7 +49,7 @@ public class Growth implements Serializable{
         cranialPerimeter = 0;       
     }
     //Parametered
-    public Growth(LocalDate fecha, float altura, float peso, float perimetroCraneal) {
+    public Growth(LocalDate fecha, int altura, int peso, int perimetroCraneal) {
         date = fecha;
         height = altura;
         weight = peso;

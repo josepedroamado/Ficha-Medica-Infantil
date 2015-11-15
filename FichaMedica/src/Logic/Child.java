@@ -78,14 +78,14 @@ public class Child implements Serializable{
     }
     
     //Agregar Crecimiento
-    public void addGrowth(LocalDate fecha, float altura, float peso, float perimetroCraneal){
+    public void addGrowth(LocalDate fecha, int altura, int peso, int perimetroCraneal){
         if (this.addGrowthCheck(fecha, altura, peso, perimetroCraneal)) {
             Growth crecimiento = new Growth(fecha, altura, peso, perimetroCraneal);
             listGrowth.add(crecimiento);
         }
     }
     //Agregar Crecimiento - Check de datos correctos
-    public boolean addGrowthCheck(LocalDate fecha, float altura, float peso, float perimetroCraneal){
+    public boolean addGrowthCheck(LocalDate fecha, int altura, int peso, int perimetroCraneal){
         boolean correct = false; 
         if (altura < 0 && peso < 0 && perimetroCraneal < 0) {
             if (fecha != null) {

@@ -2,6 +2,7 @@ package GUI;
 import Logic.Appointment;
 import Logic.Child;
 import Logic.LogicSystem;
+import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -10,6 +11,20 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.xy.DefaultHighLowDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 public class vPrincipal extends javax.swing.JFrame {
 
     LogicSystem sistema;
@@ -19,6 +34,7 @@ public class vPrincipal extends javax.swing.JFrame {
     Child selectedChild = null;
     ArrayList<Appointment> consultasAnteriores = new ArrayList <Appointment>();
     ArrayList<Appointment> consultasProximas = new ArrayList <Appointment>();
+    
     public vPrincipal(LogicSystem s) {
         sistema = s;
         initComponents();   
@@ -37,6 +53,8 @@ public class vPrincipal extends javax.swing.JFrame {
         jLabelErrPermie.setVisible(false);     
         textErrorFechaAgregarConsulta.setVisible(false);
         textErrorNoChild.setVisible(false);
+        
+        updateChart();
     }
 
     /**
@@ -93,9 +111,6 @@ public class vPrincipal extends javax.swing.JFrame {
         textErrorFechaAgregarConsulta = new javax.swing.JLabel();
         textErrorNoChild = new javax.swing.JLabel();
         tabCrecimiento = new javax.swing.JPanel();
-        jPanelGraf1 = new javax.swing.JPanel();
-        jPanelGraf2 = new javax.swing.JPanel();
-        jPanelGraf3 = new javax.swing.JPanel();
         jTextFieldPeso = new javax.swing.JTextField();
         textErrorFechaAgregarCrecimiento = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -111,6 +126,9 @@ public class vPrincipal extends javax.swing.JFrame {
         jTextFieldAltura = new javax.swing.JTextField();
         jLabelErrPermie = new javax.swing.JLabel();
         jLabelErrPeso = new javax.swing.JLabel();
+        graficaPerCran = new javax.swing.JLabel();
+        graficaPeso = new javax.swing.JLabel();
+        graficaEstatura = new javax.swing.JLabel();
         tabVacunas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,14 +218,14 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textNombreAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                .addComponent(textNombreAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(datePickerFechaNacimientoAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(buttonAceptarAgregarHijo))
                         .addGap(18, 18, 18)
                         .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textErrorNombreAgregarHijo)
                             .addComponent(textErrorFechaNacimientoAgregarHijo))))
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         tabHijosLayout.setVerticalGroup(
             tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +254,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarHijo)
                     .addComponent(buttonAceptarAgregarHijo))
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Hijos", tabHijos);
@@ -376,7 +394,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -446,7 +464,7 @@ public class vPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(checkBoxRealizadaConsultasAnteriores))
                             .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(tituloAgregarConsulta)
                 .addGap(18, 18, 18)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -468,49 +486,10 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarConsulta)
                     .addComponent(buttonAceptarAgregarConsulta))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Agenda", tabAgenda);
-
-        jPanelGraf1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanelGraf1Layout = new javax.swing.GroupLayout(jPanelGraf1);
-        jPanelGraf1.setLayout(jPanelGraf1Layout);
-        jPanelGraf1Layout.setHorizontalGroup(
-            jPanelGraf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanelGraf1Layout.setVerticalGroup(
-            jPanelGraf1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
-        );
-
-        jPanelGraf2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanelGraf2Layout = new javax.swing.GroupLayout(jPanelGraf2);
-        jPanelGraf2.setLayout(jPanelGraf2Layout);
-        jPanelGraf2Layout.setHorizontalGroup(
-            jPanelGraf2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
-        );
-        jPanelGraf2Layout.setVerticalGroup(
-            jPanelGraf2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanelGraf3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanelGraf3Layout = new javax.swing.GroupLayout(jPanelGraf3);
-        jPanelGraf3.setLayout(jPanelGraf3Layout);
-        jPanelGraf3Layout.setHorizontalGroup(
-            jPanelGraf3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
-        );
-        jPanelGraf3Layout.setVerticalGroup(
-            jPanelGraf3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 289, Short.MAX_VALUE)
-        );
 
         jTextFieldPeso.setMaximumSize(new java.awt.Dimension(6, 20));
 
@@ -563,68 +542,89 @@ public class vPrincipal extends javax.swing.JFrame {
 
         jLabelErrPeso.setText("Ingrese un peso");
 
+        graficaPerCran.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        graficaPerCran.setMaximumSize(new java.awt.Dimension(353, 251));
+        graficaPerCran.setMinimumSize(new java.awt.Dimension(353, 251));
+        graficaPerCran.setPreferredSize(new java.awt.Dimension(353, 251));
+        graficaPerCran.setSize(new java.awt.Dimension(353, 251));
+
+        graficaPeso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        graficaPeso.setMaximumSize(new java.awt.Dimension(353, 251));
+        graficaPeso.setMinimumSize(new java.awt.Dimension(353, 251));
+        graficaPeso.setPreferredSize(new java.awt.Dimension(353, 251));
+        graficaPeso.setSize(new java.awt.Dimension(353, 251));
+
+        graficaEstatura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        graficaEstatura.setMaximumSize(new java.awt.Dimension(353, 251));
+        graficaEstatura.setMinimumSize(new java.awt.Dimension(353, 251));
+        graficaEstatura.setPreferredSize(new java.awt.Dimension(353, 251));
+        graficaEstatura.setSize(new java.awt.Dimension(353, 251));
+
         javax.swing.GroupLayout tabCrecimientoLayout = new javax.swing.GroupLayout(tabCrecimiento);
         tabCrecimiento.setLayout(tabCrecimientoLayout);
         tabCrecimientoLayout.setHorizontalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(403, 403, 403)
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelGraf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(14, 14, 14)
-                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelGraf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(16, 16, 16)
+                            .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
+                        .addComponent(labelFechaAgregarCrecimiento)
+                        .addGap(91, 91, 91)
+                        .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textErrorFechaAgregarCrecimiento)
+                    .addComponent(jLabelErrPermie)
+                    .addComponent(jLabelErrAlt)
+                    .addComponent(jLabelErrPeso)))
+            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addGap(478, 478, 478)
                         .addComponent(jButtonCanelarRegistroCrecimiento)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonAceptIngresoDeCrecimiento))
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(labelFechaAgregarCrecimiento))
-                        .addGap(82, 82, 82)
-                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(jTextFieldPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                        .addGap(23, 23, 23)
+                            .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(graficaPerCran, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelErrPeso)
-                            .addComponent(jLabelErrPermie)
-                            .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(textErrorFechaAgregarCrecimiento)
-                                .addComponent(jLabelErrAlt))))
-                    .addComponent(jLabelTit))
-                .addContainerGap())
+                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabelTit))
+                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabCrecimientoLayout.setVerticalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelGraf1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelGraf2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(60, 60, 60)
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelGraf3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabelTit)
-                        .addGap(50, 50, 50)
-                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textErrorFechaAgregarCrecimiento)
-                            .addComponent(labelFechaAgregarCrecimiento))
                         .addGap(18, 18, 18)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelFechaAgregarCrecimiento)
+                            .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textErrorFechaAgregarCrecimiento))
+                        .addGap(18, 18, 18)
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
+                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelErrAlt))
                         .addGap(18, 18, 18)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -633,15 +633,19 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabelErrPeso))
                         .addGap(18, 18, 18)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
+                            .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelErrPermie))
-                        .addGap(18, 18, 18)
-                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAceptIngresoDeCrecimiento)
-                            .addComponent(jButtonCanelarRegistroCrecimiento))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE))
+                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(graficaPerCran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAceptIngresoDeCrecimiento)
+                    .addComponent(jButtonCanelarRegistroCrecimiento))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
@@ -650,11 +654,11 @@ public class vPrincipal extends javax.swing.JFrame {
         tabVacunas.setLayout(tabVacunasLayout);
         tabVacunasLayout.setHorizontalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
+            .addGap(0, 810, Short.MAX_VALUE)
         );
         tabVacunasLayout.setVerticalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGap(0, 616, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab("Vacunas", tabVacunas);
@@ -670,7 +674,7 @@ public class vPrincipal extends javax.swing.JFrame {
             .addComponent(tabbedPane)
         );
 
-        setBounds(0, 0, 819, 684);
+        setBounds(0, 0, 831, 684);
     }// </editor-fold>//GEN-END:initComponents
 
     private void datePickerFechaNacimientoAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePickerFechaNacimientoAgregarHijoActionPerformed
@@ -721,31 +725,6 @@ public class vPrincipal extends javax.swing.JFrame {
         this.cargarAppointmentDeHijo();
     }//GEN-LAST:event_comboBoxHijosActionPerformed
 
-    private void cargarHijoDelComboBox(){
-        for (int i = 0; i < sistema.getListAllChildren().size(); i++) {
-            Child h = sistema.getListAllChildren().get(i);
-            if (comboBoxHijos.getModel().getSelectedItem().equals(h)) {
-                selectedChild = h;
-                textFechaNacimiento.setText(""+selectedChild.getBirthDate());
-            }
-        } 
-    }
-    private void cargarAppointmentDeHijo(){
-        consultasProximas = new ArrayList<Appointment>();
-        consultasAnteriores = new ArrayList<Appointment>();
-        if (selectedChild != null) {
-            for (int i = 0; i < selectedChild.getListAppointments().size(); i++) {
-                if (selectedChild.getListAppointments().get(i).getAppointmentDate().isAfter(LocalDate.now())) {
-                    consultasProximas.add(selectedChild.getListAppointments().get(i));
-                }
-                else{
-                    consultasAnteriores.add(selectedChild.getListAppointments().get(i));
-                }
-            }
-            listaFechaConsultasAnteriores.setListData(consultasAnteriores.toArray());
-            listaFechaProximasConsultas.setListData(consultasProximas.toArray());
-        }
-    }
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try{
             FileOutputStream fileOut = new FileOutputStream("data.dat");
@@ -854,11 +833,10 @@ public class vPrincipal extends javax.swing.JFrame {
             jLabelErrPeso.setVisible(false);
             jLabelErrPermie.setVisible(true);
         }else{
-            try {
-                //Puede que el edad sea al pedo, por como ta compuesto el growth pero no se, lo dejo a tu criterio
-                float altura = Float.parseFloat(jTextFieldAltura.getText());
-                float peso = Float.parseFloat(jTextFieldPeso.getText());
-                float perimetro = Float.parseFloat(jTextFieldPerimetro.getText());
+            try {               
+                int altura = Integer.parseInt(jTextFieldAltura.getText());
+                int peso = Integer.parseInt(jTextFieldPeso.getText());
+                int perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
                 //*******************************************************
                 sistema.getListAllChildren().remove(selectedChild);
                 selectedChild.addGrowth(fechaNacimiento, altura, peso, perimetro);
@@ -868,13 +846,21 @@ public class vPrincipal extends javax.swing.JFrame {
                 jLabelErrAlt.setVisible(false);
                 jLabelErrPeso.setVisible(false);
                 jLabelErrPermie.setVisible(false);
+                //Clear input
+                datePickerAgregarCrecimiento.setDate(null);
+                jTextFieldAltura.setText("");
+                jTextFieldPeso.setText("");
+                jTextFieldPerimetro.setText("");
+                this.cargarHijoDelComboBox();
+                this.cargarAppointmentDeHijo();
+                updateChart();
             } catch (NumberFormatException e) {
                 
                 jLabelErrAlt.setVisible(true);
                 jLabelErrPeso.setVisible(true);
                 jLabelErrPermie.setVisible(true);
             }
-        }
+        }      
     }//GEN-LAST:event_jButtonAceptIngresoDeCrecimientoActionPerformed
 
     private void jTextFieldPerimetroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPerimetroActionPerformed
@@ -999,6 +985,79 @@ public class vPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkBoxRealizadaConsultasAnterioresActionPerformed
 
+    private void cargarHijoDelComboBox(){
+        for (int i = 0; i < sistema.getListAllChildren().size(); i++) {
+            Child h = sistema.getListAllChildren().get(i);
+            if (comboBoxHijos.getModel().getSelectedItem().equals(h)) {
+                selectedChild = h;
+                textFechaNacimiento.setText(""+selectedChild.getBirthDate());
+            }
+        } 
+    }
+    
+    private void cargarAppointmentDeHijo(){
+        consultasProximas = new ArrayList<Appointment>();
+        consultasAnteriores = new ArrayList<Appointment>();
+        if (selectedChild != null) {
+            for (int i = 0; i < selectedChild.getListAppointments().size(); i++) {
+                if (selectedChild.getListAppointments().get(i).getAppointmentDate().isAfter(LocalDate.now())) {
+                    consultasProximas.add(selectedChild.getListAppointments().get(i));
+                }
+                else{
+                    consultasAnteriores.add(selectedChild.getListAppointments().get(i));
+                }
+            }
+            listaFechaConsultasAnteriores.setListData(consultasAnteriores.toArray());
+            listaFechaProximasConsultas.setListData(consultasProximas.toArray());
+        }
+    } 
+    
+    private void updateChart() {
+        //Estatura
+        XYDataset datasetEstatura = createXYdataset();
+        JFreeChart chartEstatura = createChart("Estatura", "Edad (en meses cumplidos)", "Estatura (cm)", datasetEstatura);
+        BufferedImage imageEstatura = chartEstatura.createBufferedImage(353, 251);
+        graficaEstatura.setIcon(new ImageIcon(imageEstatura));  
+    }
+    
+    private XYDataset createXYdataset() {
+        XYSeries series = new XYSeries("");
+        System.out.println(selectedChild.getName());
+        if (selectedChild != null) {
+            System.out.println(selectedChild.getListGrowth().size());
+            for (int i = 0; i < selectedChild.getListGrowth().size(); i++) {
+                int ageInMonths = (selectedChild.getBirthDate().getYear() * 12) + selectedChild.getBirthDate().getMonthValue();
+                System.out.println("AgeInMonths = "+ageInMonths);
+                int dateInMonths = (selectedChild.getListGrowth().get(i).getDate().getYear() * 12) + selectedChild.getListGrowth().get(i).getDate().getMonthValue();
+                System.out.println("DateInMonths = "+dateInMonths);
+                System.out.println("Altura = "+selectedChild.getListGrowth().get(i).getHeight());
+                series.add((dateInMonths - ageInMonths), selectedChild.getListGrowth().get(i).getHeight());
+            }
+        }   
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+        return dataset;
+    }
+    
+    private JFreeChart createChart(String title, String xAxis, String yAxis, XYDataset dataset) {
+        JFreeChart chart = ChartFactory.createXYLineChart(
+            title,      // chart title
+            xAxis,                      // x axis label
+            yAxis,                      // y axis label
+            dataset,                  // data
+            PlotOrientation.VERTICAL,
+            false,                     // include legend
+            true,                     // tooltips
+            false                     // urls
+        );
+        XYPlot plot = (XYPlot) chart.getPlot();
+        plot.setRangeGridlinesVisible(true);
+        plot.setBackgroundAlpha(0.5f);
+        plot.getDomainAxis().setRange(0, 60);
+        plot.getRangeAxis().setRange(45, 125);
+        return chart;
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAceptarAgregarConsulta;
     private javax.swing.JButton buttonAceptarAgregarHijo;
@@ -1011,6 +1070,9 @@ public class vPrincipal extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker datePickerAgregarConsulta;
     private org.jdesktop.swingx.JXDatePicker datePickerAgregarCrecimiento;
     private org.jdesktop.swingx.JXDatePicker datePickerFechaNacimientoAgregarHijo;
+    private javax.swing.JLabel graficaEstatura;
+    private javax.swing.JLabel graficaPerCran;
+    private javax.swing.JLabel graficaPeso;
     private javax.swing.JButton jButtonAceptIngresoDeCrecimiento;
     private javax.swing.JButton jButtonCanelarRegistroCrecimiento;
     private javax.swing.JLabel jLabel1;
@@ -1020,9 +1082,6 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelErrPermie;
     private javax.swing.JLabel jLabelErrPeso;
     private javax.swing.JLabel jLabelTit;
-    private javax.swing.JPanel jPanelGraf1;
-    private javax.swing.JPanel jPanelGraf2;
-    private javax.swing.JPanel jPanelGraf3;
     private javax.swing.JTextField jTextFieldAltura;
     private javax.swing.JTextField jTextFieldPerimetro;
     private javax.swing.JTextField jTextFieldPeso;
