@@ -4,101 +4,110 @@
  * and open the template in the editor.
  */
 package Logic;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Pepe
- */
 public class ChildTest {
    
     @Test
     public void testAddAppointment() {
+        //Inicializacion
         System.out.println("addAppointment");
-        String nota = "";
-        LocalDate fecha = null;
-        Child instance = new Child();
+        String nota = "La Nota";
+        LocalDate fecha = LocalDate.parse("2000-10-10");
+        Child instance = new Child("Juancito", LocalDate.parse("1990-10-10"));
+        //Manipulacion
         instance.addAppointment(nota, fecha);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Appointment ap = new Appointment(nota, fecha);
+        // Verificacion      
+        assertTrue(instance.getListAppointments().contains(ap));
     }
 
     @Test
     public void testAddAppointmentCheckCorrecto() {
-        System.out.println("addAppointmentCheck");
+        //Inicializacion
+        System.out.println("addAppointmentCheckCorrecto");
         String nota = "La Nota";
-        LocalDate fecha = LocalDate.now();
-        Child instance = new Child();
-        boolean expResult = false;
+        LocalDate fecha = LocalDate.parse("2000-10-10");
+        Child instance = new Child("Juancito", LocalDate.parse("1990-10-10"));
+        //Manipulacion
         boolean result = instance.addAppointmentCheck(nota, fecha);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Verificacion
+        assertTrue(result);
+    }
+    
+    @Test
+    public void testAddAppointmentCheckSinFecha() {
+        //Inicializacion
+        System.out.println("addAppointmentCheckSinFecha");
+        String nota = "La Nota";
+        LocalDate fecha = null;
+        Child instance = new Child("Juancito", LocalDate.parse("1990-10-10"));
+        //Manipulacion
+        boolean result = instance.addAppointmentCheck(nota, fecha);
+        //Verificacion
+        assertFalse(result);
     }
 
     @Test
     public void testAddGrowth() {
+        //Inicializacion
         System.out.println("addGrowth");
-        LocalDate fecha = null;
-        int altura = 0;
-        int peso = 0;
-        int perimetroCraneal = 0;
-        Child instance = new Child();
+        LocalDate fecha = LocalDate.parse("2000-10-10");
+        int altura = 90;
+        int peso = 12;
+        int perimetroCraneal = 45;
+        Child instance = new Child("Juancito", LocalDate.parse("1990-10-10"));
+        //Manipulacion
         instance.addGrowth(fecha, altura, peso, perimetroCraneal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Growth gr = new Growth(fecha, altura, peso, perimetroCraneal);
+        //Verificacion
+        assertTrue(instance.getListGrowth().contains(gr));
     }
 
     @Test
-    public void testAddGrowthCheck() {
-        System.out.println("addGrowthCheck");
-        LocalDate fecha = null;
-        int altura = 0;
-        int peso = 0;
-        int perimetroCraneal = 0;
-        Child instance = new Child();
-        boolean expResult = false;
+    public void testAddGrowthCheckCorrecto() {
+        //Inicializacion
+        System.out.println("addGrowthCheckCorrecto");
+        LocalDate fecha = LocalDate.parse("2000-10-10");
+        int altura = 90;
+        int peso = 12;
+        int perimetroCraneal = 45;
+        Child instance = new Child("Juancito", LocalDate.parse("1999-02-10"));
+        //Manipulacion
         boolean result = instance.addGrowthCheck(fecha, altura, peso, perimetroCraneal);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of toString method, of class Child.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Child instance = new Child();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of equals method, of class Child.
-     */
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object o = null;
-        Child instance = new Child();
-        boolean expResult = false;
-        boolean result = instance.equals(o);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //Verificacion
+        assertTrue(result);
     }
     
+    @Test
+    public void testAddGrowthCheckSinFecha() {
+        //Inicializacion
+        System.out.println("addGrowthCheckSinFecha");
+        LocalDate fecha = null;
+        int altura = 90;
+        int peso = 12;
+        int perimetroCraneal = 45;
+        Child instance = new Child("Juancito", LocalDate.parse("1999-02-10"));
+        //Manipulacion
+        boolean result = instance.addGrowthCheck(fecha, altura, peso, perimetroCraneal);
+        //Verificacion
+        assertFalse(result);
+    }
+    
+    @Test
+    public void testAddGrowthCheckMedidaIncorrecta() {
+        //Inicializacion
+        System.out.println("addGrowthCheckMedidaIncorrecta");
+        LocalDate fecha = LocalDate.parse("2000-10-10");
+        int altura = 0;
+        int peso = 12;
+        int perimetroCraneal = 45;
+        Child instance = new Child("Juancito", LocalDate.parse("1999-02-10"));
+        //Manipulacion
+        boolean result = instance.addGrowthCheck(fecha, altura, peso, perimetroCraneal);
+        //Verificacion
+        assertFalse(result);
+    }
 }

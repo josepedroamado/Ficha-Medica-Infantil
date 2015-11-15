@@ -26,7 +26,7 @@ public class Growth implements Serializable{
         height = altura;
     }
     //Weight
-    public int getweight() {
+    public int getWeight() {
         return weight;
     }
     public void setWeight(int peso) {
@@ -56,5 +56,19 @@ public class Growth implements Serializable{
         cranialPerimeter = perimetroCraneal;
     }
     
-    
+    @Override
+    public boolean equals(Object o){
+        boolean iguales = false;
+        if (this.getDate().equals(((Growth)o).getDate())) {
+            if (this.getCranialPerimeter()==((Growth)o).getCranialPerimeter()) {
+                if (this.getHeight()==((Growth)o).getHeight()) {
+                    if (this.getWeight()==((Growth)o).getWeight()) {
+                        iguales = true;
+                    }
+                }
+            }
+        }
+  
+        return iguales;
+    }
 }

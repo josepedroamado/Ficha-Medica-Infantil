@@ -12,16 +12,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.NumberTickUnit;
-import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.xy.DefaultHighLowDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -126,7 +120,7 @@ public class vPrincipal extends javax.swing.JFrame {
         jTextFieldAltura = new javax.swing.JTextField();
         jLabelErrPermie = new javax.swing.JLabel();
         jLabelErrPeso = new javax.swing.JLabel();
-        graficaPerCran = new javax.swing.JLabel();
+        graficaPerimetro = new javax.swing.JLabel();
         graficaPeso = new javax.swing.JLabel();
         graficaEstatura = new javax.swing.JLabel();
         tabVacunas = new javax.swing.JPanel();
@@ -225,7 +219,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGroup(tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textErrorNombreAgregarHijo)
                             .addComponent(textErrorFechaNacimientoAgregarHijo))))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(367, Short.MAX_VALUE))
         );
         tabHijosLayout.setVerticalGroup(
             tabHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +388,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -542,50 +536,25 @@ public class vPrincipal extends javax.swing.JFrame {
 
         jLabelErrPeso.setText("Ingrese un peso");
 
-        graficaPerCran.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        graficaPerCran.setMaximumSize(new java.awt.Dimension(353, 251));
-        graficaPerCran.setMinimumSize(new java.awt.Dimension(353, 251));
-        graficaPerCran.setPreferredSize(new java.awt.Dimension(353, 251));
-        graficaPerCran.setSize(new java.awt.Dimension(353, 251));
+        graficaPerimetro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        graficaPerimetro.setMaximumSize(new java.awt.Dimension(353, 251));
+        graficaPerimetro.setMinimumSize(new java.awt.Dimension(353, 251));
+        graficaPerimetro.setPreferredSize(new java.awt.Dimension(353, 251));
 
-        graficaPeso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        graficaPeso.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         graficaPeso.setMaximumSize(new java.awt.Dimension(353, 251));
         graficaPeso.setMinimumSize(new java.awt.Dimension(353, 251));
         graficaPeso.setPreferredSize(new java.awt.Dimension(353, 251));
-        graficaPeso.setSize(new java.awt.Dimension(353, 251));
 
-        graficaEstatura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        graficaEstatura.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         graficaEstatura.setMaximumSize(new java.awt.Dimension(353, 251));
         graficaEstatura.setMinimumSize(new java.awt.Dimension(353, 251));
         graficaEstatura.setPreferredSize(new java.awt.Dimension(353, 251));
-        graficaEstatura.setSize(new java.awt.Dimension(353, 251));
 
         javax.swing.GroupLayout tabCrecimientoLayout = new javax.swing.GroupLayout(tabCrecimiento);
         tabCrecimiento.setLayout(tabCrecimientoLayout);
         tabCrecimientoLayout.setHorizontalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                .addGap(403, 403, 403)
-                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(16, 16, 16)
-                            .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addComponent(labelFechaAgregarCrecimiento)
-                        .addGap(91, 91, 91)
-                        .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textErrorFechaAgregarCrecimiento)
-                    .addComponent(jLabelErrPermie)
-                    .addComponent(jLabelErrAlt)
-                    .addComponent(jLabelErrPeso)))
             .addGroup(tabCrecimientoLayout.createSequentialGroup()
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
@@ -595,17 +564,36 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonAceptIngresoDeCrecimiento))
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(graficaPerCran, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(graficaPerimetro, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                            .addComponent(graficaEstatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabelTit))
-                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTit)
+                                    .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addGap(16, 16, 16)
+                                                .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jTextFieldAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel1)
+                                        .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                                            .addComponent(labelFechaAgregarCrecimiento)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textErrorFechaAgregarCrecimiento)
+                                    .addComponent(jLabelErrPermie)
+                                    .addComponent(jLabelErrAlt)
+                                    .addComponent(jLabelErrPeso)))
+                            .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         tabCrecimientoLayout.setVerticalGroup(
             tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,9 +602,9 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
                         .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabelTit)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelFechaAgregarCrecimiento)
                             .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -636,16 +624,16 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jTextFieldPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelErrPermie))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE))
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(graficaPerCran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(graficaPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)))
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAceptIngresoDeCrecimiento)
                     .addComponent(jButtonCanelarRegistroCrecimiento))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
@@ -723,6 +711,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private void comboBoxHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHijosActionPerformed
         this.cargarHijoDelComboBox();
         this.cargarAppointmentDeHijo();
+        this.updateChart();
     }//GEN-LAST:event_comboBoxHijosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -833,27 +822,30 @@ public class vPrincipal extends javax.swing.JFrame {
             jLabelErrPeso.setVisible(false);
             jLabelErrPermie.setVisible(true);
         }else{
-            try {               
+            try {      
+                //Get data from form
                 int altura = Integer.parseInt(jTextFieldAltura.getText());
                 int peso = Integer.parseInt(jTextFieldPeso.getText());
                 int perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
-                //*******************************************************
-                sistema.getListAllChildren().remove(selectedChild);
-                selectedChild.addGrowth(fechaNacimiento, altura, peso, perimetro);
-                sistema.getListAllChildren().add(selectedChild);
-                //*******************************************************
-                textErrorFechaAgregarCrecimiento.setVisible(false);
-                jLabelErrAlt.setVisible(false);
-                jLabelErrPeso.setVisible(false);
-                jLabelErrPermie.setVisible(false);
-                //Clear input
-                datePickerAgregarCrecimiento.setDate(null);
-                jTextFieldAltura.setText("");
-                jTextFieldPeso.setText("");
-                jTextFieldPerimetro.setText("");
-                this.cargarHijoDelComboBox();
-                this.cargarAppointmentDeHijo();
-                updateChart();
+                //Evaluate data
+                if (altura > 0 && peso > 0 && perimetro > 0) {
+                    selectedChild.addGrowth(fechaCrecimiento, altura, peso, perimetro);
+                    //Warnings Reset
+                    textErrorFechaAgregarCrecimiento.setVisible(false);
+                    jLabelErrAlt.setVisible(false);
+                    jLabelErrPeso.setVisible(false);
+                    jLabelErrPermie.setVisible(false);
+                    //Clear input
+                    datePickerAgregarCrecimiento.setDate(null);
+                    jTextFieldAltura.setText("");
+                    jTextFieldPeso.setText("");
+                    jTextFieldPerimetro.setText("");
+                    //Actualizar Grafica
+                    updateChart();
+                }
+                jLabelErrAlt.setVisible(true);
+                jLabelErrPeso.setVisible(true);
+                jLabelErrPermie.setVisible(true);
             } catch (NumberFormatException e) {
                 
                 jLabelErrAlt.setVisible(true);
@@ -1014,24 +1006,57 @@ public class vPrincipal extends javax.swing.JFrame {
     
     private void updateChart() {
         //Estatura
-        XYDataset datasetEstatura = createXYdataset();
-        JFreeChart chartEstatura = createChart("Estatura", "Edad (en meses cumplidos)", "Estatura (cm)", datasetEstatura);
-        BufferedImage imageEstatura = chartEstatura.createBufferedImage(353, 251);
+        XYDataset datasetEstatura = createXYdatasetEstatura();       
+        JFreeChart chartEstatura = createChart("Estatura", "Edad (en meses cumplidos)", "Estatura(cm)", datasetEstatura);
+        BufferedImage imageEstatura = chartEstatura.createBufferedImage(364, 251);
         graficaEstatura.setIcon(new ImageIcon(imageEstatura));  
+        //Peso
+        XYDataset datasetPeso = createXYdatasetPeso();       
+        JFreeChart chartPeso = createChart("Peso", "Edad (en meses cumplidos)", "Peso(kg)", datasetPeso);
+        BufferedImage imagePeso = chartPeso.createBufferedImage(364, 251);
+        graficaPeso.setIcon(new ImageIcon(imagePeso)); 
+        //Perimetro Craneal
+        XYDataset datasetPerimetro = createXYdatasetPerimetro();       
+        JFreeChart chartPerimetro = createChart("Peso", "Edad (en meses cumplidos)", "Peso(kg)", datasetPerimetro);
+        BufferedImage imagePerimetro = chartPerimetro.createBufferedImage(364, 251);
+        graficaPerimetro.setIcon(new ImageIcon(imagePerimetro)); 
     }
     
-    private XYDataset createXYdataset() {
+    private XYDataset createXYdatasetEstatura() {
         XYSeries series = new XYSeries("");
-        System.out.println(selectedChild.getName());
         if (selectedChild != null) {
-            System.out.println(selectedChild.getListGrowth().size());
             for (int i = 0; i < selectedChild.getListGrowth().size(); i++) {
                 int ageInMonths = (selectedChild.getBirthDate().getYear() * 12) + selectedChild.getBirthDate().getMonthValue();
-                System.out.println("AgeInMonths = "+ageInMonths);
                 int dateInMonths = (selectedChild.getListGrowth().get(i).getDate().getYear() * 12) + selectedChild.getListGrowth().get(i).getDate().getMonthValue();
-                System.out.println("DateInMonths = "+dateInMonths);
-                System.out.println("Altura = "+selectedChild.getListGrowth().get(i).getHeight());
                 series.add((dateInMonths - ageInMonths), selectedChild.getListGrowth().get(i).getHeight());
+            }
+        }   
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+        return dataset;
+    }
+    
+       private XYDataset createXYdatasetPeso() {
+        XYSeries series = new XYSeries("");
+        if (selectedChild != null) {
+            for (int i = 0; i < selectedChild.getListGrowth().size(); i++) {
+                int ageInMonths = (selectedChild.getBirthDate().getYear() * 12) + selectedChild.getBirthDate().getMonthValue();
+                int dateInMonths = (selectedChild.getListGrowth().get(i).getDate().getYear() * 12) + selectedChild.getListGrowth().get(i).getDate().getMonthValue();
+                series.add((dateInMonths - ageInMonths), selectedChild.getListGrowth().get(i).getWeight());
+            }
+        }   
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        dataset.addSeries(series);
+        return dataset;
+    }
+       
+       private XYDataset createXYdatasetPerimetro() {
+        XYSeries series = new XYSeries("");
+        if (selectedChild != null) {
+            for (int i = 0; i < selectedChild.getListGrowth().size(); i++) {
+                int ageInMonths = (selectedChild.getBirthDate().getYear() * 12) + selectedChild.getBirthDate().getMonthValue();
+                int dateInMonths = (selectedChild.getListGrowth().get(i).getDate().getYear() * 12) + selectedChild.getListGrowth().get(i).getDate().getMonthValue();
+                series.add((dateInMonths - ageInMonths), selectedChild.getListGrowth().get(i).getCranialPerimeter());
             }
         }   
         XYSeriesCollection dataset = new XYSeriesCollection();
@@ -1071,7 +1096,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker datePickerAgregarCrecimiento;
     private org.jdesktop.swingx.JXDatePicker datePickerFechaNacimientoAgregarHijo;
     private javax.swing.JLabel graficaEstatura;
-    private javax.swing.JLabel graficaPerCran;
+    private javax.swing.JLabel graficaPerimetro;
     private javax.swing.JLabel graficaPeso;
     private javax.swing.JButton jButtonAceptIngresoDeCrecimiento;
     private javax.swing.JButton jButtonCanelarRegistroCrecimiento;

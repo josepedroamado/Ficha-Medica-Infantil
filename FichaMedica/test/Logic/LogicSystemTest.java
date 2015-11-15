@@ -1,7 +1,5 @@
 package Logic;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -11,30 +9,27 @@ public class LogicSystemTest {
     public void testIngresarHijo() {
         //Inicializacion
         System.out.println("ingresarHijo");
-        String name = "Gaston";
+        String name = "Juancito";
         LocalDate birthDate = LocalDate.parse("1990-10-10");
         LogicSystem instance = new LogicSystem();
         //Manipulacion
         instance.ingresarHijo(name, birthDate);
-        ArrayList listaVerificacion = new ArrayList <Child>();
-        Child h = new Child (name, birthDate);
-        listaVerificacion.add(h);
+        Child h = new Child(name, birthDate);
         // Verificacion
-        assertEquals(listaVerificacion.contains(h), instance.getListAllChildren().contains(h));
+        assertTrue(instance.getListAllChildren().contains(h));
     }
 
     @Test
     public void testIngresarHijoCheckCorrecto() {
         //Inicializacion
         System.out.println("ingresarHijoCheckCorrecto");
-        String name = "Gaston";
+        String name = "Juancito";
         LocalDate birthDate = LocalDate.parse("1990-10-10");
         LogicSystem instance = new LogicSystem();
-        boolean expResult = true;
         //Manipulacion
         boolean result = instance.ingresarHijoCheck(name, birthDate);
         //Verificacion
-        assertEquals(expResult, result);
+        assertTrue(result);
     }
     
     @Test
@@ -44,25 +39,23 @@ public class LogicSystemTest {
         String name = "";
         LocalDate birthDate = LocalDate.parse("1990-10-10");
         LogicSystem instance = new LogicSystem();
-        boolean expResult = false;
         //Manipulacion
         boolean result = instance.ingresarHijoCheck(name, birthDate);
         //Verificacion
-        assertEquals(expResult, result);
+        assertFalse(result);
     }
     
     @Test
     public void testIngresarHijoCheckSinFecha() {
         //Inicializacion
         System.out.println("ingresarHijoCheckSinFecha");
-        String name = "Gaston";
+        String name = "Juancito";
         LocalDate birthDate = null;
         LogicSystem instance = new LogicSystem();
-        boolean expResult = false;
         //Manipulacion
         boolean result = instance.ingresarHijoCheck(name, birthDate);
         //Verificacion
-        assertEquals(expResult, result);
+        assertFalse(result);
     }
     
     @Test
@@ -72,10 +65,9 @@ public class LogicSystemTest {
         String name = "";
         LocalDate birthDate = null;
         LogicSystem instance = new LogicSystem();
-        boolean expResult = false;
         //Manipulacion
         boolean result = instance.ingresarHijoCheck(name, birthDate);
         //Verificacion
-        assertEquals(expResult, result);
+        assertFalse(result);
     }
 }

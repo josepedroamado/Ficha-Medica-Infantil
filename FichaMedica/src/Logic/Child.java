@@ -87,11 +87,15 @@ public class Child implements Serializable{
     //Agregar Crecimiento - Check de datos correctos
     public boolean addGrowthCheck(LocalDate fecha, int altura, int peso, int perimetroCraneal){
         boolean correct = false; 
-        if (altura < 0 && peso < 0 && perimetroCraneal < 0) {
-            if (fecha != null) {
-                correct = true;              
-            }                 
-        }                  
+        if (altura > 0) {
+            if (peso > 0) {
+                if (perimetroCraneal > 0) {
+                    if (fecha != null) {
+                        correct = true;              
+                    }
+                }
+            }  
+        }
         return correct;
     }
     
