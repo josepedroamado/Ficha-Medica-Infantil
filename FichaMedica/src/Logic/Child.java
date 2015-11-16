@@ -1,4 +1,5 @@
 package Logic;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -53,9 +54,9 @@ public class Child implements Serializable{
     public Child(String aName, LocalDate birth) {
         name = aName;
         birthDate = birth;
-        listAppointments = new ArrayList <Appointment>();
-        listVaccines = new ArrayList <Vaccine>();
+        listAppointments = new ArrayList <Appointment>();     
         listGrowth = new ArrayList <Growth>();
+        listVaccines = new ArrayList <Vaccine>();
     }
     
      //Methods
@@ -87,14 +88,8 @@ public class Child implements Serializable{
     //Agregar Crecimiento - Check de datos correctos
     public boolean addGrowthCheck(LocalDate fecha, int altura, int peso, int perimetroCraneal){
         boolean correct = false; 
-        if (altura > 0) {
-            if (peso > 0) {
-                if (perimetroCraneal > 0) {
-                    if (fecha != null) {
-                        correct = true;              
-                    }
-                }
-            }  
+        if (altura > 0 && peso > 0 && perimetroCraneal > 0 && fecha != null) {
+            correct = true;  
         }
         return correct;
     }
@@ -102,6 +97,33 @@ public class Child implements Serializable{
     //Agregar Vacuna
     
     //Agregar Vacuna - Check de Vacuna
+    
+    
+    //Cargar Vacunas
+    public void cargarArchivo(String ruta){
+        try{
+            ArchivoLectura read = new ArchivoLectura(ruta);
+            while(read.hayMasLineas()){
+                String [] coord = read.linea().split("/");
+                String nombre = coord[0];
+                boolean obligatoria = false;
+                if (coord[1].equals("Si")) {
+                    obligatoria = true;
+                }
+                Vaccine v = new Vaccine (nombre, obligatoria, null, null);
+                if (this.getListVaccines().contains(v)) {
+                    int index = this.getListVaccines().indexOf(v);
+                    this.getListVaccines().get(index).setObligatoria(obligatoria);
+                }
+                else{
+                    this.getListVaccines().add(v);
+                }                    
+            }    
+            read.cerrar();      
+        }catch(FileNotFoundException e){
+            System.out.println("not found");
+        }
+    }
     
     @Override
     public String toString(){

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -28,6 +29,7 @@ public class vPrincipal extends javax.swing.JFrame {
     Child selectedChild = null;
     ArrayList<Appointment> consultasAnteriores = new ArrayList <Appointment>();
     ArrayList<Appointment> consultasProximas = new ArrayList <Appointment>();
+    DefaultTableModel modelVacunas;
     
     public vPrincipal(LogicSystem s) {
         sistema = s;
@@ -37,6 +39,9 @@ public class vPrincipal extends javax.swing.JFrame {
         this.cargarHijoDelComboBox();
         //Cargo Consultas Hijos
         this.cargarAppointmentDeHijo();
+        
+        //Setteo datos en tabla de vacunas
+       
         
         //Setteo los carteles de error para que no sean visibles
         textErrorNombreAgregarHijo.setVisible(false);
@@ -124,6 +129,8 @@ public class vPrincipal extends javax.swing.JFrame {
         graficaPeso = new javax.swing.JLabel();
         graficaEstatura = new javax.swing.JLabel();
         tabVacunas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha Medica");
@@ -638,15 +645,50 @@ public class vPrincipal extends javax.swing.JFrame {
 
         tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
 
+        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Vacuna", "Obligatoria", "Fecha Dada", "Fecha de Vencimiento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout tabVacunasLayout = new javax.swing.GroupLayout(tabVacunas);
         tabVacunas.setLayout(tabVacunasLayout);
         tabVacunasLayout.setHorizontalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 810, Short.MAX_VALUE)
+            .addGroup(tabVacunasLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         tabVacunasLayout.setVerticalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 616, Short.MAX_VALUE)
+            .addGroup(tabVacunasLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Vacunas", tabVacunas);
@@ -1107,6 +1149,8 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelErrPermie;
     private javax.swing.JLabel jLabelErrPeso;
     private javax.swing.JLabel jLabelTit;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldAltura;
     private javax.swing.JTextField jTextFieldPerimetro;
     private javax.swing.JTextField jTextFieldPeso;

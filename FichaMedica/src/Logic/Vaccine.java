@@ -7,16 +7,15 @@ public class Vaccine implements Serializable{
     //Attributes
     private String name;
     private boolean mandatory;
-    private boolean received;
     private LocalDate receivedDate;
     private LocalDate expirationDate;
     
     //Getters and Setters
     //Name
-    public String getNombre() {
+    public String getName() {
         return name;
     }
-    public void setNombre(String nombre) {
+    public void setName(String nombre) {
         name = nombre;
     }
     //Mandatory (Obligatoria)
@@ -25,13 +24,6 @@ public class Vaccine implements Serializable{
     }
     public void setObligatoria(boolean obligatoria) {
         mandatory = obligatoria;
-    }
-    //Received
-    public boolean getReceived() {
-        return received;
-    }
-    public void setReceived(boolean dada) {
-        received = dada;
     }
     //ReceivedDate
     public LocalDate getReceivedDate() {
@@ -53,18 +45,23 @@ public class Vaccine implements Serializable{
     public Vaccine(){
         name = "Sin Nombre";
         mandatory = false;
-        received = false;
         receivedDate = null;
         expirationDate = null;
     }
     //Parametered
-    public Vaccine(String nombre, boolean obligatoria, boolean dada, LocalDate fechaDada, LocalDate fechaVencimiento) {
+    public Vaccine(String nombre, boolean obligatoria, LocalDate fechaDada, LocalDate fechaVencimiento) {
         name = nombre;
         mandatory = obligatoria;
-        received = dada;
         receivedDate = fechaDada;
         expirationDate = fechaVencimiento;
     }
     
-    
+    @Override
+    public boolean equals(Object o){
+        boolean iguales = false;
+        if (this.getName().equals(((Vaccine)o).getName())) {
+            iguales = true;
+        }      
+        return iguales;
+    }
 }

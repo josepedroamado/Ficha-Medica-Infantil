@@ -44,12 +44,4 @@ public class LogicSystem implements Serializable{
         }  
         return hijoCorrecto;
     }
-    
-    public boolean validarNumeros(int variable, int minimo, int maximo){
-        boolean valido = false;
-        if (variable >= minimo && variable <= maximo) {
-            valido = true;
-        }
-        return valido;
-    }
 }
