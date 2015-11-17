@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -21,8 +23,8 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-public class vPrincipal extends javax.swing.JFrame {
 
+public class vPrincipal extends javax.swing.JFrame {
     LogicSystem sistema;
     LocalDate fechaNacimiento = null;
     LocalDate fechaCrecimiento = null;
@@ -41,10 +43,8 @@ public class vPrincipal extends javax.swing.JFrame {
         //Cargo los datos de los hijos en el ComboBox y muestro la fecha correspondiente
         comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
         this.cargarHijoDelComboBox();
-        //Cargo Consultas Hijos
-        this.cargarAppointmentDeHijo();      
-        //Cargo datos en la lista de vacunas
-        this.cargarVacunasHijo();
+        
+        //Notificaciones
         
         //Setteo los carteles de error para que no sean visibles
         textErrorNombreAgregarHijo.setVisible(false);
@@ -147,6 +147,8 @@ public class vPrincipal extends javax.swing.JFrame {
         datePickerAgregarVacunaFecha = new org.jdesktop.swingx.JXDatePicker();
         buttonCancelarAgregarVacuna = new javax.swing.JButton();
         buttonAceptarAgregarVacuna = new javax.swing.JButton();
+        buttonCargarVacunas = new javax.swing.JButton();
+        tituloCargarVacunas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ficha Medica");
@@ -403,55 +405,57 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabAgendaLayout.createSequentialGroup()
-                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelFechaProximasConsultas)
-                            .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNotaProximasConsultas)
-                            .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloConsultasAnteriores)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
                                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelFechaConsultasAnteriores)
-                                    .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
+                                    .addComponent(labelFechaProximasConsultas)
+                                    .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
                                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelNotaConsultasAnteriores)
-                                    .addComponent(paneNotaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(checkBoxRealizadaConsultasAnteriores))))
+                                    .addComponent(labelNotaProximasConsultas)
+                                    .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkBoxRealizadaProximasConsultas))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tituloConsultasAnteriores)
+                                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelFechaConsultasAnteriores)
+                                            .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labelNotaConsultasAnteriores)
+                                            .addComponent(paneNotaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(checkBoxRealizadaConsultasAnteriores)))))
+                            .addGroup(tabAgendaLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(textErrorFechaAgregarConsulta)
+                                .addGap(272, 272, 272)))
                         .addGap(53, 53, 53))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addComponent(tituloProximasConsultas)
                         .addContainerGap(693, Short.MAX_VALUE))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabAgendaLayout.createSequentialGroup()
-                                .addComponent(tituloAgregarConsulta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabAgendaLayout.createSequentialGroup()
-                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(tabAgendaLayout.createSequentialGroup()
-                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelFechaAgregarConsulta)
-                                            .addComponent(labelNotaAgregarConsulta))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(checkBoxRevisadoAgregarConsulta)
-                                            .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(tabAgendaLayout.createSequentialGroup()
-                                        .addComponent(buttonCancelarAgregarConsulta)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(buttonAceptarAgregarConsulta)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textErrorFechaAgregarConsulta)
-                                    .addComponent(textErrorNoChild))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(tituloAgregarConsulta)
+                            .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(tabAgendaLayout.createSequentialGroup()
+                                    .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelFechaAgregarConsulta)
+                                        .addComponent(labelNotaAgregarConsulta))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(checkBoxRevisadoAgregarConsulta)
+                                        .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(tabAgendaLayout.createSequentialGroup()
+                                            .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(textErrorNoChild))))
+                                .addGroup(tabAgendaLayout.createSequentialGroup()
+                                    .addComponent(buttonCancelarAgregarConsulta)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buttonAceptarAgregarConsulta))))
+                        .addGap(0, 336, Short.MAX_VALUE))))
         );
         tabAgendaLayout.setVerticalGroup(
             tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,6 +530,7 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabelTit.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabelTit.setText("Agregar Crecimiento:");
 
         jLabelErrAlt.setText("Ingrese una altura");
@@ -623,11 +628,13 @@ public class vPrincipal extends javax.swing.JFrame {
             .addGroup(tabCrecimientoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
                         .addComponent(jLabelTit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(31, 31, 31)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelFechaAgregarCrecimiento)
                             .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -651,15 +658,13 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonCanelarRegistroCrecimiento)
                             .addComponent(jButtonAceptIngresoDeCrecimiento)))
-                    .addGroup(tabCrecimientoLayout.createSequentialGroup()
-                        .addComponent(graficaEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(graficaPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(graficaPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(95, 95, 95))
         );
 
         tabbedPane.addTab("Crecimiento y Desarrollo", tabCrecimiento);
 
+        tituloVacunas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         tituloVacunas.setText("Vacunas");
 
         listaVacunas.setModel(new javax.swing.AbstractListModel() {
@@ -689,6 +694,7 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        tituloAgregarVacunaDada.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         tituloAgregarVacunaDada.setText("Agregar Vacuna Dada:");
 
         comboBoxVacunaDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -711,6 +717,16 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonCargarVacunas.setText("Examinar");
+        buttonCargarVacunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCargarVacunasActionPerformed(evt);
+            }
+        });
+
+        tituloCargarVacunas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        tituloCargarVacunas.setText("Cargar Archivo de Vacunas:");
+
         javax.swing.GroupLayout tabVacunasLayout = new javax.swing.GroupLayout(tabVacunas);
         tabVacunas.setLayout(tabVacunasLayout);
         tabVacunasLayout.setHorizontalGroup(
@@ -718,36 +734,44 @@ public class vPrincipal extends javax.swing.JFrame {
             .addGroup(tabVacunasLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloVacunas)
                     .addGroup(tabVacunasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloVacunas)
                             .addGroup(tabVacunasLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tituloVacunaDada)
-                                    .addComponent(tituloVacunaExpira))
-                                .addGap(37, 37, 37)
-                                .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textVacunaFechaDada, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(textVacunaFechaExpira)))
-                            .addComponent(checkBoxVacunaObligatoria)))
-                    .addComponent(tituloAgregarVacunaDada)
-                    .addGroup(tabVacunasLayout.createSequentialGroup()
-                        .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloAgregarVacuna)
-                            .addComponent(tituloFechaVacunaDada)
+                                    .addGroup(tabVacunasLayout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tituloVacunaDada)
+                                            .addComponent(tituloVacunaExpira))
+                                        .addGap(37, 37, 37)
+                                        .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(textVacunaFechaDada, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                            .addComponent(textVacunaFechaExpira)))
+                                    .addComponent(checkBoxVacunaObligatoria)))
                             .addGroup(tabVacunasLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(buttonCancelarAgregarVacuna)))
-                        .addGap(32, 32, 32)
-                        .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAceptarAgregarVacuna)
-                            .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(datePickerAgregarVacunaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboBoxVacunaDada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(366, Short.MAX_VALUE))
+                                .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tituloAgregarVacuna)
+                                    .addComponent(tituloFechaVacunaDada)
+                                    .addGroup(tabVacunasLayout.createSequentialGroup()
+                                        .addGap(24, 24, 24)
+                                        .addComponent(buttonCancelarAgregarVacuna)))
+                                .addGap(32, 32, 32)
+                                .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buttonAceptarAgregarVacuna)
+                                    .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(datePickerAgregarVacunaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(comboBoxVacunaDada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap(366, Short.MAX_VALUE))
+                    .addGroup(tabVacunasLayout.createSequentialGroup()
+                        .addComponent(tituloAgregarVacunaDada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                        .addComponent(tituloCargarVacunas)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCargarVacunas)
+                        .addGap(79, 79, 79))))
         );
         tabVacunasLayout.setVerticalGroup(
             tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -767,8 +791,11 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tituloVacunaExpira)
                             .addComponent(textVacunaFechaExpira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(67, 67, 67)
-                .addComponent(tituloAgregarVacunaDada)
+                .addGap(62, 62, 62)
+                .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloAgregarVacunaDada)
+                    .addComponent(tituloCargarVacunas)
+                    .addComponent(buttonCargarVacunas))
                 .addGap(18, 18, 18)
                 .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxVacunaDada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -781,7 +808,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptarAgregarVacuna)
                     .addComponent(buttonCancelarAgregarVacuna))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Vacunas", tabVacunas);
@@ -847,8 +874,6 @@ public class vPrincipal extends javax.swing.JFrame {
 
     private void comboBoxHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHijosActionPerformed
         this.cargarHijoDelComboBox();
-        this.cargarAppointmentDeHijo();
-        this.cargarVacunasHijo();
         this.updateChart();
     }//GEN-LAST:event_comboBoxHijosActionPerformed
 
@@ -1165,12 +1190,28 @@ public class vPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buttonAceptarAgregarVacunaActionPerformed
 
+    private void buttonCargarVacunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCargarVacunasActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de Texto", "txt");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(this);
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            selectedChild.cargarArchivo(chooser.getSelectedFile().getAbsolutePath());
+            this.cargarVacunasHijo();
+        }
+    }//GEN-LAST:event_buttonCargarVacunasActionPerformed
+
     private void cargarHijoDelComboBox(){
         for (int i = 0; i < sistema.getListAllChildren().size(); i++) {
             Child h = sistema.getListAllChildren().get(i);
             if (comboBoxHijos.getModel().getSelectedItem().equals(h)) {
                 selectedChild = h;
                 textFechaNacimiento.setText(""+selectedChild.getBirthDate());
+                this.cargarAppointmentDeHijo();
+                this.cargarVacunasHijo();
+                this.updateChart();
+                this.notificar();
             }
         } 
     }
@@ -1198,6 +1239,11 @@ public class vPrincipal extends javax.swing.JFrame {
             listaFechaProximasConsultas.setListData(consultasProximas.toArray());
         }
     } 
+    
+    private void notificar(){
+        vNotificaciones notification = new vNotificaciones(sistema, selectedChild);
+        notification.setVisible(true);
+    }
     
     private void updateChart() {
         //Estatura
@@ -1231,7 +1277,7 @@ public class vPrincipal extends javax.swing.JFrame {
         return dataset;
     }
     
-       private XYDataset createXYdatasetPeso() {
+    private XYDataset createXYdatasetPeso() {
         XYSeries series = new XYSeries("");
         if (selectedChild != null) {
             for (int i = 0; i < selectedChild.getListGrowth().size(); i++) {
@@ -1245,7 +1291,7 @@ public class vPrincipal extends javax.swing.JFrame {
         return dataset;
     }
        
-       private XYDataset createXYdatasetPerimetro() {
+    private XYDataset createXYdatasetPerimetro() {
         XYSeries series = new XYSeries("");
         if (selectedChild != null) {
             for (int i = 0; i < selectedChild.getListGrowth().size(); i++) {
@@ -1285,6 +1331,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelarAgregarConsulta;
     private javax.swing.JButton buttonCancelarAgregarHijo;
     private javax.swing.JButton buttonCancelarAgregarVacuna;
+    private javax.swing.JButton buttonCargarVacunas;
     private javax.swing.JCheckBox checkBoxRealizadaConsultasAnteriores;
     private javax.swing.JCheckBox checkBoxRealizadaProximasConsultas;
     private javax.swing.JCheckBox checkBoxRevisadoAgregarConsulta;
@@ -1351,6 +1398,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel tituloAgregarHijo;
     private javax.swing.JLabel tituloAgregarVacuna;
     private javax.swing.JLabel tituloAgregarVacunaDada;
+    private javax.swing.JLabel tituloCargarVacunas;
     private javax.swing.JLabel tituloConsultasAnteriores;
     private javax.swing.JLabel tituloFechaVacunaDada;
     private javax.swing.JLabel tituloHijosRegistrados;

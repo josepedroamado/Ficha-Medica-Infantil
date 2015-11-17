@@ -58,20 +58,28 @@ public class Child implements Serializable{
         listGrowth = new ArrayList <Growth>();
         int[] vencimientosBCG = {0};
         Vaccine bcg = new Vaccine ("BCG", true, vencimientosBCG, birthDate);
+        bcg.setReceivedDate(null);
         int[] vencimientosPentavalente = {2, 4, 6, 12};
         Vaccine pentavalente = new Vaccine ("Pentavalente", true, vencimientosPentavalente, birthDate);
+        pentavalente.setReceivedDate(null);
         int[] vencimientosTripleBacteriana = {60};
         Vaccine tripleBacteriana = new Vaccine ("Triple bacteriana", true, vencimientosTripleBacteriana, birthDate);
+        tripleBacteriana.setReceivedDate(null);
         int[] vencimientosHepatitisB = {144};
         Vaccine hepatitisB = new Vaccine ("Hepatitis B", true, vencimientosHepatitisB, birthDate);
+        hepatitisB.setReceivedDate(null);
         int[] vencimientosPolio = {2, 4, 6, 12};
         Vaccine polio = new Vaccine ("Polio", true, vencimientosPolio, birthDate);
+        polio.setReceivedDate(null);
         int[] vencimientosTripleViral = {12, 60};
         Vaccine tripleViral = new Vaccine ("Triple Viral", true, vencimientosTripleViral, birthDate);
+        tripleViral.setReceivedDate(null);
         int[] vencimientosVaricela = {12};
         Vaccine varicela = new Vaccine ("Varicela", true, vencimientosVaricela, birthDate);
+        varicela.setReceivedDate(null);
         int[] vencimientosDobleBacteriana = {144, 264};
         Vaccine dobleBacteriana = new Vaccine ("Doble Bacteriana", true, vencimientosDobleBacteriana, birthDate);
+        dobleBacteriana.setReceivedDate(null);
         listVaccines = new ArrayList <Vaccine>();
         listVaccines.add(bcg);
         listVaccines.add(pentavalente);
@@ -120,14 +128,13 @@ public class Child implements Serializable{
     
     //Agregar Vacuna
     public void addReceivedVaccine(Vaccine vacuna, LocalDate fechaDada){
-        if (vacuna.getReceivedDate() == null) {
-            this.getListVaccines().add(vacuna);
-        }
-        else{
-            int indexVacuna = this.getListVaccines().indexOf(vacuna);
-            this.getListVaccines().get(indexVacuna).setReceivedDate(fechaDada);
-            this.getListVaccines().get(indexVacuna).getExpirationMonths().remove(0);
-        }
+        int indexVacuna = this.getListVaccines().indexOf(vacuna);
+        this.getListVaccines().get(indexVacuna).setReceivedDate(fechaDada);
+        if (this.getListVaccines().get(indexVacuna).getExpirationMonths() != null) {
+            if (!this.getListVaccines().get(indexVacuna).getExpirationMonths().isEmpty()) {
+                this.getListVaccines().get(indexVacuna).getExpirationMonths().remove(0);
+            }          
+        }    
     }
     
     //Cargar Vacunas
@@ -135,13 +142,20 @@ public class Child implements Serializable{
         try{
             ArchivoLectura read = new ArchivoLectura(ruta);
             while(read.hayMasLineas()){
-                String [] coord = read.linea().split("/");
-                String nombre = coord[0];
+                String[] readLines = read.linea().split("/");
+                String nombre = readLines[0];
                 boolean obligatoria = false;
-                if (coord[1].equals("Si")) {
+                if (readLines[1].equals("Si")) {
                     obligatoria = true;
                 }
-                Vaccine v = new Vaccine (nombre, obligatoria, null, null);
+                int [] vencimientos = null;
+                if (readLines.length > 3) {
+                    String[] readNumbers = readLines[2].split(",");
+                    for (int i = 0; i < readNumbers.length-1; i++) {
+                        vencimientos[i] = Integer.parseInt(readNumbers[i]);
+                    }
+                }
+                Vaccine v = new Vaccine (nombre, obligatoria, vencimientos, null);
                 if (this.getListVaccines().contains(v)) {
                     int index = this.getListVaccines().indexOf(v);
                     this.getListVaccines().get(index).setObligatoria(obligatoria);

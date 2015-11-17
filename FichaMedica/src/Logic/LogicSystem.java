@@ -7,23 +7,17 @@ import java.util.ArrayList;
 public class LogicSystem implements Serializable{
     //Attributes
     private ArrayList<Child> listAllChildren;
-    private ArrayList<Vaccine> listAllVaccines;
 
     //Getters and Setters
     //ListAllChildren
     public ArrayList<Child> getListAllChildren() {
         return listAllChildren;
     }
-    //ListAllVaccines
-    public ArrayList<Vaccine> getListAllVaccines() {
-        return listAllVaccines;
-    }
 
     //Constructors
     //Empty
     public LogicSystem(){
         listAllChildren = new ArrayList <Child>();
-        listAllVaccines = new ArrayList <Vaccine>();
     }
     
     //Methods

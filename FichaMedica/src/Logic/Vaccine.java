@@ -53,21 +53,22 @@ public class Vaccine implements Serializable{
         mandatory = obligatoria;
         receivedDate = fechaDada;
         expirationMonths = new ArrayList<LocalDate>();
-        for (int i = 0; i < vencimientos.length-1; i++) {
-            int mesesProxDosis = vencimientos[i];
-            if (fechaDada != null) {
-                if (mesesProxDosis == 0) {
-                    expirationMonths.add(fechaDada);
-                    System.out.println("era 0");
-                }
-                else{
-                    LocalDate nextDosis = fechaDada.plus(Period.ofMonths(mesesProxDosis));
-                    expirationMonths.add(nextDosis);
-                }
-                
+        if (vencimientos != null) {
+            for (int i = 0; i < vencimientos.length-1; i++) {
+                int mesesProxDosis = vencimientos[i];
+                if (fechaDada != null) {
+                    if (mesesProxDosis == 0) {
+                        expirationMonths.add(fechaDada);
+                    }
+                    else{
+                        LocalDate nextDosis = fechaDada.plus(Period.ofMonths(mesesProxDosis));
+                        expirationMonths.add(nextDosis);
+                    }
+
+                }                              
             }
-                                
         }
+        
     }
     
        @Override

@@ -258,30 +258,39 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelFechaProximasConsultas" min="-2" max="-2" attributes="0"/>
-                                  <Component id="paneFechaProximasConsultas" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelNotaProximasConsultas" min="-2" max="-2" attributes="0"/>
-                                  <Component id="paneNotaProximasConsultas" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoxRealizadaProximasConsultas" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="50" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tituloConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelFechaConsultasAnteriores" min="-2" max="-2" attributes="0"/>
-                                          <Component id="paneFechaConsultasAnteriores" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <Component id="labelFechaProximasConsultas" min="-2" max="-2" attributes="0"/>
+                                          <Component id="paneFechaProximasConsultas" min="-2" pref="80" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="labelNotaConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="paneNotaConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="checkBoxRealizadaConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNotaProximasConsultas" min="-2" max="-2" attributes="0"/>
+                                          <Component id="paneNotaProximasConsultas" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxRealizadaProximasConsultas" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tituloConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labelFechaConsultasAnteriores" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="paneFechaConsultasAnteriores" min="-2" pref="80" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="labelNotaConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="paneNotaConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="checkBoxRealizadaConsultasAnteriores" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="textErrorFechaAgregarConsulta" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
@@ -292,38 +301,32 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="tituloAgregarConsulta" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="424" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="labelFechaAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="labelNotaAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="checkBoxRevisadoAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="datePickerAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="paneAgregarNota" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
-                                              </Group>
+                                  <Component id="tituloAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="labelFechaAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labelNotaAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="buttonCancelarAgregarConsulta" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="buttonAceptarAgregarConsulta" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="checkBoxRevisadoAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="datePickerAgregarConsulta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="paneAgregarNota" min="-2" pref="245" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="textErrorNoChild" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="textErrorFechaAgregarConsulta" min="-2" max="-2" attributes="0"/>
-                                          <Component id="textErrorNoChild" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="buttonCancelarAgregarConsulta" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="buttonAceptarAgregarConsulta" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="336" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -722,11 +725,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="graficaPeso" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="graficaEstatura" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
+                          <Component id="graficaPeso" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jLabelTit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="labelFechaAgregarCrecimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="datePickerAgregarCrecimiento" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -756,11 +762,7 @@
                                   <Component id="jButtonAceptIngresoDeCrecimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="graficaEstatura" min="-2" pref="251" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="graficaPerimetro" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="graficaPerimetro" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                   </Group>
@@ -800,6 +802,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTit">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="13" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agregar Crecimiento:"/>
               </Properties>
             </Component>
@@ -937,47 +942,58 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tituloVacunas" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="180" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tituloVacunaDada" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tituloVacunaExpira" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="textVacunaFechaDada" pref="110" max="32767" attributes="0"/>
-                                          <Component id="textVacunaFechaExpira" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="checkBoxVacunaObligatoria" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="tituloAgregarVacunaDada" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tituloAgregarVacuna" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tituloFechaVacunaDada" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tituloVacunas" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane1" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="tituloVacunaDada" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="tituloVacunaExpira" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="textVacunaFechaDada" pref="110" max="32767" attributes="0"/>
+                                                  <Component id="textVacunaFechaExpira" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="checkBoxVacunaObligatoria" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="buttonCancelarAgregarVacuna" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tituloAgregarVacuna" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tituloFechaVacunaDada" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                              <Component id="buttonCancelarAgregarVacuna" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="buttonAceptarAgregarVacuna" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="datePickerAgregarVacunaFecha" max="32767" attributes="0"/>
+                                              <Component id="comboBoxVacunaDada" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="buttonAceptarAgregarVacuna" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="datePickerAgregarVacunaFecha" max="32767" attributes="0"/>
-                                      <Component id="comboBoxVacunaDada" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace pref="366" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="tituloAgregarVacunaDada" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="224" max="32767" attributes="0"/>
+                              <Component id="tituloCargarVacunas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="buttonCargarVacunas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="366" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1003,8 +1019,12 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="tituloAgregarVacunaDada" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="tituloAgregarVacunaDada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tituloCargarVacunas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonCargarVacunas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="comboBoxVacunaDada" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1020,7 +1040,7 @@
                           <Component id="buttonAceptarAgregarVacuna" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonCancelarAgregarVacuna" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <EmptySpace pref="149" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1028,6 +1048,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="tituloVacunas">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="13" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vacunas"/>
               </Properties>
             </Component>
@@ -1086,6 +1109,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="tituloAgregarVacunaDada">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="13" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agregar Vacuna Dada:"/>
               </Properties>
             </Component>
@@ -1128,6 +1154,22 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAceptarAgregarVacunaActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonCargarVacunas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Examinar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCargarVacunasActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="tituloCargarVacunas">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Lucida Grande" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cargar Archivo de Vacunas:"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
