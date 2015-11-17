@@ -1,0 +1,4 @@
+Antigripal/No
+Anti-Hepatitis A/No
+Anti-Neumocococcica/No
+Anti-Meningococo/No

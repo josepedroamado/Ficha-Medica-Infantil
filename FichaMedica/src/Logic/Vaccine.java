@@ -1,6 +1,8 @@
 package Logic;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
 
 //Clase Vacuna, contienen todos los datos pertinentes a la misma
 public class Vaccine implements Serializable{
@@ -8,7 +10,7 @@ public class Vaccine implements Serializable{
     private String name;
     private boolean mandatory;
     private LocalDate receivedDate;
-    private LocalDate expirationDate;
+    private ArrayList<LocalDate> expirationMonths;
     
     //Getters and Setters
     //Name
@@ -32,29 +34,46 @@ public class Vaccine implements Serializable{
     public void setReceivedDate(LocalDate fechaDada) {
         receivedDate = fechaDada;
     }
-    //ExpirationDate
-    public LocalDate getExpirationDate() {
-        return expirationDate;
+    //Expiration Months
+    public ArrayList<LocalDate> getExpirationMonths(){
+        return expirationMonths;
     }
-    public void setExpirationDate(LocalDate fechaVencimiento) {
-        expirationDate = fechaVencimiento;
-    }
-
+  
     //Constructors
     //Empty
     public Vaccine(){
         name = "Sin Nombre";
         mandatory = false;
         receivedDate = null;
-        expirationDate = null;
+        expirationMonths = null;
     }
     //Parametered
-    public Vaccine(String nombre, boolean obligatoria, LocalDate fechaDada, LocalDate fechaVencimiento) {
+    public Vaccine(String nombre, boolean obligatoria, int[]vencimientos, LocalDate fechaDada) {
         name = nombre;
         mandatory = obligatoria;
         receivedDate = fechaDada;
-        expirationDate = fechaVencimiento;
+        expirationMonths = new ArrayList<LocalDate>();
+        for (int i = 0; i < vencimientos.length-1; i++) {
+            int mesesProxDosis = vencimientos[i];
+            if (fechaDada != null) {
+                if (mesesProxDosis == 0) {
+                    expirationMonths.add(fechaDada);
+                    System.out.println("era 0");
+                }
+                else{
+                    LocalDate nextDosis = fechaDada.plus(Period.ofMonths(mesesProxDosis));
+                    expirationMonths.add(nextDosis);
+                }
+                
+            }
+                                
+        }
     }
+    
+       @Override
+        public String toString(){
+            return ("" + this.getName());       
+        }
     
     @Override
     public boolean equals(Object o){

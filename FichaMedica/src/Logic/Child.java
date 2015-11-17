@@ -40,7 +40,7 @@ public class Child implements Serializable{
     public ArrayList<Growth> getListGrowth() {
         return listGrowth;
     } 
-    
+
     //Constructors
     //Empty
     public Child(){
@@ -56,7 +56,31 @@ public class Child implements Serializable{
         birthDate = birth;
         listAppointments = new ArrayList <Appointment>();     
         listGrowth = new ArrayList <Growth>();
+        int[] vencimientosBCG = {0};
+        Vaccine bcg = new Vaccine ("BCG", true, vencimientosBCG, birthDate);
+        int[] vencimientosPentavalente = {2, 4, 6, 12};
+        Vaccine pentavalente = new Vaccine ("Pentavalente", true, vencimientosPentavalente, birthDate);
+        int[] vencimientosTripleBacteriana = {60};
+        Vaccine tripleBacteriana = new Vaccine ("Triple bacteriana", true, vencimientosTripleBacteriana, birthDate);
+        int[] vencimientosHepatitisB = {144};
+        Vaccine hepatitisB = new Vaccine ("Hepatitis B", true, vencimientosHepatitisB, birthDate);
+        int[] vencimientosPolio = {2, 4, 6, 12};
+        Vaccine polio = new Vaccine ("Polio", true, vencimientosPolio, birthDate);
+        int[] vencimientosTripleViral = {12, 60};
+        Vaccine tripleViral = new Vaccine ("Triple Viral", true, vencimientosTripleViral, birthDate);
+        int[] vencimientosVaricela = {12};
+        Vaccine varicela = new Vaccine ("Varicela", true, vencimientosVaricela, birthDate);
+        int[] vencimientosDobleBacteriana = {144, 264};
+        Vaccine dobleBacteriana = new Vaccine ("Doble Bacteriana", true, vencimientosDobleBacteriana, birthDate);
         listVaccines = new ArrayList <Vaccine>();
+        listVaccines.add(bcg);
+        listVaccines.add(pentavalente);
+        listVaccines.add(tripleBacteriana);
+        listVaccines.add(hepatitisB);
+        listVaccines.add(polio);
+        listVaccines.add(tripleViral);
+        listVaccines.add(varicela);
+        listVaccines.add(dobleBacteriana);
     }
     
      //Methods
@@ -95,9 +119,16 @@ public class Child implements Serializable{
     }
     
     //Agregar Vacuna
-    
-    //Agregar Vacuna - Check de Vacuna
-    
+    public void addReceivedVaccine(Vaccine vacuna, LocalDate fechaDada){
+        if (vacuna.getReceivedDate() == null) {
+            this.getListVaccines().add(vacuna);
+        }
+        else{
+            int indexVacuna = this.getListVaccines().indexOf(vacuna);
+            this.getListVaccines().get(indexVacuna).setReceivedDate(fechaDada);
+            this.getListVaccines().get(indexVacuna).getExpirationMonths().remove(0);
+        }
+    }
     
     //Cargar Vacunas
     public void cargarArchivo(String ruta){
@@ -119,7 +150,7 @@ public class Child implements Serializable{
                     this.getListVaccines().add(v);
                 }                    
             }    
-            read.cerrar();      
+            read.cerrar();
         }catch(FileNotFoundException e){
             System.out.println("not found");
         }
@@ -129,6 +160,7 @@ public class Child implements Serializable{
     public String toString(){
         return ("" + this.getName());       
     }
+    
     @Override
     public boolean equals(Object o){
         boolean iguales = false;
