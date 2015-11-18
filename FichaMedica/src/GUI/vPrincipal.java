@@ -543,12 +543,12 @@ public class vPrincipal extends javax.swing.JFrame {
         tabAgenda.setBackground(new java.awt.Color(204, 102, 0));
         tabAgenda.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tituloProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        tituloProximasConsultas.setBackground(new java.awt.Color(204, 102, 0));
         tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         tituloProximasConsultas.setText("PROXIMAS CONSULTAS");
 
-        labelFechaProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        labelFechaProximasConsultas.setBackground(new java.awt.Color(204, 102, 0));
         labelFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         labelFechaProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaProximasConsultas.setText("Fecha:");
@@ -576,7 +576,7 @@ public class vPrincipal extends javax.swing.JFrame {
         labelNotaProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         labelNotaProximasConsultas.setText("Nota:");
 
-        checkBoxRealizadaProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        checkBoxRealizadaProximasConsultas.setBackground(new java.awt.Color(204, 102, 0));
         checkBoxRealizadaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         checkBoxRealizadaProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxRealizadaProximasConsultas.setText("Realizada");
@@ -592,12 +592,12 @@ public class vPrincipal extends javax.swing.JFrame {
         textNotaConsultasAnteriores.setRows(5);
         paneNotaConsultasAnteriores.setViewportView(textNotaConsultasAnteriores);
 
-        labelNotaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        labelNotaConsultasAnteriores.setBackground(new java.awt.Color(204, 102, 0));
         labelNotaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         labelNotaConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         labelNotaConsultasAnteriores.setText("Nota:");
 
-        checkBoxRealizadaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        checkBoxRealizadaConsultasAnteriores.setBackground(new java.awt.Color(204, 102, 0));
         checkBoxRealizadaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         checkBoxRealizadaConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxRealizadaConsultasAnteriores.setText("Realizada");
@@ -607,12 +607,12 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        tituloConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        tituloConsultasAnteriores.setBackground(new java.awt.Color(204, 102, 0));
         tituloConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         tituloConsultasAnteriores.setText("CONSULTAS ANTERIORES");
 
-        labelFechaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        labelFechaConsultasAnteriores.setBackground(new java.awt.Color(204, 102, 0));
         labelFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         labelFechaConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaConsultasAnteriores.setText("Fecha:");
@@ -630,17 +630,17 @@ public class vPrincipal extends javax.swing.JFrame {
         });
         paneFechaConsultasAnteriores.setViewportView(listaFechaConsultasAnteriores);
 
-        tituloAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        tituloAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         tituloAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         tituloAgregarConsulta.setText("AGREGAR CONSULTA");
 
-        labelFechaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        labelFechaAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         labelFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         labelFechaAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaAgregarConsulta.setText("Fecha:");
 
-        labelNotaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        labelNotaAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         labelNotaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         labelNotaAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         labelNotaAgregarConsulta.setText("Nota:");
@@ -658,7 +658,7 @@ public class vPrincipal extends javax.swing.JFrame {
         notaProximasConsultas.setRows(5);
         paneNotaProximasConsultas.setViewportView(notaProximasConsultas);
 
-        checkBoxRevisadoAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        checkBoxRevisadoAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         checkBoxRevisadoAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         checkBoxRevisadoAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxRevisadoAgregarConsulta.setText("He revisado que los datos fueran correctos.");
@@ -668,7 +668,7 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        buttonCancelarAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        buttonCancelarAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         buttonCancelarAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         buttonCancelarAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         buttonCancelarAgregarConsulta.setText("Cancelar");
@@ -682,7 +682,7 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        buttonAceptarAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        buttonAceptarAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         buttonAceptarAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         buttonAceptarAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         buttonAceptarAgregarConsulta.setText("Aceptar");
@@ -694,12 +694,12 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        textErrorFechaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        textErrorFechaAgregarConsulta.setBackground(new java.awt.Color(204, 102, 0));
         textErrorFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         textErrorFechaAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         textErrorFechaAgregarConsulta.setText("Ingrese Fecha de Consulta");
 
-        textErrorNoChild.setBackground(new java.awt.Color(102, 51, 0));
+        textErrorNoChild.setBackground(new java.awt.Color(204, 102, 0));
         textErrorNoChild.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         textErrorNoChild.setForeground(new java.awt.Color(255, 255, 255));
         textErrorNoChild.setText("Debe seleccionar un hijo");
@@ -1445,17 +1445,17 @@ public class vPrincipal extends javax.swing.JFrame {
     private void updateChart() {
         //Estatura
         XYDataset datasetEstatura = createXYdatasetEstatura();
-        JFreeChart chartEstatura = createChart("Estatura", "Edad (en meses cumplidos)", "Estatura(cm)", datasetEstatura, 45, 125);
+        JFreeChart chartEstatura = createChart("ESTATURA", "Edad (en meses cumplidos)", "Estatura(cm)", datasetEstatura, 45, 125);
         BufferedImage imageEstatura = chartEstatura.createBufferedImage(364, 251);
         graficaEstatura.setIcon(new ImageIcon(imageEstatura));  
         //Peso
         XYDataset datasetPeso = createXYdatasetPeso();       
-        JFreeChart chartPeso = createChart("Peso", "Edad (en meses cumplidos)", "Peso(kg)", datasetPeso, 0, 27);
+        JFreeChart chartPeso = createChart("PESO", "Edad (en meses cumplidos)", "Peso(kg)", datasetPeso, 0, 27);
         BufferedImage imagePeso = chartPeso.createBufferedImage(364, 251);
         graficaPeso.setIcon(new ImageIcon(imagePeso)); 
         //Perimetro Craneal
         XYDataset datasetPerimetro = createXYdatasetPerimetro();       
-        JFreeChart chartPerimetro = createChart("Perimetro Craneal", "Edad (en meses cumplidos)", "Perimetro Craneal(cm)", datasetPerimetro, 32, 56);
+        JFreeChart chartPerimetro = createChart("PERIMETRO CRANEAL", "Edad (en meses cumplidos)", "Perimetro Craneal(cm)", datasetPerimetro, 32, 56);
         BufferedImage imagePerimetro = chartPerimetro.createBufferedImage(364, 251);
         graficaPerimetro.setIcon(new ImageIcon(imagePerimetro)); 
     }
