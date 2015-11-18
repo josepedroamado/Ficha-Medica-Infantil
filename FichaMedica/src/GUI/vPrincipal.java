@@ -1123,7 +1123,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 int peso = Integer.parseInt(jTextFieldPeso.getText());
                 int perimetro = Integer.parseInt(jTextFieldPerimetro.getText());
                 //Evaluate data
-                if (altura > 0 && peso > 0 && perimetro > 0) {
+                if (altura > 0 && peso > 0 && perimetro > 0 && fechaCrecimiento != null) {
                     selectedChild.addGrowth(fechaCrecimiento, altura, peso, perimetro);
                     //Warnings Reset
                     textErrorFechaAgregarCrecimiento.setVisible(false);
@@ -1138,11 +1138,7 @@ public class vPrincipal extends javax.swing.JFrame {
                     //Actualizar Grafica
                     updateChart();
                 }
-                jLabelErrAlt.setVisible(true);
-                jLabelErrPeso.setVisible(true);
-                jLabelErrPermie.setVisible(true);
             } catch (NumberFormatException e) {
-
                 jLabelErrAlt.setVisible(true);
                 jLabelErrPeso.setVisible(true);
                 jLabelErrPermie.setVisible(true);
