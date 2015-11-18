@@ -541,6 +541,7 @@ public class vPrincipal extends javax.swing.JFrame {
         tabbedPane.addTab("Hijos y Vacunas", tabHijosYVacunas);
 
         tabAgenda.setBackground(new java.awt.Color(204, 102, 0));
+        tabAgenda.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tituloProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
         tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -719,7 +720,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -734,7 +735,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGap(53, 53, 53))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addComponent(tituloProximasConsultas)
-                        .addContainerGap(656, Short.MAX_VALUE))
+                        .addContainerGap(647, Short.MAX_VALUE))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloAgregarConsulta)
@@ -758,7 +759,7 @@ public class vPrincipal extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(buttonAceptarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(checkBoxRevisadoAgregarConsulta)))))
-                        .addGap(0, 352, Short.MAX_VALUE))))
+                        .addGap(0, 341, Short.MAX_VALUE))))
         );
         tabAgendaLayout.setVerticalGroup(
             tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -819,6 +820,7 @@ public class vPrincipal extends javax.swing.JFrame {
         tabbedPane.addTab("Agenda", tabAgenda);
 
         tabCrecimiento.setBackground(new java.awt.Color(0, 102, 102));
+        tabCrecimiento.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jTextFieldPeso.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTextFieldPeso.setMaximumSize(new java.awt.Dimension(6, 20));
