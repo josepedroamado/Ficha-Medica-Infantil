@@ -161,12 +161,26 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        tabbedPane.setBackground(new java.awt.Color(0, 51, 102));
+        tabbedPane.setForeground(new java.awt.Color(255, 255, 255));
+        tabbedPane.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+
+        tabHijosYVacunas.setBackground(new java.awt.Color(204, 204, 204));
+
+        panelVacunas.setBackground(new java.awt.Color(0, 153, 51));
         panelVacunas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        tituloVacunaDada.setBackground(new java.awt.Color(0, 153, 51));
+        tituloVacunaDada.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloVacunaDada.setForeground(new java.awt.Color(255, 255, 255));
         tituloVacunaDada.setText("Dada:");
 
         textVacunaFechaExpira.setEditable(false);
+        textVacunaFechaExpira.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 
+        checkBoxVacunaObligatoria.setBackground(new java.awt.Color(0, 153, 51));
+        checkBoxVacunaObligatoria.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        checkBoxVacunaObligatoria.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxVacunaObligatoria.setText("Obligatoria");
         checkBoxVacunaObligatoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,13 +188,19 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        tituloVacunas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        tituloVacunas.setText("Vacunas");
+        tituloVacunas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloVacunas.setForeground(new java.awt.Color(255, 255, 255));
+        tituloVacunas.setText("VACUNAS");
 
         textVacunaFechaDada.setEditable(false);
+        textVacunaFechaDada.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 
+        tituloVacunaExpira.setBackground(new java.awt.Color(0, 153, 51));
+        tituloVacunaExpira.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloVacunaExpira.setForeground(new java.awt.Color(255, 255, 255));
         tituloVacunaExpira.setText("Expira:");
 
+        listaVacunas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         listaVacunas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -193,37 +213,68 @@ public class vPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaVacunas);
 
-        tituloCargarVacunas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        tituloCargarVacunas.setBackground(new java.awt.Color(0, 153, 51));
+        tituloCargarVacunas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloCargarVacunas.setForeground(new java.awt.Color(255, 255, 255));
         tituloCargarVacunas.setText("Cargar Archivo de Vacunas:");
 
+        buttonCargarVacunas.setBackground(new java.awt.Color(0, 153, 51));
+        buttonCargarVacunas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        buttonCargarVacunas.setForeground(new java.awt.Color(255, 255, 255));
         buttonCargarVacunas.setText("Examinar");
+        buttonCargarVacunas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        buttonCargarVacunas.setMaximumSize(new java.awt.Dimension(71, 23));
+        buttonCargarVacunas.setMinimumSize(new java.awt.Dimension(71, 23));
+        buttonCargarVacunas.setPreferredSize(new java.awt.Dimension(71, 23));
         buttonCargarVacunas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCargarVacunasActionPerformed(evt);
             }
         });
 
+        comboBoxVacunaDada.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         comboBoxVacunaDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        buttonAceptarAgregarVacuna.setBackground(new java.awt.Color(0, 153, 51));
+        buttonAceptarAgregarVacuna.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        buttonAceptarAgregarVacuna.setForeground(new java.awt.Color(255, 255, 255));
         buttonAceptarAgregarVacuna.setText("Aceptar");
+        buttonAceptarAgregarVacuna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         buttonAceptarAgregarVacuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAceptarAgregarVacunaActionPerformed(evt);
             }
         });
 
-        tituloAgregarVacunaDada.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        tituloAgregarVacunaDada.setBackground(new java.awt.Color(0, 153, 51));
+        tituloAgregarVacunaDada.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloAgregarVacunaDada.setForeground(new java.awt.Color(255, 255, 255));
         tituloAgregarVacunaDada.setText("Agregar Vacuna Dada:");
 
+        buttonCancelarAgregarVacuna.setBackground(new java.awt.Color(0, 153, 51));
+        buttonCancelarAgregarVacuna.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        buttonCancelarAgregarVacuna.setForeground(new java.awt.Color(255, 255, 255));
         buttonCancelarAgregarVacuna.setText("Cancelar");
+        buttonCancelarAgregarVacuna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        buttonCancelarAgregarVacuna.setMaximumSize(new java.awt.Dimension(71, 23));
+        buttonCancelarAgregarVacuna.setMinimumSize(new java.awt.Dimension(71, 23));
+        buttonCancelarAgregarVacuna.setPreferredSize(new java.awt.Dimension(71, 23));
         buttonCancelarAgregarVacuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelarAgregarVacunaActionPerformed(evt);
             }
         });
 
+        tituloFechaVacunaDada.setBackground(new java.awt.Color(0, 153, 51));
+        tituloFechaVacunaDada.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloFechaVacunaDada.setForeground(new java.awt.Color(255, 255, 255));
         tituloFechaVacunaDada.setText("Fecha Dada:");
 
+        datePickerAgregarVacunaFecha.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+
+        tituloAgregarVacuna.setBackground(new java.awt.Color(0, 153, 51));
+        tituloAgregarVacuna.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloAgregarVacuna.setForeground(new java.awt.Color(255, 255, 255));
         tituloAgregarVacuna.setText("Vacuna:");
 
         javax.swing.GroupLayout panelVacunasLayout = new javax.swing.GroupLayout(panelVacunas);
@@ -251,22 +302,22 @@ public class vPrincipal extends javax.swing.JFrame {
                     .addGroup(panelVacunasLayout.createSequentialGroup()
                         .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloAgregarVacuna)
-                            .addComponent(tituloFechaVacunaDada)
-                            .addGroup(panelVacunasLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(buttonCancelarAgregarVacuna)))
-                        .addGap(32, 32, 32)
-                        .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAceptarAgregarVacuna)
-                            .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(datePickerAgregarVacunaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboBoxVacunaDada, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tituloFechaVacunaDada))
+                        .addGap(40, 40, 40)
+                        .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(datePickerAgregarVacunaFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxVacunaDada, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(tituloAgregarVacunaDada)
                     .addGroup(panelVacunasLayout.createSequentialGroup()
                         .addComponent(tituloCargarVacunas)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonCargarVacunas)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonCargarVacunas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVacunasLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(buttonCancelarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(buttonAceptarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         panelVacunasLayout.setVerticalGroup(
             panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,48 +349,73 @@ public class vPrincipal extends javax.swing.JFrame {
                     .addComponent(datePickerAgregarVacunaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAceptarAgregarVacuna)
-                    .addComponent(buttonCancelarAgregarVacuna))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                    .addComponent(buttonAceptarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCancelarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloCargarVacunas)
-                    .addComponent(buttonCargarVacunas))
+                    .addComponent(buttonCargarVacunas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78))
         );
 
+        panelHijos.setBackground(new java.awt.Color(0, 102, 204));
         panelHijos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        labelFechaNacimientoAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaNacimientoAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaNacimientoAgregarHijo.setText("Fecha de Nacimiento");
 
+        labelNombreAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNombreAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         labelNombreAgregarHijo.setText("Nombre:");
 
-        tituloHijosRegistrados.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        tituloHijosRegistrados.setText("Hijos Registrados");
+        tituloHijosRegistrados.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloHijosRegistrados.setForeground(new java.awt.Color(255, 255, 255));
+        tituloHijosRegistrados.setText("HIJOS REGISTRADOS");
 
+        textErrorNombreAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        textErrorNombreAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         textErrorNombreAgregarHijo.setText("Ingrese Nombre");
 
         labelNombre.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre:");
 
+        buttonCancelarAgregarHijo.setBackground(new java.awt.Color(0, 102, 204));
+        buttonCancelarAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        buttonCancelarAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         buttonCancelarAgregarHijo.setText("Cancelar");
+        buttonCancelarAgregarHijo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        buttonCancelarAgregarHijo.setMaximumSize(new java.awt.Dimension(71, 23));
+        buttonCancelarAgregarHijo.setMinimumSize(new java.awt.Dimension(71, 23));
+        buttonCancelarAgregarHijo.setPreferredSize(new java.awt.Dimension(71, 23));
         buttonCancelarAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelarAgregarHijoActionPerformed(evt);
             }
         });
 
-        tituloAgregarHijo.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloAgregarHijo.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         tituloAgregarHijo.setText("Agregar Hijo");
 
         textFechaNacimiento.setEditable(false);
         textFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        textFechaNacimiento.setToolTipText("");
 
+        textErrorFechaNacimientoAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        textErrorFechaNacimientoAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         textErrorFechaNacimientoAgregarHijo.setText("Ingrese Fecha de Nacimiento");
 
         labelFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaNacimiento.setText("Fecha de Nacimiento:");
 
+        buttonAceptarAgregarHijo.setBackground(new java.awt.Color(0, 102, 204));
+        buttonAceptarAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        buttonAceptarAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
         buttonAceptarAgregarHijo.setText("Aceptar");
+        buttonAceptarAgregarHijo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         buttonAceptarAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAceptarAgregarHijoActionPerformed(evt);
@@ -354,12 +430,14 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        datePickerFechaNacimientoAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         datePickerFechaNacimientoAgregarHijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 datePickerFechaNacimientoAgregarHijoActionPerformed(evt);
             }
         });
 
+        textNombreAgregarHijo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         textNombreAgregarHijo.setPreferredSize(new java.awt.Dimension(6, 22));
 
         javax.swing.GroupLayout panelHijosLayout = new javax.swing.GroupLayout(panelHijos);
@@ -367,45 +445,52 @@ public class vPrincipal extends javax.swing.JFrame {
         panelHijosLayout.setHorizontalGroup(
             panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHijosLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloAgregarHijo)
-                    .addComponent(tituloHijosRegistrados)
                     .addGroup(panelHijosLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelFechaNacimientoAgregarHijo)
-                            .addComponent(labelNombreAgregarHijo)
-                            .addComponent(buttonCancelarAgregarHijo))
-                        .addGap(26, 26, 26)
-                        .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textNombreAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(datePickerFechaNacimientoAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(buttonAceptarAgregarHijo)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHijosLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(textErrorNombreAgregarHijo)))
+                            .addComponent(tituloAgregarHijo)
+                            .addComponent(tituloHijosRegistrados)
                             .addGroup(panelHijosLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(textErrorFechaNacimientoAgregarHijo))))
-                    .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(panelHijosLayout.createSequentialGroup()
-                            .addComponent(labelNombre)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelHijosLayout.createSequentialGroup()
-                            .addComponent(labelFechaNacimiento)
-                            .addGap(18, 18, 18)
-                            .addComponent(textFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelFechaNacimientoAgregarHijo)
+                                    .addComponent(labelNombreAgregarHijo))
+                                .addGap(26, 26, 26)
+                                .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(textNombreAgregarHijo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(datePickerFechaNacimientoAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHijosLayout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(textErrorNombreAgregarHijo)))
+                                    .addGroup(panelHijosLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(textErrorFechaNacimientoAgregarHijo))))
+                            .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHijosLayout.createSequentialGroup()
+                                    .addComponent(labelFechaNacimiento)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(textFechaNacimiento))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHijosLayout.createSequentialGroup()
+                                    .addComponent(labelNombre)
+                                    .addGap(84, 84, 84)
+                                    .addComponent(comboBoxHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(panelHijosLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(buttonCancelarAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGap(6, 6, 6)
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonAceptarAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         panelHijosLayout.setVerticalGroup(
             panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHijosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(tituloHijosRegistrados)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombre)
                     .addComponent(comboBoxHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -427,11 +512,11 @@ public class vPrincipal extends javax.swing.JFrame {
                     .addComponent(datePickerFechaNacimientoAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textErrorFechaNacimientoAgregarHijo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCancelarAgregarHijo)
-                    .addComponent(buttonAceptarAgregarHijo))
-                .addGap(101, 101, 101))
+                    .addComponent(buttonCancelarAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAceptarAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(94, 94, 94))
         );
 
         javax.swing.GroupLayout tabHijosYVacunasLayout = new javax.swing.GroupLayout(tabHijosYVacunas);
@@ -449,17 +534,24 @@ public class vPrincipal extends javax.swing.JFrame {
             tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabHijosYVacunasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panelVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Hijos y Vacunas", tabHijosYVacunas);
 
-        tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tabAgenda.setBackground(new java.awt.Color(102, 51, 0));
+
+        tituloProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         tituloProximasConsultas.setText("Proximas Consultas");
 
-        labelFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        labelFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelFechaProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaProximasConsultas.setText("Fecha:");
 
         listaFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -476,14 +568,18 @@ public class vPrincipal extends javax.swing.JFrame {
         paneFechaProximasConsultas.setViewportView(listaFechaProximasConsultas);
 
         textAgregarNota.setColumns(20);
-        textAgregarNota.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        textAgregarNota.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         textAgregarNota.setRows(5);
         paneAgregarNota.setViewportView(textAgregarNota);
 
-        labelNotaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNotaProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        labelNotaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelNotaProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         labelNotaProximasConsultas.setText("Nota:");
 
-        checkBoxRealizadaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        checkBoxRealizadaProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
+        checkBoxRealizadaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        checkBoxRealizadaProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxRealizadaProximasConsultas.setText("Realizada");
         checkBoxRealizadaProximasConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -497,10 +593,14 @@ public class vPrincipal extends javax.swing.JFrame {
         textNotaConsultasAnteriores.setRows(5);
         paneNotaConsultasAnteriores.setViewportView(textNotaConsultasAnteriores);
 
-        labelNotaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNotaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        labelNotaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelNotaConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         labelNotaConsultasAnteriores.setText("Nota:");
 
-        checkBoxRealizadaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        checkBoxRealizadaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        checkBoxRealizadaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        checkBoxRealizadaConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxRealizadaConsultasAnteriores.setText("Realizada");
         checkBoxRealizadaConsultasAnteriores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,10 +608,14 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
-        tituloConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        tituloConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         tituloConsultasAnteriores.setText("Consultas Anteriores");
 
-        labelFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
+        labelFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelFechaConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaConsultasAnteriores.setText("Fecha:");
 
         listaFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -527,13 +631,19 @@ public class vPrincipal extends javax.swing.JFrame {
         });
         paneFechaConsultasAnteriores.setViewportView(listaFechaConsultasAnteriores);
 
-        tituloAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        tituloAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         tituloAgregarConsulta.setText("Agregar Consulta");
 
-        labelFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelFechaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        labelFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelFechaAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaAgregarConsulta.setText("Fecha:");
 
-        labelNotaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelNotaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        labelNotaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelNotaAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         labelNotaAgregarConsulta.setText("Nota:");
 
         datePickerAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -549,6 +659,9 @@ public class vPrincipal extends javax.swing.JFrame {
         notaProximasConsultas.setRows(5);
         paneNotaProximasConsultas.setViewportView(notaProximasConsultas);
 
+        checkBoxRevisadoAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        checkBoxRevisadoAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        checkBoxRevisadoAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         checkBoxRevisadoAgregarConsulta.setText("He revisado que los datos fueran correctos.");
         checkBoxRevisadoAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -556,14 +669,25 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonCancelarAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        buttonCancelarAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        buttonCancelarAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         buttonCancelarAgregarConsulta.setText("Cancelar");
+        buttonCancelarAgregarConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        buttonCancelarAgregarConsulta.setMaximumSize(new java.awt.Dimension(71, 23));
+        buttonCancelarAgregarConsulta.setMinimumSize(new java.awt.Dimension(71, 23));
+        buttonCancelarAgregarConsulta.setPreferredSize(new java.awt.Dimension(71, 23));
         buttonCancelarAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCancelarAgregarConsultaActionPerformed(evt);
             }
         });
 
+        buttonAceptarAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        buttonAceptarAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        buttonAceptarAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         buttonAceptarAgregarConsulta.setText("Aceptar");
+        buttonAceptarAgregarConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         buttonAceptarAgregarConsulta.setEnabled(false);
         buttonAceptarAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -571,8 +695,14 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        textErrorFechaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
+        textErrorFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        textErrorFechaAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         textErrorFechaAgregarConsulta.setText("Ingrese Fecha de Consulta");
 
+        textErrorNoChild.setBackground(new java.awt.Color(102, 51, 0));
+        textErrorNoChild.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        textErrorNoChild.setForeground(new java.awt.Color(255, 255, 255));
         textErrorNoChild.setText("Debe seleccionar un hijo");
 
         javax.swing.GroupLayout tabAgendaLayout = new javax.swing.GroupLayout(tabAgenda);
@@ -583,57 +713,54 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabAgendaLayout.createSequentialGroup()
-                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelFechaProximasConsultas)
+                            .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNotaProximasConsultas)
+                            .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxRealizadaProximasConsultas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
                                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelFechaProximasConsultas)
-                                    .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27)
+                                    .addComponent(labelFechaConsultasAnteriores)
+                                    .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
                                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelNotaProximasConsultas)
-                                    .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(checkBoxRealizadaProximasConsultas))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tituloConsultasAnteriores)
-                                    .addGroup(tabAgendaLayout.createSequentialGroup()
-                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelFechaConsultasAnteriores)
-                                            .addComponent(paneFechaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelNotaConsultasAnteriores)
-                                            .addComponent(paneNotaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(checkBoxRealizadaConsultasAnteriores)))))
-                            .addGroup(tabAgendaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(textErrorFechaAgregarConsulta)
-                                .addGap(272, 272, 272)))
+                                    .addComponent(labelNotaConsultasAnteriores)
+                                    .addComponent(paneNotaConsultasAnteriores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkBoxRealizadaConsultasAnteriores))))
                         .addGap(53, 53, 53))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addComponent(tituloProximasConsultas)
-                        .addContainerGap(696, Short.MAX_VALUE))
+                        .addContainerGap(681, Short.MAX_VALUE))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloAgregarConsulta)
-                            .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(tabAgendaLayout.createSequentialGroup()
-                                    .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelFechaAgregarConsulta)
-                                        .addComponent(labelNotaAgregarConsulta))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(checkBoxRevisadoAgregarConsulta)
-                                        .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(tabAgendaLayout.createSequentialGroup()
+                            .addGroup(tabAgendaLayout.createSequentialGroup()
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelFechaAgregarConsulta)
+                                    .addComponent(labelNotaAgregarConsulta))
+                                .addGap(18, 18, 18)
+                                .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(tabAgendaLayout.createSequentialGroup()
+                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(paneAgregarNota, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(textErrorNoChild))))
-                                .addGroup(tabAgendaLayout.createSequentialGroup()
-                                    .addComponent(buttonCancelarAgregarConsulta)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(buttonAceptarAgregarConsulta))))
-                        .addGap(0, 337, Short.MAX_VALUE))))
+                                            .addComponent(datePickerAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textErrorFechaAgregarConsulta)
+                                            .addComponent(textErrorNoChild)))
+                                    .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(tabAgendaLayout.createSequentialGroup()
+                                            .addComponent(buttonCancelarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(buttonAceptarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(checkBoxRevisadoAgregarConsulta)))))
+                        .addGap(0, 352, Short.MAX_VALUE))))
         );
         tabAgendaLayout.setVerticalGroup(
             tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -686,37 +813,68 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addComponent(checkBoxRevisadoAgregarConsulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonCancelarAgregarConsulta)
-                    .addComponent(buttonAceptarAgregarConsulta))
+                    .addComponent(buttonCancelarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonAceptarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Agenda", tabAgenda);
 
+        tabCrecimiento.setBackground(new java.awt.Color(0, 102, 102));
+
+        jTextFieldPeso.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTextFieldPeso.setMaximumSize(new java.awt.Dimension(6, 20));
 
+        textErrorFechaAgregarCrecimiento.setBackground(new java.awt.Color(0, 102, 102));
+        textErrorFechaAgregarCrecimiento.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        textErrorFechaAgregarCrecimiento.setForeground(new java.awt.Color(255, 255, 255));
         textErrorFechaAgregarCrecimiento.setText("Ingrese una fecha");
 
+        jLabel3.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Perimetro Craneal:");
 
+        jLabel1.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Altura:");
 
+        jButtonCanelarRegistroCrecimiento.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonCanelarRegistroCrecimiento.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jButtonCanelarRegistroCrecimiento.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCanelarRegistroCrecimiento.setText("Cancelar");
+        jButtonCanelarRegistroCrecimiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButtonCanelarRegistroCrecimiento.setMaximumSize(new java.awt.Dimension(71, 23));
+        jButtonCanelarRegistroCrecimiento.setMinimumSize(new java.awt.Dimension(71, 23));
+        jButtonCanelarRegistroCrecimiento.setPreferredSize(new java.awt.Dimension(71, 23));
         jButtonCanelarRegistroCrecimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCanelarRegistroCrecimientoActionPerformed(evt);
             }
         });
 
-        jLabelTit.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabelTit.setText("Agregar Crecimiento:");
+        jLabelTit.setBackground(new java.awt.Color(0, 102, 102));
+        jLabelTit.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabelTit.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTit.setText("AGREGAR CRECIMIENTO");
 
+        jLabelErrAlt.setBackground(new java.awt.Color(0, 102, 102));
+        jLabelErrAlt.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabelErrAlt.setForeground(new java.awt.Color(255, 255, 255));
         jLabelErrAlt.setText("Ingrese una altura");
 
+        labelFechaAgregarCrecimiento.setBackground(new java.awt.Color(0, 102, 102));
+        labelFechaAgregarCrecimiento.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        labelFechaAgregarCrecimiento.setForeground(new java.awt.Color(255, 255, 255));
         labelFechaAgregarCrecimiento.setText("Fecha:");
 
+        jLabel2.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Peso:");
 
+        jTextFieldPerimetro.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTextFieldPerimetro.setMaximumSize(new java.awt.Dimension(6, 20));
         jTextFieldPerimetro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -724,6 +882,7 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        datePickerAgregarCrecimiento.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         datePickerAgregarCrecimiento.setMaximumSize(new java.awt.Dimension(2, 20));
         datePickerAgregarCrecimiento.setMinimumSize(new java.awt.Dimension(2, 20));
         datePickerAgregarCrecimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -732,17 +891,28 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButtonAceptIngresoDeCrecimiento.setBackground(new java.awt.Color(0, 102, 102));
+        jButtonAceptIngresoDeCrecimiento.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jButtonAceptIngresoDeCrecimiento.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAceptIngresoDeCrecimiento.setText("Aceptar");
+        jButtonAceptIngresoDeCrecimiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jButtonAceptIngresoDeCrecimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptIngresoDeCrecimientoActionPerformed(evt);
             }
         });
 
+        jTextFieldAltura.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTextFieldAltura.setMaximumSize(new java.awt.Dimension(6, 20));
 
+        jLabelErrPermie.setBackground(new java.awt.Color(0, 102, 102));
+        jLabelErrPermie.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabelErrPermie.setForeground(new java.awt.Color(255, 255, 255));
         jLabelErrPermie.setText("Ingrese un perimetro craneal");
 
+        jLabelErrPeso.setBackground(new java.awt.Color(0, 102, 102));
+        jLabelErrPeso.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabelErrPeso.setForeground(new java.awt.Color(255, 255, 255));
         jLabelErrPeso.setText("Ingrese un peso");
 
         graficaPerimetro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -790,14 +960,14 @@ public class vPrincipal extends javax.swing.JFrame {
                                     .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(tabCrecimientoLayout.createSequentialGroup()
                                 .addGap(44, 44, 44)
-                                .addComponent(jButtonCanelarRegistroCrecimiento)))
+                                .addComponent(jButtonCanelarRegistroCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textErrorFechaAgregarCrecimiento)
                             .addComponent(jLabelErrPermie)
                             .addComponent(jLabelErrAlt)
                             .addComponent(jLabelErrPeso)
-                            .addComponent(jButtonAceptIngresoDeCrecimiento)))
+                            .addComponent(jButtonAceptIngresoDeCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(graficaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -811,8 +981,9 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabCrecimientoLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(jLabelTit)
-                        .addGap(31, 31, 31)
+                        .addGap(19, 19, 19)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelFechaAgregarCrecimiento)
                             .addComponent(datePickerAgregarCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -834,8 +1005,8 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabelErrPermie))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(tabCrecimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonCanelarRegistroCrecimiento)
-                            .addComponent(jButtonAceptIngresoDeCrecimiento)))
+                            .addComponent(jButtonCanelarRegistroCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAceptIngresoDeCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(graficaPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(95, 95, 95))
         );
