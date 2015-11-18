@@ -540,7 +540,7 @@ public class vPrincipal extends javax.swing.JFrame {
 
         tabbedPane.addTab("Hijos y Vacunas", tabHijosYVacunas);
 
-        tabAgenda.setBackground(new java.awt.Color(102, 51, 0));
+        tabAgenda.setBackground(new java.awt.Color(204, 102, 0));
 
         tituloProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
         tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
