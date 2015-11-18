@@ -33,27 +33,35 @@ public class vNotificaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tituloConsultas = new javax.swing.JLabel();
-        tituloVacunas = new javax.swing.JLabel();
+        panelNotificaciones = new javax.swing.JPanel();
+        buttonAceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaConsultas = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaVacunas = new javax.swing.JList();
-        buttonAceptar = new javax.swing.JButton();
-        tituloExpira = new javax.swing.JLabel();
+        tituloConsultas = new javax.swing.JLabel();
         textExpira = new javax.swing.JTextField();
+        tituloExpira = new javax.swing.JLabel();
+        tituloVacunas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Notificaciones");
         setAlwaysOnTop(true);
         setResizable(false);
 
-        tituloConsultas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        tituloConsultas.setText("Consultas");
+        panelNotificaciones.setBackground(new java.awt.Color(0, 153, 153));
 
-        tituloVacunas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        tituloVacunas.setText("Vacunas");
+        buttonAceptar.setBackground(new java.awt.Color(0, 102, 102));
+        buttonAceptar.setForeground(new java.awt.Color(255, 255, 255));
+        buttonAceptar.setText("Aceptar");
+        buttonAceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        buttonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAceptarActionPerformed(evt);
+            }
+        });
 
+        listaConsultas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         listaConsultas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -61,6 +69,7 @@ public class vNotificaciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaConsultas);
 
+        listaVacunas.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         listaVacunas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -73,64 +82,77 @@ public class vNotificaciones extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(listaVacunas);
 
-        buttonAceptar.setText("Aceptar");
-        buttonAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAceptarActionPerformed(evt);
-            }
-        });
+        tituloConsultas.setBackground(new java.awt.Color(0, 102, 102));
+        tituloConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloConsultas.setForeground(new java.awt.Color(255, 255, 255));
+        tituloConsultas.setText("CONSULTAS");
 
+        textExpira.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+
+        tituloExpira.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        tituloExpira.setForeground(new java.awt.Color(255, 255, 255));
         tituloExpira.setText("Expira:");
+
+        tituloVacunas.setBackground(new java.awt.Color(0, 102, 102));
+        tituloVacunas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        tituloVacunas.setForeground(new java.awt.Color(255, 255, 255));
+        tituloVacunas.setText("VACUNAS");
+
+        javax.swing.GroupLayout panelNotificacionesLayout = new javax.swing.GroupLayout(panelNotificaciones);
+        panelNotificaciones.setLayout(panelNotificacionesLayout);
+        panelNotificacionesLayout.setHorizontalGroup(
+            panelNotificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNotificacionesLayout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(buttonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNotificacionesLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelNotificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(panelNotificacionesLayout.createSequentialGroup()
+                        .addComponent(tituloExpira)
+                        .addGap(28, 28, 28)
+                        .addComponent(textExpira, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNotificacionesLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(tituloConsultas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tituloVacunas)
+                .addGap(64, 64, 64))
+        );
+        panelNotificacionesLayout.setVerticalGroup(
+            panelNotificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNotificacionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelNotificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloVacunas)
+                    .addComponent(tituloConsultas))
+                .addGap(0, 0, 0)
+                .addGroup(panelNotificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelNotificacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textExpira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tituloExpira))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(tituloConsultas)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(tituloExpira)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(textExpira, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tituloVacunas)
-                                .addGap(50, 50, 50))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(buttonAceptar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelNotificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloConsultas)
-                    .addComponent(tituloVacunas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloExpira)
-                    .addComponent(textExpira, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonAceptar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelNotificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -193,6 +215,7 @@ public class vNotificaciones extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList listaConsultas;
     private javax.swing.JList listaVacunas;
+    private javax.swing.JPanel panelNotificaciones;
     private javax.swing.JTextField textExpira;
     private javax.swing.JLabel tituloConsultas;
     private javax.swing.JLabel tituloExpira;

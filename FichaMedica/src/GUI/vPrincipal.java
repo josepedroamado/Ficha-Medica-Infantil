@@ -249,7 +249,7 @@ public class vPrincipal extends javax.swing.JFrame {
         tituloAgregarVacunaDada.setBackground(new java.awt.Color(0, 153, 51));
         tituloAgregarVacunaDada.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloAgregarVacunaDada.setForeground(new java.awt.Color(255, 255, 255));
-        tituloAgregarVacunaDada.setText("Agregar Vacuna Dada:");
+        tituloAgregarVacunaDada.setText("AGREGAR VACUNA DADA");
 
         buttonCancelarAgregarVacuna.setBackground(new java.awt.Color(0, 153, 51));
         buttonCancelarAgregarVacuna.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -397,7 +397,7 @@ public class vPrincipal extends javax.swing.JFrame {
 
         tituloAgregarHijo.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloAgregarHijo.setForeground(new java.awt.Color(255, 255, 255));
-        tituloAgregarHijo.setText("Agregar Hijo");
+        tituloAgregarHijo.setText("AGREGAR HIJO");
 
         textFechaNacimiento.setEditable(false);
         textFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -479,9 +479,7 @@ public class vPrincipal extends javax.swing.JFrame {
                     .addGroup(panelHijosLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(buttonCancelarAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addGap(6, 6, 6)
-                        .addGap(10, 10, 10)
+                        .addGap(42, 42, 42)
                         .addComponent(buttonAceptarAgregarHijo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -547,7 +545,7 @@ public class vPrincipal extends javax.swing.JFrame {
         tituloProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
         tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloProximasConsultas.setForeground(new java.awt.Color(255, 255, 255));
-        tituloProximasConsultas.setText("Proximas Consultas");
+        tituloProximasConsultas.setText("PROXIMAS CONSULTAS");
 
         labelFechaProximasConsultas.setBackground(new java.awt.Color(102, 51, 0));
         labelFechaProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -611,7 +609,7 @@ public class vPrincipal extends javax.swing.JFrame {
         tituloConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
         tituloConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloConsultasAnteriores.setForeground(new java.awt.Color(255, 255, 255));
-        tituloConsultasAnteriores.setText("Consultas Anteriores");
+        tituloConsultasAnteriores.setText("CONSULTAS ANTERIORES");
 
         labelFechaConsultasAnteriores.setBackground(new java.awt.Color(102, 51, 0));
         labelFechaConsultasAnteriores.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -634,7 +632,7 @@ public class vPrincipal extends javax.swing.JFrame {
         tituloAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
         tituloAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         tituloAgregarConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        tituloAgregarConsulta.setText("Agregar Consulta");
+        tituloAgregarConsulta.setText("AGREGAR CONSULTA");
 
         labelFechaAgregarConsulta.setBackground(new java.awt.Color(102, 51, 0));
         labelFechaAgregarConsulta.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
@@ -736,7 +734,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGap(53, 53, 53))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addComponent(tituloProximasConsultas)
-                        .addContainerGap(681, Short.MAX_VALUE))
+                        .addContainerGap(656, Short.MAX_VALUE))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloAgregarConsulta)
@@ -1809,9 +1807,131 @@ public class vPrincipal extends javax.swing.JFrame {
             }
         }   
         XYSeries high = new XYSeries("childWeightHigh");
-        
+        high.add(0,5);
+        high.add(1,7);
+        high.add(2,8);
+        high.add(3,9);
+        high.add(4,10);
+        high.add(5,10);
+        high.add(6,11);
+        high.add(7,11);
+        high.add(8,12);
+        high.add(9,12);
+        high.add(10,13);
+        high.add(11,13);
+        high.add(12,13);
+        high.add(13,14);
+        high.add(14,14);
+        high.add(15,14);
+        high.add(16,15);
+        high.add(17,15);
+        high.add(18,15);
+        high.add(19,16);
+        high.add(20,16);
+        high.add(21,16);
+        high.add(22,17);
+        high.add(23,17);
+        high.add(24,17);
+        high.add(25,18);
+        high.add(26,18);
+        high.add(27,18);
+        high.add(28,18);
+        high.add(29,19);
+        high.add(30,19);
+        high.add(31,19);
+        high.add(32,20);
+        high.add(33,20);
+        high.add(34,20);
+        high.add(35,20);
+        high.add(36,21);
+        high.add(37,21);
+        high.add(38,21);
+        high.add(39,22);
+        high.add(40,22);
+        high.add(41,22);
+        high.add(42,22);
+        high.add(43,23);
+        high.add(44,23);
+        high.add(45,23);
+        high.add(46,24);
+        high.add(47,24);
+        high.add(48,24);
+        high.add(49,25);
+        high.add(50,25);
+        high.add(51,25);
+        high.add(52,25);
+        high.add(53,26);
+        high.add(54,26);
+        high.add(55,26);
+        high.add(56,27);
+        high.add(57,27);
+        high.add(58,28);
+        high.add(59,28);
+        high.add(60,28);
+
         XYSeries midHigh = new XYSeries("childWeightMidHigh");
-        
+        midHigh.add(0,4);
+        midHigh.add(1,5);
+        midHigh.add(2,6);
+        midHigh.add(3,7);
+        midHigh.add(4,8);
+        midHigh.add(5,8);
+        midHigh.add(6,9);
+        midHigh.add(7,9);
+        midHigh.add(8,10);
+        midHigh.add(9,10);
+        midHigh.add(10,10);
+        midHigh.add(11,11);
+        midHigh.add(12,11);
+        midHigh.add(13,11);
+        midHigh.add(14,11);
+        midHigh.add(15,12);
+        midHigh.add(16,12);
+        midHigh.add(17,12);
+        midHigh.add(18,12);
+        midHigh.add(19,13);
+        midHigh.add(20,13);
+        midHigh.add(21,13);
+        midHigh.add(22,13);
+        midHigh.add(23,13);
+        midHigh.add(24,14);
+        midHigh.add(25,14);
+        midHigh.add(26,14);
+        midHigh.add(27,14);
+        midHigh.add(28,15);
+        midHigh.add(29,15);
+        midHigh.add(30,15);
+        midHigh.add(31,15);
+        midHigh.add(32,15);
+        midHigh.add(33,16);
+        midHigh.add(34,16);
+        midHigh.add(35,16);
+        midHigh.add(36,16);
+        midHigh.add(37,16);
+        midHigh.add(38,16);
+        midHigh.add(39,17);
+        midHigh.add(40,17);
+        midHigh.add(41,17);
+        midHigh.add(42,17);
+        midHigh.add(43,17);
+        midHigh.add(44,18);
+        midHigh.add(45,18);
+        midHigh.add(46,18);
+        midHigh.add(47,18);
+        midHigh.add(48,19);
+        midHigh.add(49,19);
+        midHigh.add(50,19);
+        midHigh.add(51,19);
+        midHigh.add(52,19);
+        midHigh.add(53,20);
+        midHigh.add(54,20);
+        midHigh.add(55,20);
+        midHigh.add(56,20);
+        midHigh.add(57,20);
+        midHigh.add(58,21);
+        midHigh.add(59,21);
+        midHigh.add(60,21);
+
         XYSeries median = new XYSeries("childWeightMedian");              
         median.add(0,3);
         median.add(1,5);
@@ -1876,9 +1996,131 @@ public class vPrincipal extends javax.swing.JFrame {
         median.add(60,18);
 
         XYSeries midLow = new XYSeries("childWeightMidLow");
-        
+        midLow.add(0,3);
+        midLow.add(1,4);
+        midLow.add(2,5);
+        midLow.add(3,6);
+        midLow.add(4,6);
+        midLow.add(5,7);
+        midLow.add(6,7);
+        midLow.add(7,7);
+        midLow.add(8,8);
+        midLow.add(9,8);
+        midLow.add(10,8);
+        midLow.add(11,8);
+        midLow.add(12,9);
+        midLow.add(13,9);
+        midLow.add(14,9);
+        midLow.add(15,9);
+        midLow.add(16,9);
+        midLow.add(17,10);
+        midLow.add(18,10);
+        midLow.add(19,10);
+        midLow.add(20,10);
+        midLow.add(21,10);
+        midLow.add(22,11);
+        midLow.add(23,11);
+        midLow.add(24,11);
+        midLow.add(25,11);
+        midLow.add(26,11);
+        midLow.add(27,11);
+        midLow.add(28,12);
+        midLow.add(29,12);
+        midLow.add(30,12);
+        midLow.add(31,12);
+        midLow.add(32,12);
+        midLow.add(33,12);
+        midLow.add(34,12);
+        midLow.add(35,13);
+        midLow.add(36,13);
+        midLow.add(37,13);
+        midLow.add(38,13);
+        midLow.add(39,13);
+        midLow.add(40,13);
+        midLow.add(41,13);
+        midLow.add(42,14);
+        midLow.add(43,14);
+        midLow.add(44,14);
+        midLow.add(45,14);
+        midLow.add(46,14);
+        midLow.add(47,14);
+        midLow.add(48,14);
+        midLow.add(49,15);
+        midLow.add(50,15);
+        midLow.add(51,15);
+        midLow.add(52,15);
+        midLow.add(53,15);
+        midLow.add(54,15);
+        midLow.add(55,15);
+        midLow.add(56,16);
+        midLow.add(57,16);
+        midLow.add(58,16);
+        midLow.add(59,16);
+        midLow.add(60,16);
+
         XYSeries low = new XYSeries("childWeightLow");
-        
+        low.add(0,2);
+        low.add(1,3);
+        low.add(2,4);
+        low.add(3,4);
+        low.add(4,5);
+        low.add(5,5);
+        low.add(6,6);
+        low.add(7,6);
+        low.add(8,6);
+        low.add(9,6);
+        low.add(10,7);
+        low.add(11,7);
+        low.add(12,7);
+        low.add(13,7);
+        low.add(14,7);
+        low.add(15,7);
+        low.add(16,8);
+        low.add(17,8);
+        low.add(18,8);
+        low.add(19,8);
+        low.add(20,8);
+        low.add(21,8);
+        low.add(22,8);
+        low.add(23,9);
+        low.add(24,9);
+        low.add(25,9);
+        low.add(26,9);
+        low.add(27,9);
+        low.add(28,9);
+        low.add(29,9);
+        low.add(30,9);
+        low.add(31,10);
+        low.add(32,10);
+        low.add(33,10);
+        low.add(34,10);
+        low.add(35,10);
+        low.add(36,10);
+        low.add(37,10);
+        low.add(38,10);
+        low.add(39,10);
+        low.add(40,10);
+        low.add(41,11);
+        low.add(42,11);
+        low.add(43,11);
+        low.add(44,11);
+        low.add(45,11);
+        low.add(46,11);
+        low.add(47,11);
+        low.add(48,11);
+        low.add(49,11);
+        low.add(50,11);
+        low.add(51,12);
+        low.add(52,12);
+        low.add(53,12);
+        low.add(54,12);
+        low.add(55,12);
+        low.add(56,12);
+        low.add(57,12);
+        low.add(58,12);
+        low.add(59,12);
+        low.add(60,12);
+
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(childData);
         dataset.addSeries(high);
