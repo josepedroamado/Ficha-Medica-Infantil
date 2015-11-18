@@ -318,7 +318,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addComponent(buttonCancelarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(buttonAceptarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         panelVacunasLayout.setVerticalGroup(
             panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,7 +352,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloCargarVacunas)
                     .addComponent(buttonCargarVacunas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -531,18 +531,19 @@ public class vPrincipal extends javax.swing.JFrame {
         );
         tabHijosYVacunasLayout.setVerticalGroup(
             tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabHijosYVacunasLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHijosYVacunasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addGroup(tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabbedPane.addTab("Hijos y Vacunas", tabHijosYVacunas);
 
         tabAgenda.setBackground(new java.awt.Color(204, 102, 0));
         tabAgenda.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tabAgenda.setPreferredSize(new java.awt.Dimension(795, 519));
 
         tituloProximasConsultas.setBackground(new java.awt.Color(204, 102, 0));
         tituloProximasConsultas.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -721,7 +722,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -793,7 +794,7 @@ public class vPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(checkBoxRealizadaProximasConsultas))
                             .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(tituloAgregarConsulta)
                 .addGap(18, 18, 18)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -815,7 +816,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonAceptarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Agenda", tabAgenda);
@@ -1031,7 +1032,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 833, 600);
+        setBounds(0, 0, 833, 642);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
