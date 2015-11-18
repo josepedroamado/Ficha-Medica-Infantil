@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Appointment.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FichaMedica&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logic</a> &gt; <span class="el_source">Appointment.java</span></div><h1>Appointment.java</h1><pre class="source lang-java linenums">package Logic;
+import java.io.Serializable;
+import java.time.LocalDate;
+
+//Clase de las consultas de los niños
+public class Appointment implements Serializable{
+    //Attributes
+    private LocalDate appointmentDate;
+    private String note;
+    private boolean attended;
+
+    //Getters and Setters
+    //Note
+    public String getNote() {
+<span class="fc" id="L15">        return note;</span>
+    }
+    public void setNote(String nota) {
+<span class="nc" id="L18">        note = nota;</span>
+<span class="nc" id="L19">    }</span>
+    //Attended
+    public boolean getAttended() {
+<span class="fc" id="L22">        return attended;</span>
+    }
+    public void setAttended(boolean realizada) {
+<span class="fc" id="L25">        attended = realizada;</span>
+<span class="fc" id="L26">    }</span>
+    //AppointmentDate
+    public LocalDate getAppointmentDate(){
+<span class="fc" id="L29">        return appointmentDate;</span>
+    }
+    public void setAppointmentDate(LocalDate fecha){
+<span class="nc" id="L32">        appointmentDate = fecha;</span>
+<span class="nc" id="L33">    }</span>
+    
+    //Constructors
+    //Empty
+<span class="nc" id="L37">    public Appointment(){</span>
+<span class="nc" id="L38">        note = &quot;Sin Nota&quot;;</span>
+<span class="nc" id="L39">        attended = false;</span>
+<span class="nc" id="L40">        appointmentDate = null;</span>
+<span class="nc" id="L41">    }</span>
+    //Parametered
+<span class="fc" id="L43">    public Appointment(String nota, LocalDate fecha) {</span>
+<span class="fc" id="L44">        note = nota;</span>
+<span class="fc" id="L45">        attended = false;</span>
+<span class="fc" id="L46">        appointmentDate = fecha;</span>
+<span class="fc" id="L47">    }</span>
+    
+     @Override
+    public String toString(){
+<span class="fc" id="L51">        return (&quot;&quot; + this.getAppointmentDate());       </span>
+    }
+    @Override
+    public boolean equals(Object o){
+<span class="fc" id="L55">        boolean iguales = false;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (this.getAppointmentDate().equals(((Appointment)o).getAppointmentDate())) {</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">            if (this.getNote().equals(((Appointment)o).getNote())) {</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">                if (this.getAttended() == ((Appointment)o).getAttended()) {</span>
+<span class="fc" id="L59">                    iguales = true;</span>
+                }         
+            }
+        }      
+<span class="fc" id="L63">        return iguales;</span>
+    }
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

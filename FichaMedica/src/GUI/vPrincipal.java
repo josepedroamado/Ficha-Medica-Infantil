@@ -44,6 +44,7 @@ public class vPrincipal extends javax.swing.JFrame {
         //Cargo los datos de los hijos en el ComboBox y muestro la fecha correspondiente
         comboBoxHijos.setModel(new DefaultComboBoxModel(sistema.getListAllChildren().toArray()));
         this.cargarHijoDelComboBox();
+        this.notificar();
         
         //Notificaciones
         
@@ -317,7 +318,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addComponent(buttonCancelarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(buttonAceptarAgregarVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         panelVacunasLayout.setVerticalGroup(
             panelVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,7 +536,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabHijosYVacunasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelVacunas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Hijos y Vacunas", tabHijosYVacunas);
@@ -720,7 +721,7 @@ public class vPrincipal extends javax.swing.JFrame {
                             .addComponent(labelNotaProximasConsultas)
                             .addComponent(paneNotaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkBoxRealizadaProximasConsultas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloConsultasAnteriores)
                             .addGroup(tabAgendaLayout.createSequentialGroup()
@@ -735,7 +736,7 @@ public class vPrincipal extends javax.swing.JFrame {
                         .addGap(53, 53, 53))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addComponent(tituloProximasConsultas)
-                        .addContainerGap(647, Short.MAX_VALUE))
+                        .addContainerGap(635, Short.MAX_VALUE))
                     .addGroup(tabAgendaLayout.createSequentialGroup()
                         .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tituloAgregarConsulta)
@@ -759,7 +760,7 @@ public class vPrincipal extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(buttonAceptarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(checkBoxRevisadoAgregarConsulta)))))
-                        .addGap(0, 341, Short.MAX_VALUE))))
+                        .addGap(0, 329, Short.MAX_VALUE))))
         );
         tabAgendaLayout.setVerticalGroup(
             tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -792,7 +793,7 @@ public class vPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(checkBoxRealizadaProximasConsultas))
                             .addComponent(paneFechaProximasConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(tituloAgregarConsulta)
                 .addGap(18, 18, 18)
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -814,7 +815,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 .addGroup(tabAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancelarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonAceptarAgregarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabbedPane.addTab("Agenda", tabAgenda);
@@ -1017,11 +1018,17 @@ public class vPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabbedPane)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 833, 600);
@@ -1295,6 +1302,7 @@ public class vPrincipal extends javax.swing.JFrame {
     private void comboBoxHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxHijosActionPerformed
         this.cargarHijoDelComboBox();
         this.updateChart();
+        this.notificar();
     }//GEN-LAST:event_comboBoxHijosActionPerformed
 
     private void buttonAceptarAgregarHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarAgregarHijoActionPerformed
@@ -1338,7 +1346,7 @@ public class vPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCancelarAgregarHijoActionPerformed
 
     private void buttonCancelarAgregarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarAgregarVacunaActionPerformed
-        // TODO add your handling code here:
+        datePickerAgregarVacunaFecha.setDate(null);
     }//GEN-LAST:event_buttonCancelarAgregarVacunaActionPerformed
 
     private void buttonAceptarAgregarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarAgregarVacunaActionPerformed
@@ -1351,6 +1359,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 if (comboBoxVacunaDada.getModel().getSelectedItem().equals(vac)) {
                     selectedChild.addReceivedVaccine(vac, fechaAgregarVacuna);
                     this.cargarVacunasHijo();
+                    datePickerAgregarVacunaFecha.setDate(null);
                 }
             }
         }
@@ -1407,8 +1416,7 @@ public class vPrincipal extends javax.swing.JFrame {
                 textFechaNacimiento.setText(""+selectedChild.getBirthDate());
                 this.cargarAppointmentDeHijo();
                 this.cargarVacunasHijo();
-                this.updateChart();
-                this.notificar();
+                this.updateChart();              
             }
         } 
     }

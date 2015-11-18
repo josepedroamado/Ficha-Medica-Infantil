@@ -102,7 +102,7 @@ public class Child implements Serializable{
     //Agregar Consulta - Check de datos correctos
     public boolean addAppointmentCheck(String nota, LocalDate fecha){
         boolean correct = false;
-        if (!nota.isEmpty()) {
+        if (nota != null) {
             if (fecha != null) {             
                 correct = true;                        
             }

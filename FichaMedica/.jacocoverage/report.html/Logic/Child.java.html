@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Child.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;FichaMedica&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Logic</a> &gt; <span class="el_source">Child.java</span></div><h1>Child.java</h1><pre class="source lang-java linenums">package Logic;
+import java.io.FileNotFoundException;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+//Clase de hijo, contiene todos los datos realacionados al mismo
+public class Child implements Serializable{
+    //Attributes
+    private String name;
+    private LocalDate birthDate;
+    private ArrayList&lt;Appointment&gt; listAppointments;
+    private ArrayList&lt;Vaccine&gt; listVaccines;
+    private ArrayList&lt;Growth&gt; listGrowth;
+    
+    //Getters and Setter
+    //Name
+    public String getName() {
+<span class="fc" id="L19">        return name;</span>
+    }
+    public void setName(String nombre) {
+<span class="nc" id="L22">        name = nombre;</span>
+<span class="nc" id="L23">    }</span>
+    //Age
+    public LocalDate getBirthDate() {
+<span class="fc" id="L26">        return birthDate;</span>
+    }
+    public void setBirthDate(LocalDate date) {
+<span class="nc" id="L29">        birthDate = date;</span>
+<span class="nc" id="L30">    }</span>
+    //ListAppointments
+    public ArrayList&lt;Appointment&gt; getListAppointments() {
+<span class="fc" id="L33">        return listAppointments;</span>
+    }
+    //ListVaccines
+    public ArrayList&lt;Vaccine&gt; getListVaccines() {
+<span class="fc" id="L37">        return listVaccines;</span>
+    }
+    //ListGrowth
+    public ArrayList&lt;Growth&gt; getListGrowth() {
+<span class="fc" id="L41">        return listGrowth;</span>
+    } 
+
+    //Constructors
+    //Empty
+<span class="nc" id="L46">    public Child(){</span>
+<span class="nc" id="L47">        name = &quot;Sin nombre&quot;;</span>
+<span class="nc" id="L48">        birthDate = null;</span>
+<span class="nc" id="L49">        listAppointments = null;</span>
+<span class="nc" id="L50">        listVaccines = null;</span>
+<span class="nc" id="L51">        listGrowth = null;</span>
+<span class="nc" id="L52">    }</span>
+    //Parametered
+<span class="fc" id="L54">    public Child(String aName, LocalDate birth) {</span>
+<span class="fc" id="L55">        name = aName;</span>
+<span class="fc" id="L56">        birthDate = birth;</span>
+<span class="fc" id="L57">        listAppointments = new ArrayList &lt;Appointment&gt;();     </span>
+<span class="fc" id="L58">        listGrowth = new ArrayList &lt;Growth&gt;();</span>
+<span class="fc" id="L59">        int[] vencimientosBCG = {0};</span>
+<span class="fc" id="L60">        Vaccine bcg = new Vaccine (&quot;BCG&quot;, true, vencimientosBCG, birthDate);</span>
+<span class="fc" id="L61">        bcg.setReceivedDate(null);</span>
+<span class="fc" id="L62">        int[] vencimientosPentavalente = {2, 4, 6, 12};</span>
+<span class="fc" id="L63">        Vaccine pentavalente = new Vaccine (&quot;Pentavalente&quot;, true, vencimientosPentavalente, birthDate);</span>
+<span class="fc" id="L64">        pentavalente.setReceivedDate(null);</span>
+<span class="fc" id="L65">        int[] vencimientosTripleBacteriana = {60};</span>
+<span class="fc" id="L66">        Vaccine tripleBacteriana = new Vaccine (&quot;Triple bacteriana&quot;, true, vencimientosTripleBacteriana, birthDate);</span>
+<span class="fc" id="L67">        tripleBacteriana.setReceivedDate(null);</span>
+<span class="fc" id="L68">        int[] vencimientosHepatitisB = {144};</span>
+<span class="fc" id="L69">        Vaccine hepatitisB = new Vaccine (&quot;Hepatitis B&quot;, true, vencimientosHepatitisB, birthDate);</span>
+<span class="fc" id="L70">        hepatitisB.setReceivedDate(null);</span>
+<span class="fc" id="L71">        int[] vencimientosPolio = {2, 4, 6, 12};</span>
+<span class="fc" id="L72">        Vaccine polio = new Vaccine (&quot;Polio&quot;, true, vencimientosPolio, birthDate);</span>
+<span class="fc" id="L73">        polio.setReceivedDate(null);</span>
+<span class="fc" id="L74">        int[] vencimientosTripleViral = {12, 60};</span>
+<span class="fc" id="L75">        Vaccine tripleViral = new Vaccine (&quot;Triple Viral&quot;, true, vencimientosTripleViral, birthDate);</span>
+<span class="fc" id="L76">        tripleViral.setReceivedDate(null);</span>
+<span class="fc" id="L77">        int[] vencimientosVaricela = {12};</span>
+<span class="fc" id="L78">        Vaccine varicela = new Vaccine (&quot;Varicela&quot;, true, vencimientosVaricela, birthDate);</span>
+<span class="fc" id="L79">        varicela.setReceivedDate(null);</span>
+<span class="fc" id="L80">        int[] vencimientosDobleBacteriana = {144, 264};</span>
+<span class="fc" id="L81">        Vaccine dobleBacteriana = new Vaccine (&quot;Doble Bacteriana&quot;, true, vencimientosDobleBacteriana, birthDate);</span>
+<span class="fc" id="L82">        dobleBacteriana.setReceivedDate(null);</span>
+<span class="fc" id="L83">        listVaccines = new ArrayList &lt;Vaccine&gt;();</span>
+<span class="fc" id="L84">        listVaccines.add(bcg);</span>
+<span class="fc" id="L85">        listVaccines.add(pentavalente);</span>
+<span class="fc" id="L86">        listVaccines.add(tripleBacteriana);</span>
+<span class="fc" id="L87">        listVaccines.add(hepatitisB);</span>
+<span class="fc" id="L88">        listVaccines.add(polio);</span>
+<span class="fc" id="L89">        listVaccines.add(tripleViral);</span>
+<span class="fc" id="L90">        listVaccines.add(varicela);</span>
+<span class="fc" id="L91">        listVaccines.add(dobleBacteriana);</span>
+<span class="fc" id="L92">    }</span>
+    
+     //Methods
+    //Agregar Consulta
+    public void addAppointment(String nota, LocalDate fecha){
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        if (this.addAppointmentCheck(nota, fecha)) {</span>
+<span class="fc" id="L98">            Appointment consulta = new Appointment (nota, fecha);</span>
+<span class="fc" id="L99">            listAppointments.add(consulta);</span>
+        }
+<span class="fc" id="L101">    }</span>
+    //Agregar Consulta - Check de datos correctos
+    public boolean addAppointmentCheck(String nota, LocalDate fecha){
+<span class="fc" id="L104">        boolean correct = false;</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if (!nota.isEmpty()) {</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">            if (fecha != null) {             </span>
+<span class="fc" id="L107">                correct = true;                        </span>
+            }
+        }
+<span class="fc" id="L110">        return correct;</span>
+    }
+    
+    //Agregar Crecimiento
+    public void addGrowth(LocalDate fecha, int altura, int peso, int perimetroCraneal){
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">        if (this.addGrowthCheck(fecha, altura, peso, perimetroCraneal)) {</span>
+<span class="fc" id="L116">            Growth crecimiento = new Growth(fecha, altura, peso, perimetroCraneal);</span>
+<span class="fc" id="L117">            listGrowth.add(crecimiento);</span>
+        }
+<span class="fc" id="L119">    }</span>
+    //Agregar Crecimiento - Check de datos correctos
+    public boolean addGrowthCheck(LocalDate fecha, int altura, int peso, int perimetroCraneal){
+<span class="fc" id="L122">        boolean correct = false; </span>
+<span class="pc bpc" id="L123" title="4 of 8 branches missed.">        if (altura &gt; 0 &amp;&amp; peso &gt; 0 &amp;&amp; perimetroCraneal &gt; 0 &amp;&amp; fecha != null) {</span>
+<span class="fc" id="L124">            correct = true;  </span>
+        }
+<span class="fc" id="L126">        return correct;</span>
+    }
+    
+    //Agregar Vacuna
+    public void addReceivedVaccine(Vaccine vacuna, LocalDate fechaDada){
+<span class="fc" id="L131">        int indexVacuna = this.getListVaccines().indexOf(vacuna);</span>
+<span class="fc" id="L132">        this.getListVaccines().get(indexVacuna).setReceivedDate(fechaDada);</span>
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        if (this.getListVaccines().get(indexVacuna).getExpirationMonths() != null) {</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">            if (!this.getListVaccines().get(indexVacuna).getExpirationMonths().isEmpty()) {</span>
+<span class="fc" id="L135">                this.getListVaccines().get(indexVacuna).getExpirationMonths().remove(0);</span>
+            }          
+        }    
+<span class="fc" id="L138">    }</span>
+    
+    //Cargar Vacunas
+    public void cargarArchivo(String ruta){
+        try{
+<span class="fc" id="L143">            ArchivoLectura read = new ArchivoLectura(ruta);</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            while(read.hayMasLineas()){</span>
+<span class="fc" id="L145">                String[] readLines = read.linea().split(&quot;/&quot;);</span>
+<span class="fc" id="L146">                String nombre = readLines[0];</span>
+<span class="fc" id="L147">                boolean obligatoria = false;</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">                if (readLines[1].equals(&quot;Si&quot;)) {</span>
+<span class="nc" id="L149">                    obligatoria = true;</span>
+                }
+<span class="fc" id="L151">                int [] vencimientos = null;</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">                if (readLines.length &gt; 3) {</span>
+<span class="nc" id="L153">                    String[] readNumbers = readLines[2].split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                    for (int i = 0; i &lt; readNumbers.length-1; i++) {</span>
+<span class="nc" id="L155">                        vencimientos[i] = Integer.parseInt(readNumbers[i]);</span>
+                    }
+                }
+<span class="fc" id="L158">                Vaccine v = new Vaccine (nombre, obligatoria, vencimientos, null);</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">                if (this.getListVaccines().contains(v)) {</span>
+<span class="nc" id="L160">                    int index = this.getListVaccines().indexOf(v);</span>
+<span class="nc" id="L161">                    this.getListVaccines().get(index).setObligatoria(obligatoria);</span>
+<span class="nc" id="L162">                }</span>
+                else{
+<span class="fc" id="L164">                    this.getListVaccines().add(v);</span>
+                }                    
+<span class="fc" id="L166">            }    </span>
+<span class="fc" id="L167">            read.cerrar();</span>
+<span class="nc" id="L168">        }catch(FileNotFoundException e){</span>
+<span class="nc" id="L169">            System.out.println(&quot;not found&quot;);</span>
+<span class="fc" id="L170">        }</span>
+<span class="fc" id="L171">    }</span>
+    
+    @Override
+    public String toString(){
+<span class="fc" id="L175">        return (&quot;&quot; + this.getName());       </span>
+    }
+    
+    @Override
+    public boolean equals(Object o){
+<span class="fc" id="L180">        boolean iguales = false;</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">        if (this.getName().equals(((Child)o).getName())) {</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">            if (this.getBirthDate().equals(((Child)o).getBirthDate())) {</span>
+<span class="fc" id="L183">                iguales = true;</span>
+            }
+        }      
+<span class="fc" id="L186">        return iguales;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
