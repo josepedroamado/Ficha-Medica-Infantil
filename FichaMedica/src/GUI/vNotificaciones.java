@@ -20,8 +20,11 @@ public class vNotificaciones extends javax.swing.JFrame {
         initComponents();
         consultas = new ArrayList <Appointment>();
         vacunas = new ArrayList<Vaccine>();
-        this.cargarConsultas();
-        this.cargarVacunas();
+        if (selectedChild != null) {
+            this.cargarConsultas();
+            this.cargarVacunas();
+        }
+        
     }
 
     /**
