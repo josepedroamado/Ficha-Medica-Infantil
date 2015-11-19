@@ -4,7 +4,7 @@ import GUI.vPrincipal;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-public class FichaMedica {
+public class Inicio {
 
     public static void main(String[] args) {
         LogicSystem sistema = null;
